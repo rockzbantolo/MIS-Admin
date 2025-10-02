@@ -1,0 +1,368 @@
+﻿using MIS_Admin.Core;
+using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Mysqlx.Sql;
+using System.Data;
+
+namespace MIS_Admin.Repository
+{
+    internal class Operations : Base
+    {
+        // ---------- Services ----------
+        public DataTable FindServices(object search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Job_ID AS `Order No`,
+                Request_No AS `Request No`,
+                Merchant_Name AS `Merchant`,
+                REPLACE(Request, 'FOR ', '') AS Service,
+                CASE 
+                    WHEN Days < 1 OR Days = 1 THEN 'Normal'
+                    WHEN Days BETWEEN 2 AND 4 THEN 'Medium'
+                    WHEN Days BETWEEN 5 AND 8 THEN 'High'
+                    WHEN Days >= 9 THEN 'Critical'
+                    ELSE 'Unknown'
+                END AS Priority,
+                Service_Status AS `Status`,
+                Service_Result AS `Result`,
+                Terminal_SN AS `Terminal`,
+                Sim_SN AS `Sim`,
+                CASE 
+                    WHEN Prov_ID = 5 THEN 'PROVINCE' 
+                    WHEN Prov_ID = 4 THEN 'MANILA' 
+                    ELSE Province 
+                END AS Region,
+                Days AS SLA,
+               IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL,
+                    DATE_FORMAT(Dispatch_Date_Time, '%b %d, %Y'),
+                    NULL) AS `Request Date`,
+                IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL, 
+                    DATE_FORMAT(Dispatch_Date_Time, '%h:%i %p, %b %d, %Y'), 
+                    Dispatch_Date_Time) AS `Dispatch Date`
+            FROM 
+                vw_service_info
+            WHERE
+                (
+                    @Search IS NULL OR @Search = ''
+                    OR Terminal_SN = @Search
+                    OR Sim_SN = @Search
+                    OR TID = @Search
+                    OR Job_ID = @Search
+                    OR Service_Result = @Search
+                    OR Merchant_Name LIKE CONCAT('%', @Search, '%')
+                    OR Dispatch_By LIKE CONCAT('%', @Search, '%')
+                )
+            ORDER BY Processed_Date_Time DESC
+            LIMIT {limit};";
+
+            return Select(stmt, new MySqlParameter("@Search", search));
+        }
+
+        public async Task<DataTable> FindServicesAsync(string search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Job_ID AS `Order No`,
+                Request_No AS `Request No`,
+                Merchant_Name AS `Merchant`,
+                REPLACE(Request, 'FOR ', '') AS Service,
+                CASE 
+                    WHEN Days < 1 OR Days = 1 THEN 'Normal'
+                    WHEN Days BETWEEN 2 AND 4 THEN 'Medium'
+                    WHEN Days BETWEEN 5 AND 8 THEN 'High'
+                    WHEN Days >= 9 THEN 'Critical'
+                    ELSE 'Unknown'
+                END AS Priority,
+                Service_Status AS `Status`,
+                Service_Result AS `Result`,
+                Terminal_SN AS `Terminal`,
+                Sim_SN AS `Sim`,
+                CASE 
+                    WHEN Prov_ID = 5 THEN 'PROVINCE' 
+                    WHEN Prov_ID = 4 THEN 'MANILA' 
+                    ELSE Province 
+                END AS Region,
+                Days AS SLA,
+                Dispatch_By AS `Dispatch By`,
+                IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL, 
+                    DATE_FORMAT(Dispatch_Date_Time, '%h:%i %p, %b %d, %Y'), 
+                    Dispatch_Date_Time) AS `Dispatch Date`
+            FROM 
+                vw_service_info
+            WHERE
+                (
+                    @search IS NULL OR @search = ''
+                    OR Terminal_SN = @search
+                    OR Sim_SN = @search
+                    OR TID = @search
+                    OR Job_ID = @search
+                    OR Service_Result = @search
+                    OR Status_ID = @search
+                    OR Merchant_Name = @search
+                    OR Dispatch_By = @search
+                )
+            ORDER BY Processed_Date_Time DESC
+            LIMIT {limit};";
+
+            return await SelectAsync(stmt, new MySqlParameter("@search", (object)search ?? DBNull.Value));
+        }
+
+        public async Task<DataTable> FindHelpdeskRequest(string search, int limit = 20)
+        {
+            string stmt = $@"
+            ";
+
+            return await SelectAsync(stmt, new MySqlParameter("@Search", (object)search ?? DBNull.Value));
+        }
+
+        public async Task<DataTable> FindServiceRequestAsync(object date)
+        {
+            string stmt = @"
+            SELECT 
+                Request_No AS `Request No`,
+                Merchant,
+                TID,
+                MID
+            FROM vw_installation_info
+            WHERE		
+                Status_ID = 1
+                AND (@date IS NULL OR DATE(Created_Date) = @date);";
+
+            return await SelectAsync(stmt, new MySqlParameter("@date", date));
+        }
+
+        public async Task<DataTable> FindServiceSummary(object dispatcherId)
+        {
+            string stmt = @"
+            SELECT
+                REPLACE(Request, 'FOR ', '') AS Description,
+                FORMAT(SUM(CASE WHEN Status_ID IN (7, 11) AND Service_Result = 'COMPLETED' THEN 1 ELSE 0 END), 0) AS Completed,
+                FORMAT(SUM(CASE WHEN Status_ID = 8 THEN 1 ELSE 0 END), 0) AS Dispatch,
+                FORMAT(SUM(CASE WHEN Status_ID = 2 THEN 1 ELSE 0 END), 0) AS Pending,
+                FORMAT(SUM(CASE WHEN Status_ID = 9 THEN 1 ELSE 0 END), 0) AS Negative,
+                FORMAT(
+                    SUM(
+                        (CASE WHEN Status_ID IN (7, 11) AND Service_Result = 'COMPLETED' THEN 1 ELSE 0 END) +
+                        (CASE WHEN Status_ID = 8 THEN 1 ELSE 0 END) +
+                        (CASE WHEN Status_ID = 2 THEN 1 ELSE 0 END) +
+                        (CASE WHEN Status_ID = 9 THEN 1 ELSE 0 END)
+                    ), 0
+                ) AS Total
+            FROM vw_service_info
+            WHERE (@dispatcherId IS NULL OR Dispatcher_ID = @dispatcherId)
+            AND DATE(Created_Date) = CURRENT_DATE()
+            GROUP BY Type_ID;";
+
+            return await SelectAsync(stmt, new MySqlParameter("@dispatcherId", dispatcherId));
+        }
+
+        public async Task<DataTable> FindMonthlyServiceCountAsync(object id)
+        {
+            string stmt = @"
+            SELECT 
+                MONTHNAME(Created_Date) AS MonthName,
+                COUNT(*) AS TotalServices
+            FROM vw_service_info
+            WHERE YEAR(Created_Date) = YEAR(CURDATE())
+              AND (@id IS NULL OR Dispatcher_ID = @id)
+            GROUP BY YEAR(Created_Date), MONTH(Created_Date)
+            ORDER BY YEAR(Created_Date), MONTH(Created_Date);";
+
+            return await SelectAsync(stmt, new MySqlParameter("@id", id));
+        }
+
+        public async Task<DataTable> FindUnclosedTicketsAsync(object id)
+        {
+            string stmt = @"
+            SELECT 
+                   Request_No AS `Request No`,
+                   Merchant_Name AS `Merchant`, 
+                   Request_Status AS `Status`, 
+                   FE_Name AS `Engineer`
+            FROM vw_service_info
+            WHERE (@id IS NULL OR Dispatcher_ID = @id)
+              AND MONTH(Created_Date) = MONTH(CURDATE())
+              AND YEAR(Created_Date) = YEAR(CURDATE())
+              AND Request_Status IN ('SUCCESS','NEGATIVE')
+              AND Ticket_ID = 0;";
+
+            return await SelectAsync(stmt, new MySqlParameter("@id", id));
+        }
+
+        public async Task<DataTable> FindSlaCount(object id)
+        {
+            string stmt = @"
+            SELECT
+                SUM(CASE WHEN TAT_Status = 'Beyond' THEN 1 ELSE 0 END) AS `Beyond Count`,
+                SUM(CASE WHEN TAT_Status = 'Within' THEN 1 ELSE 0 END) AS `Within Count`
+            FROM vw_service_info
+            WHERE (@id IS NULL OR Dispatcher_ID = @id)
+              AND MONTH(Created_Date) = MONTH(CURDATE())
+              AND YEAR(Created_Date) = YEAR(CURDATE())
+              AND Request_Status = 'SUCCESS';";
+
+            return await SelectAsync(stmt, new MySqlParameter("@id", id));
+        }
+
+        public DataTable FindStores(object search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Merchant_ID AS `Store ID`,
+                Merchant_Name AS `Store Name`,
+                Address,
+                Region AS `City`,
+                Province,
+                Contact_Person AS `Contact`,
+                Contact_No AS `Contact No.`,
+                Tel_No AS `Tel No.`,
+                Mobile_No AS `Mobile No.`,
+                Fax_No AS `Fax No.`,
+                Email
+            FROM vw_merchant_info
+            WHERE 
+                (@Search IS NULL OR @Search = '')
+                OR Merchant_Name LIKE CONCAT('%', @Search, '%')
+                OR Contact_Person LIKE CONCAT('%', @Search, '%')
+                OR Province LIKE CONCAT('%', @Search, '%')
+                OR Region LIKE CONCAT('%', @Search, '%')
+            LIMIT {limit};";
+
+            return Select(stmt, new MySqlParameter("@Search", search));
+        }
+
+        public DataTable FindTerminals(object search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Model_ID      AS `Model ID`,
+                Model         AS `Model`,
+                Terminal_ID   AS `Terminal ID`,
+                Terminal_SN   AS `Serial No`,
+                Status        AS `Status`,
+                Location      AS `Location`,
+                Type          AS `Type`,
+                Code          AS `Code`,
+                Brand         AS `Brand`,
+                Part_No       AS `Part No`,
+                App_Version   AS `App Version`,
+                App_Crc       AS `App Crc`,
+                Asset         AS `Asset`,
+                Delivery_Date AS `Delivery Date`
+            FROM vw_terminal_info
+            WHERE 
+                (@Search IS NULL OR @Search = '' 
+                    OR Terminal_SN LIKE CONCAT('%', @Search, '%')
+                    OR Client_Name LIKE CONCAT('%', @Search, '%')
+                    OR Brand LIKE CONCAT('%', @Search, '%')
+                    OR Model LIKE CONCAT('%', @Search, '%'))
+            LIMIT {limit};";
+
+            return Select(stmt, new MySqlParameter("@Search", search));
+        }
+
+        public DataTable FindSimCards(object search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Carrier_ID     AS `Carrier ID`,
+                Carrier        AS `Carrier`,
+                SIM_ID         AS `Sim ID`,
+                SIM_SN         AS `Serial No`,
+                Status         AS `Status`,
+                Location       AS `Location`,
+                Delivery_Date  AS `Delivery Date`,
+                Receive_Date   AS `Receive Date`,
+                Release_Date   AS `Release Date`
+            FROM vw_sim_info
+            WHERE 
+                (@Search IS NULL OR @Search = '')
+                OR SIM_SN LIKE CONCAT('%', @Search, '%')
+                OR Carrier LIKE CONCAT('%', @Search, '%')
+                OR Status LIKE CONCAT('%', @Search, '%')
+                OR Location LIKE CONCAT('%', @Search, '%')
+            ORDER BY SIM_SN
+            LIMIT {limit};";
+
+            return Select(stmt, new MySqlParameter("@Search", search));
+        }
+
+
+        // ---------- CRUD Samples ----------
+        public int AddUser(string username)
+        {
+            return Execute("INSERT INTO users (username) VALUES (@u)", "users",
+                new MySqlParameter("@u", username));
+        }
+
+        public async Task<int> AddUserAsync(string username)
+        {
+            return await ExecuteAsync("INSERT INTO users (username) VALUES (@u)", "users",
+                new MySqlParameter("@u", username));
+        }
+
+        public void UpdateUser(int id, string username)
+        {
+            Execute("UPDATE users SET username=@u WHERE id=@id", "users",
+                new MySqlParameter("@u", username),
+                new MySqlParameter("@id", id));
+        }
+
+        public async Task<int> UpdateUserAsync(int id, string username)
+        {
+            return await ExecuteAsync("UPDATE users SET username=@u WHERE id=@id", "users",
+                new MySqlParameter("@u", username),
+                new MySqlParameter("@id", id));
+        }
+
+        public void DeleteUser(int id)
+        {
+            Execute("DELETE FROM users WHERE id=@id", "users",
+                new MySqlParameter("@id", id));
+        }
+
+        public async Task<int> DeleteUserAsync(int id)
+        {
+            return await ExecuteAsync("DELETE FROM users WHERE id=@id", "users",
+                new MySqlParameter("@id", id));
+        }
+
+        public void CreateUserWithLog(string username)
+        {
+            Transact((conn, tx) =>
+            {
+                using (var cmd = new MySqlCommand("INSERT INTO users (username) VALUES (@u)", conn, tx))
+                {
+                    cmd.Parameters.AddWithValue("@u", username);
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (var cmd = new MySqlCommand("INSERT INTO logs (message) VALUES (@m)", conn, tx))
+                {
+                    cmd.Parameters.AddWithValue("@m", $"User {username} created");
+                    cmd.ExecuteNonQuery();
+                }
+            }, "users", "logs");
+        }
+
+        public async Task CreateUserWithLogAsync(string username)
+        {
+            await TransactAsync(async (conn, tx) =>
+            {
+                using (var cmd = new MySqlCommand("INSERT INTO users (username) VALUES (@u)", conn, tx))
+                {
+                    cmd.Parameters.AddWithValue("@u", username);
+                    await cmd.ExecuteNonQueryAsync();
+                }
+
+                using (var cmd = new MySqlCommand("INSERT INTO logs (message) VALUES (@m)", conn, tx))
+                {
+                    cmd.Parameters.AddWithValue("@m", $"User {username} created");
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }, "users", "logs");
+        }
+    
+    }
+}

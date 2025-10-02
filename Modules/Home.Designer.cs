@@ -1,0 +1,228 @@
+﻿namespace MIS_Admin.Modules
+{
+    partial class Home
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            pn_Nav = new Panel();
+            flp_Nav = new FlowLayoutPanel();
+            btn_Home = new Button();
+            btn_Services = new Button();
+            btn_Stores = new Button();
+            btn_Reports = new Button();
+            pictureBox1 = new PictureBox();
+            pn_Header = new Panel();
+            pn_Body = new Panel();
+            pn_Nav.SuspendLayout();
+            flp_Nav.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Location = new Point(20, 98);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(200, 563);
+            flowLayoutPanel1.TabIndex = 2;
+            // 
+            // pn_Nav
+            // 
+            pn_Nav.BackColor = Color.FromArgb(30, 39, 46);
+            pn_Nav.Controls.Add(flp_Nav);
+            pn_Nav.Controls.Add(pictureBox1);
+            pn_Nav.Dock = DockStyle.Left;
+            pn_Nav.Location = new Point(0, 0);
+            pn_Nav.Name = "pn_Nav";
+            pn_Nav.Size = new Size(249, 846);
+            pn_Nav.TabIndex = 0;
+            // 
+            // flp_Nav
+            // 
+            flp_Nav.Controls.Add(btn_Home);
+            flp_Nav.Controls.Add(btn_Services);
+            flp_Nav.Controls.Add(btn_Stores);
+            flp_Nav.Controls.Add(btn_Reports);
+            flp_Nav.Location = new Point(12, 105);
+            flp_Nav.Name = "flp_Nav";
+            flp_Nav.Size = new Size(225, 497);
+            flp_Nav.TabIndex = 0;
+            // 
+            // btn_Home
+            // 
+            btn_Home.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Home.FlatAppearance.BorderSize = 0;
+            btn_Home.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Home.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Home.FlatStyle = FlatStyle.Flat;
+            btn_Home.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Home.ForeColor = Color.White;
+            btn_Home.Image = (Image)resources.GetObject("btn_Home.Image");
+            btn_Home.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Home.Location = new Point(5, 5);
+            btn_Home.Margin = new Padding(5, 5, 3, 10);
+            btn_Home.Name = "btn_Home";
+            btn_Home.Padding = new Padding(25, 0, 0, 0);
+            btn_Home.Size = new Size(215, 54);
+            btn_Home.TabIndex = 0;
+            btn_Home.Text = "        Home";
+            btn_Home.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Home.UseVisualStyleBackColor = true;
+            btn_Home.Click += btn_Home_Click;
+            // 
+            // btn_Services
+            // 
+            btn_Services.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Services.FlatAppearance.BorderSize = 0;
+            btn_Services.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Services.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Services.FlatStyle = FlatStyle.Flat;
+            btn_Services.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Services.ForeColor = Color.White;
+            btn_Services.Image = (Image)resources.GetObject("btn_Services.Image");
+            btn_Services.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Services.Location = new Point(5, 72);
+            btn_Services.Margin = new Padding(5, 3, 3, 10);
+            btn_Services.Name = "btn_Services";
+            btn_Services.Padding = new Padding(25, 0, 0, 0);
+            btn_Services.Size = new Size(215, 54);
+            btn_Services.TabIndex = 1;
+            btn_Services.Text = "        Services";
+            btn_Services.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Services.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Services.UseVisualStyleBackColor = true;
+            btn_Services.Click += btn_Services_Click;
+            // 
+            // btn_Stores
+            // 
+            btn_Stores.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Stores.FlatAppearance.BorderSize = 0;
+            btn_Stores.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Stores.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Stores.FlatStyle = FlatStyle.Flat;
+            btn_Stores.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Stores.ForeColor = Color.White;
+            btn_Stores.Image = (Image)resources.GetObject("btn_Stores.Image");
+            btn_Stores.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Stores.Location = new Point(5, 139);
+            btn_Stores.Margin = new Padding(5, 3, 3, 10);
+            btn_Stores.Name = "btn_Stores";
+            btn_Stores.Padding = new Padding(25, 0, 0, 0);
+            btn_Stores.Size = new Size(215, 54);
+            btn_Stores.TabIndex = 2;
+            btn_Stores.Text = "        Stores";
+            btn_Stores.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Stores.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Stores.UseVisualStyleBackColor = true;
+            btn_Stores.Click += btn_Stores_Click;
+            // 
+            // btn_Reports
+            // 
+            btn_Reports.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Reports.FlatAppearance.BorderSize = 0;
+            btn_Reports.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Reports.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Reports.FlatStyle = FlatStyle.Flat;
+            btn_Reports.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Reports.ForeColor = Color.White;
+            btn_Reports.Image = (Image)resources.GetObject("btn_Reports.Image");
+            btn_Reports.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Reports.Location = new Point(5, 208);
+            btn_Reports.Margin = new Padding(5, 5, 3, 10);
+            btn_Reports.Name = "btn_Reports";
+            btn_Reports.Padding = new Padding(25, 0, 0, 0);
+            btn_Reports.Size = new Size(215, 54);
+            btn_Reports.TabIndex = 1;
+            btn_Reports.Text = "        Reports";
+            btn_Reports.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Reports.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Reports.UseVisualStyleBackColor = true;
+            btn_Reports.Click += btn_Reports_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(40, -41);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(167, 156);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // pn_Header
+            // 
+            pn_Header.BackColor = Color.White;
+            pn_Header.Dock = DockStyle.Top;
+            pn_Header.Location = new Point(249, 0);
+            pn_Header.Name = "pn_Header";
+            pn_Header.Size = new Size(862, 60);
+            pn_Header.TabIndex = 1;
+            // 
+            // pn_Body
+            // 
+            pn_Body.BackColor = SystemColors.Control;
+            pn_Body.Dock = DockStyle.Fill;
+            pn_Body.Location = new Point(249, 60);
+            pn_Body.Name = "pn_Body";
+            pn_Body.Size = new Size(862, 786);
+            pn_Body.TabIndex = 2;
+            // 
+            // Home
+            // 
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.FromArgb(220, 221, 225);
+            Controls.Add(pn_Body);
+            Controls.Add(pn_Header);
+            Controls.Add(pn_Nav);
+            DoubleBuffered = true;
+            Name = "Home";
+            Size = new Size(1111, 846);
+            Load += Home_Load;
+            pn_Nav.ResumeLayout(false);
+            flp_Nav.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+        }
+
+        #endregion
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel pn_Nav;
+        private Panel pn_Header;
+        private Panel pn_Body;
+        private FlowLayoutPanel flp_Nav;
+        private Button btn_Home;
+        private Button btn_Services;
+        private Button btn_Stores;
+        private PictureBox pictureBox1;
+        private Button btn_Reports;
+    }
+}
