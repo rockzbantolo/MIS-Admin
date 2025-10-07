@@ -1,5 +1,7 @@
-﻿using MIS_Admin.Utilities.UI;
+﻿using Google.Protobuf.WellKnownTypes;
+using MIS_Admin.Utilities.UI;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
@@ -9,6 +11,8 @@ namespace MIS_Admin.Modules
 {
     public partial class Overview : UserControl
     {
+        private bool isLoading { get; set; }
+
         public Overview()
         {
             InitializeComponent();
@@ -23,28 +27,47 @@ namespace MIS_Admin.Modules
 
         private void InitializeHelpers()
         {
-            //EnableDoubleBuffering(dataGridView1);
-            //EnableDoubleBuffering(dgv_Services);
-            //EnableDoubleBuffering(dgv_Request);
-            ApplyRadiusToPanels(this, 11, Color.FromArgb(224, 224, 224));
+            //EnableDoubleBuffering(this);
+            EnableDoubleBuffering(dgv_Services);
+            EnableDoubleBuffering(dgv_Request);
+            EnableDoubleBuffering(dgv_CloseTickets);
+            ApplyRadiusToPanels(this, 8, Color.White);
+            lb_TicketCount.Radius(6, Color.FromArgb(224, 224, 224));
+            lb_RequestCount.Radius(6, Color.White);
+            lb_HelpdeskCount.Radius(6, Color.White);
         }
 
         private async Task InitializedData()
         {
-            dgv_Services.DataSource = await getAllRecentServices();
 
-            dgv_Request.DataSource = await getAllServiceRequest(DateTime.Now);
-            lb_RequestCount.Text = $"{dgv_Request.Rows.Count:N0}";
-
-            dgv_CloseTickets.DataSource = await getAllUnclosedTickets(null);
-            lb_TicketCount.Text = $"{dgv_CloseTickets.Rows.Count:N0}";
+            isLoading = true;
+            dgv_Services.Refresh();
+            dgv_Request.Refresh();
+            dgv_CloseTickets.Refresh();
 
             await ServiceSummary();
+            await SLASummary();
+
+            BindTableToGrid(await getAllRecentServices(), dgv_Services);
+            BindTableToGrid(await getAllServiceRequest(DateTime.Now), dgv_Request);
+            BindTableToGrid(await getAllUnclosedTickets(), dgv_CloseTickets);
+            BindTableToGrid(await getAllMonthlyServiceCount(), dgv_TotalServices);
+            BindTableToGrid(await getAllHelpdeskRequest(), dgv_HelpdeskRequest);
+
+            lb_RequestCount.Text = $"{dgv_Request.Rows.Count:N0}";
+            lb_TicketCount.Text = $"{dgv_CloseTickets.Rows.Count:N0}";
+            lb_HelpdeskCount.Text = $"{dgv_HelpdeskRequest.Rows.Count:N0}";
+
+            isLoading = false;
+            dgv_Services.Refresh();
+            dgv_Request.Refresh();
+            dgv_CloseTickets.Refresh();
+
         }
 
         private async Task ServiceSummary()
         {
-            DataTable dt = await getAllServiceSummary(null);
+            DataTable dt = await getAllServiceSummary();
 
             int total = 0, completed = 0, pending = 0, negative = 0, dispatch = 0;
 
@@ -79,11 +102,24 @@ namespace MIS_Admin.Modules
             }
 
             // overall totals
-            lb_Total.Text = total.ToString("N0");
-            lb_Total_Completed.Text = completed.ToString("N0");
-            lb_Total_Pending.Text = pending.ToString("N0");
-            lb_Total_Negative.Text = negative.ToString("N0");
-            lb_Total_Dispatch.Text = dispatch.ToString("N0");
+            lb_Total.Text = total.ToString();
+            lb_Total_Completed.Text = completed.ToString();
+            lb_Total_Pending.Text = pending.ToString();
+            lb_Total_Negative.Text = negative.ToString();
+            lb_Total_Dispatch.Text = dispatch.ToString();
+        }
+
+        private async Task SLASummary()
+        {
+            DataTable dt = await getAllMonthlySLACount();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                var row = dt.Rows[0];
+
+                lb_Beyond.Text = row["Beyond"].ToString();
+                lb_Within.Text = row["Within"].ToString();
+            }
         }
 
         private void ApplyRadiusToPanels(Control parent, int radius, Color backColor)
@@ -128,6 +164,11 @@ namespace MIS_Admin.Modules
             ClearGridSelection(dgv_Request);
         }
 
+        private void dgv_CloseTickets_Leave(object sender, EventArgs e)
+        {
+            ClearGridSelection(dgv_CloseTickets);
+        }
+
         private void dgv_CloseTickets_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ClearGridSelection(dgv_CloseTickets);
@@ -137,7 +178,8 @@ namespace MIS_Admin.Modules
         {
             if (dgv_Request.Rows.Count == 0)
             {
-                LoadingMessage(dgv_Services, e, "Loading Requests ...", 1, 3);
+                string msg = isLoading ? "Fetching request ..." : "No records found.";
+                LoadingGridMessage(dgv_Request, e, msg);
             }
         }
 
@@ -145,17 +187,27 @@ namespace MIS_Admin.Modules
         {
             if (dgv_Services.Rows.Count == 0)
             {
-                LoadingMessage(dgv_Services, e, "Loading Services ...", 2, 3);
+                string msg = isLoading ? "Fetching services ..." : "No records found.";
+                LoadingGridMessage(dgv_Services, e, msg);
             }
         }
 
         private void dgv_CloseTickets_Paint(object sender, PaintEventArgs e)
         {
-            if (dgv_Services.Rows.Count == 0)
+            if (dgv_CloseTickets.Rows.Count == 0)
             {
-                LoadingMessage(dgv_CloseTickets, e, "Loading Services ...", 2, 2);
+                string msg = isLoading ? "Fetching Unclosed Tickets ..." : "No records found.";
+                LoadingGridMessage(dgv_CloseTickets, e, msg);
             }
         }
-    
+
+        private void dgv_HelpdeskRequest_Paint(object sender, PaintEventArgs e)
+        {
+            if (dgv_HelpdeskRequest.Rows.Count == 0)
+            {
+                string msg = isLoading ? "Fetching Helpdesk Requests ..." : "No records found.";
+                LoadingGridMessage(dgv_HelpdeskRequest, e, msg);
+            }
+        }
     }
 }

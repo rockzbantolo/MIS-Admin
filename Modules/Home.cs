@@ -25,7 +25,7 @@ namespace MIS_Admin.Modules
             btn_Reports.Radius(8, Color.FromArgb(30, 39, 46));
         }
 
-        private void ShowWithWait(Action action)
+        private void WaitCursor(Action action)
         {
             Cursor = Cursors.WaitCursor;
             try
@@ -60,22 +60,22 @@ namespace MIS_Admin.Modules
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
-            ShowWithWait(() => new Overview().ShowUserControl(pn_Body));
+            WaitCursor(() => new Overview().ShowUserControl(pn_Body));
         }
 
         private void btn_Services_Click(object sender, EventArgs e)
         {
-            ShowWithWait(() => new Servicing().ShowUserControl(pn_Body));
+            WaitCursor(() => new Servicing().ShowUserControl(pn_Body));
         }
 
         private void btn_Stores_Click(object sender, EventArgs e)
         {
-            ShowWithWait(() => new Stores().ShowUserControl(pn_Body));
+            WaitCursor(() => new Stores().ShowUserControl(pn_Body));
         }
 
         private void btn_Reports_Click(object sender, EventArgs e)
         {
-            ShowWithWait(() => new Reports().ShowUserControl(pn_Body));
+            WaitCursor(() => new Reports().ShowUserControl(pn_Body));
         }
     }
 }

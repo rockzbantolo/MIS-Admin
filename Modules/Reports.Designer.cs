@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reports));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pn_Nav = new Panel();
             txt_Search = new TextBox();
             btn_Export = new Button();
@@ -71,7 +71,7 @@
             // btn_Export
             // 
             btn_Export.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_Export.BackColor = Color.FromArgb(53, 59, 72);
+            btn_Export.BackColor = Color.FromArgb(39, 60, 117);
             btn_Export.FlatAppearance.BorderSize = 0;
             btn_Export.FlatStyle = FlatStyle.Flat;
             btn_Export.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -86,7 +86,6 @@
             // cmb_Reports
             // 
             cmb_Reports.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb_Reports.FlatStyle = FlatStyle.System;
             cmb_Reports.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cmb_Reports.FormattingEnabled = true;
             cmb_Reports.Items.AddRange(new object[] { "  Terminal", "  Sim" });
@@ -142,26 +141,26 @@
             dgv_Reports.BackgroundColor = Color.White;
             dgv_Reports.BorderStyle = BorderStyle.None;
             dgv_Reports.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgv_Reports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv_Reports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgv_Reports.ColumnHeadersHeight = 45;
             dgv_Reports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle2.Padding = new Padding(12, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgv_Reports.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle4.Padding = new Padding(12, 0, 0, 0);
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgv_Reports.DefaultCellStyle = dataGridViewCellStyle4;
             dgv_Reports.EnableHeadersVisualStyles = false;
             dgv_Reports.GridColor = Color.White;
             dgv_Reports.Location = new Point(13, 245);

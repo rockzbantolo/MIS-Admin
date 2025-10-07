@@ -59,7 +59,7 @@ namespace MIS_Admin.Repository
             return Select(stmt, new MySqlParameter("@Search", search));
         }
 
-        public async Task<DataTable> FindServicesAsync(string search, int limit = 100)
+        public async Task<DataTable> FindServicesAsync(object search, int limit)
         {
             string stmt = $@"
             SELECT 
@@ -84,7 +84,9 @@ namespace MIS_Admin.Repository
                     ELSE Province 
                 END AS Region,
                 Days AS SLA,
-                Dispatch_By AS `Dispatch By`,
+               IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL,
+                    DATE_FORMAT(Dispatch_Date_Time, '%b %d, %Y'),
+                    NULL) AS `Request Date`,
                 IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL, 
                     DATE_FORMAT(Dispatch_Date_Time, '%h:%i %p, %b %d, %Y'), 
                     Dispatch_Date_Time) AS `Dispatch Date`
@@ -92,29 +94,51 @@ namespace MIS_Admin.Repository
                 vw_service_info
             WHERE
                 (
-                    @search IS NULL OR @search = ''
-                    OR Terminal_SN = @search
-                    OR Sim_SN = @search
-                    OR TID = @search
-                    OR Job_ID = @search
-                    OR Service_Result = @search
-                    OR Status_ID = @search
-                    OR Merchant_Name = @search
-                    OR Dispatch_By = @search
+                    @Search IS NULL OR @Search = ''
+                    OR Terminal_SN = @Search
+                    OR Sim_SN = @Search
+                    OR TID = @Search
+                    OR Job_ID = @Search
+                    OR Service_Result = @Search
+                    OR Merchant_Name LIKE CONCAT('%', @Search, '%')
+                    OR Dispatch_By LIKE CONCAT('%', @Search, '%')
                 )
             ORDER BY Processed_Date_Time DESC
             LIMIT {limit};";
 
-            return await SelectAsync(stmt, new MySqlParameter("@search", (object)search ?? DBNull.Value));
+            return await SelectAsync(stmt, new MySqlParameter("@Search", search));
         }
 
-        public async Task<DataTable> FindHelpdeskRequest(string search, int limit = 20)
+        public async Task<DataTable> FindHelpdeskRequestAsync(object search, object id, int limit)
         {
             string stmt = $@"
-            ";
+            SELECT 
+                j.Description AS `Service`, 
+                h.RequestID AS `Request No.`,
+                i.MerchantName AS `Merchant`,
+                p.Name AS `Helpdesk`, 
+                s.JobTypeStatusDescription AS `Service Status`
+            FROM tblhddetail h
+            JOIN tblparticular p ON p.ParticularID = h.HelpdeskID
+            JOIN tblhdmaster m ON m.AssistNo = h.AssistNo
+            JOIN tblirdetail i ON i.IRIDNo = m.IRIDNo
+            JOIN tblservicetype j ON j.JobType = m.JobType
+            LEFT JOIN tblservicingdetail s ON s.ProblemNo = h.ProblemNo
+            WHERE (@id IS NULL OR h.HelpdeskID = @id)
+              AND h.Status = 'NEGATIVE'
+              AND DATE(h.CreatedAt) = CURRENT_DATE()
+              AND (@search IS NULL OR (
+                    h.RequestID LIKE CONCAT('%', @search, '%') OR
+                    i.MerchantName LIKE CONCAT('%', @search, '%') OR
+                    j.Description LIKE CONCAT('%', @search, '%')
+              ))
+            LIMIT {limit};";
 
-            return await SelectAsync(stmt, new MySqlParameter("@Search", (object)search ?? DBNull.Value));
+            return await SelectAsync(stmt,
+                    new MySqlParameter("@search", search),
+                    new MySqlParameter("@id", id));
         }
+
 
         public async Task<DataTable> FindServiceRequestAsync(object date)
         {
@@ -151,28 +175,51 @@ namespace MIS_Admin.Repository
                 ) AS Total
             FROM vw_service_info
             WHERE (@dispatcherId IS NULL OR Dispatcher_ID = @dispatcherId)
-            AND DATE(Created_Date) = CURRENT_DATE()
+              AND DATE(Created_Date) = CURRENT_DATE()
             GROUP BY Type_ID;";
 
             return await SelectAsync(stmt, new MySqlParameter("@dispatcherId", dispatcherId));
         }
 
+
         public async Task<DataTable> FindMonthlyServiceCountAsync(object id)
         {
             string stmt = @"
-            SELECT 
-                MONTHNAME(Created_Date) AS MonthName,
-                COUNT(*) AS TotalServices
+            SELECT
+                DATE_FORMAT(Created_Date, '%M') AS Month,
+                FORMAT(COUNT(*), 0) AS TotalServices
             FROM vw_service_info
-            WHERE YEAR(Created_Date) = YEAR(CURDATE())
-              AND (@id IS NULL OR Dispatcher_ID = @id)
+            WHERE (@id IS NULL OR Dispatcher_ID = @id) 
+              AND Request_Status = 'SUCCESS'
+              AND YEAR(Created_Date) = YEAR(CURDATE())
             GROUP BY YEAR(Created_Date), MONTH(Created_Date)
             ORDER BY YEAR(Created_Date), MONTH(Created_Date);";
 
             return await SelectAsync(stmt, new MySqlParameter("@id", id));
         }
 
-        public async Task<DataTable> FindUnclosedTicketsAsync(object id)
+        public async Task<DataTable> FindMonthlySLA(object id, DateTime targetDate)
+        {
+            var monthParam = targetDate.Month;
+            var yearParam = targetDate.Year;
+
+            string stmt = @"
+            SELECT
+                SUM(CASE WHEN TAT_Status = 'Beyond' THEN 1 ELSE 0 END) AS `Beyond`,
+                SUM(CASE WHEN TAT_Status = 'Within' THEN 1 ELSE 0 END) AS `Within`
+            FROM vw_service_info
+            WHERE (@id IS NULL OR Dispatcher_ID = @id)
+                AND MONTH(Created_Date) = @month
+                AND YEAR(Created_Date) = @year
+                AND Request_Status = 'SUCCESS';";
+
+            return await SelectAsync(stmt,
+                new MySqlParameter("@id", id),
+                new MySqlParameter("@month", monthParam),
+                new MySqlParameter("@year", yearParam));
+        }
+
+        public async Task<DataTable> FindUnclosedTicketsAsync(object id, DateTime targetDate)
         {
             string stmt = @"
             SELECT 
@@ -182,15 +229,17 @@ namespace MIS_Admin.Repository
                    FE_Name AS `Engineer`
             FROM vw_service_info
             WHERE (@id IS NULL OR Dispatcher_ID = @id)
-              AND MONTH(Created_Date) = MONTH(CURDATE())
-              AND YEAR(Created_Date) = YEAR(CURDATE())
+              AND MONTH(Created_Date) = MONTH(@targetDate)
+              AND YEAR(Created_Date) = YEAR(@targetDate)
               AND Request_Status IN ('SUCCESS','NEGATIVE')
               AND Ticket_ID = 0;";
 
-            return await SelectAsync(stmt, new MySqlParameter("@id", id));
+            return await SelectAsync(stmt,
+                new MySqlParameter("@id", id),
+                new MySqlParameter("@targetDate", targetDate));
         }
 
-        public async Task<DataTable> FindSlaCount(object id)
+        public async Task<DataTable> FindSLACount(object id)
         {
             string stmt = @"
             SELECT
@@ -230,6 +279,33 @@ namespace MIS_Admin.Repository
             LIMIT {limit};";
 
             return Select(stmt, new MySqlParameter("@Search", search));
+        }
+
+        public async Task<DataTable> FindStoresAsync(object search, int limit = 100)
+        {
+            string stmt = $@"
+            SELECT 
+                Merchant_ID AS `Store ID`,
+                Merchant_Name AS `Store Name`,
+                Address,
+                Region AS `City`,
+                Province,
+                Contact_Person AS `Contact`,
+                Contact_No AS `Contact No.`,
+                Tel_No AS `Tel No.`,
+                Mobile_No AS `Mobile No.`,
+                Fax_No AS `Fax No.`,
+                Email
+            FROM vw_merchant_info
+            WHERE 
+                (@Search IS NULL OR @Search = '')
+                OR Merchant_Name LIKE CONCAT('%', @Search, '%')
+                OR Contact_Person LIKE CONCAT('%', @Search, '%')
+                OR Province LIKE CONCAT('%', @Search, '%')
+                OR Region LIKE CONCAT('%', @Search, '%')
+            LIMIT {limit};";
+
+            return await SelectAsync(stmt, new MySqlParameter("@Search", search));
         }
 
         public DataTable FindTerminals(object search, int limit = 100)

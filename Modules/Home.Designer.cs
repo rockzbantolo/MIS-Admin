@@ -35,10 +35,12 @@
             btn_Home = new Button();
             btn_Services = new Button();
             btn_Stores = new Button();
+            btn_Admin = new Button();
             btn_Reports = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
             pn_Body = new Panel();
+            button1 = new Button();
             pn_Nav.SuspendLayout();
             flp_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -69,10 +71,12 @@
             flp_Nav.Controls.Add(btn_Home);
             flp_Nav.Controls.Add(btn_Services);
             flp_Nav.Controls.Add(btn_Stores);
+            flp_Nav.Controls.Add(btn_Admin);
+            flp_Nav.Controls.Add(button1);
             flp_Nav.Controls.Add(btn_Reports);
             flp_Nav.Location = new Point(12, 105);
             flp_Nav.Name = "flp_Nav";
-            flp_Nav.Size = new Size(225, 497);
+            flp_Nav.Size = new Size(225, 612);
             flp_Nav.TabIndex = 0;
             // 
             // btn_Home
@@ -144,6 +148,28 @@
             btn_Stores.UseVisualStyleBackColor = true;
             btn_Stores.Click += btn_Stores_Click;
             // 
+            // btn_Admin
+            // 
+            btn_Admin.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_Admin.FlatAppearance.BorderSize = 0;
+            btn_Admin.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Admin.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Admin.FlatStyle = FlatStyle.Flat;
+            btn_Admin.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Admin.ForeColor = Color.White;
+            btn_Admin.Image = (Image)resources.GetObject("btn_Admin.Image");
+            btn_Admin.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Admin.Location = new Point(5, 208);
+            btn_Admin.Margin = new Padding(5, 5, 3, 10);
+            btn_Admin.Name = "btn_Admin";
+            btn_Admin.Padding = new Padding(25, 0, 0, 0);
+            btn_Admin.Size = new Size(215, 54);
+            btn_Admin.TabIndex = 3;
+            btn_Admin.Text = "        Inventory";
+            btn_Admin.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Admin.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Admin.UseVisualStyleBackColor = true;
+            // 
             // btn_Reports
             // 
             btn_Reports.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -155,7 +181,7 @@
             btn_Reports.ForeColor = Color.White;
             btn_Reports.Image = (Image)resources.GetObject("btn_Reports.Image");
             btn_Reports.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Reports.Location = new Point(5, 208);
+            btn_Reports.Location = new Point(5, 346);
             btn_Reports.Margin = new Padding(5, 5, 3, 10);
             btn_Reports.Name = "btn_Reports";
             btn_Reports.Padding = new Padding(25, 0, 0, 0);
@@ -195,6 +221,28 @@
             pn_Body.Size = new Size(862, 786);
             pn_Body.TabIndex = 2;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(5, 277);
+            button1.Margin = new Padding(5, 5, 3, 10);
+            button1.Name = "button1";
+            button1.Padding = new Padding(25, 0, 0, 0);
+            button1.Size = new Size(215, 54);
+            button1.TabIndex = 4;
+            button1.Text = "        Admin";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -224,5 +272,7 @@
         private Button btn_Stores;
         private PictureBox pictureBox1;
         private Button btn_Reports;
+        private Button btn_Admin;
+        private Button button1;
     }
 }

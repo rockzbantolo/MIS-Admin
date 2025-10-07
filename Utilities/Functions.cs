@@ -1,4 +1,5 @@
 ﻿using MIS_Admin.Settings;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -10,10 +11,12 @@ namespace MIS_Admin.Utilities
 
         public static void EnableDoubleBuffering(Control control)
         {
-            control.GetType()
-                .GetProperty("DoubleBuffered",
-                    System.Reflection.BindingFlags.NonPublic |
-                    System.Reflection.BindingFlags.Instance)
+            if (control == null) return;
+
+            // enable the hidden DoubleBuffered property
+            control.GetType().GetProperty("DoubleBuffered", 
+                System.Reflection.BindingFlags.NonPublic | 
+                System.Reflection.BindingFlags.Instance)
                 ?.SetValue(control, true, null);
         }
 
@@ -41,23 +44,28 @@ namespace MIS_Admin.Utilities
             }
         }
 
-        public static void LoadingMessage(DataGridView grid, PaintEventArgs e, string text, int px, int py)
+        public static void LoadingGridMessage(DataGridView grid, PaintEventArgs e, string text)
         {
-            // measure the text size
-            Size textSize = TextRenderer.MeasureText(text, grid.Font);
+            if (grid == null || string.IsNullOrEmpty(text))
+                return;
 
-            // calculate center X/Y relative to the client area
-            int x = (grid.ClientSize.Width - textSize.Width) / px;
-            int y = (grid.ClientSize.Height - textSize.Height) / py;
+            using (StringFormat sf = new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            })
+            {
+                Rectangle rect = grid.ClientRectangle;
 
-            // draw the text
-            TextRenderer.DrawText(
-                e.Graphics,
-                text,
-                grid.Font,
-                new Point(x, y),
-                Color.Gray
-            );
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                e.Graphics.DrawString(
+                    text,
+                    grid.Font,
+                    Brushes.Gray,
+                    rect,
+                    sf
+                );
+            }
         }
 
         public static void BindComboBox<T>(ComboBox comboBox,
@@ -118,6 +126,52 @@ namespace MIS_Admin.Utilities
             catch (Exception ex)
             {
                 return;
+            }
+        }
+
+        public static void BindTableToGrid(DataTable dt, DataGridView dgv)
+        {
+            if (dgv == null || dgv.IsDisposed || dgv.Disposing)
+                return;
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                if (!dgv.IsDisposed)
+                {
+                    dgv.Rows.Clear();
+                    dgv.ClearSelection();
+                }
+                return;
+            }
+
+            try
+            {
+                dgv.SuspendLayout();
+
+                // recheck in case user changed control mid-load
+                if (dgv.IsDisposed || dgv.Disposing) return;
+
+                dgv.Rows.Clear();
+
+                int colCount = Math.Min(dt.Columns.Count, dgv.Columns.Count);
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (dgv.IsDisposed || dgv.Disposing) return;
+                    int idx = dgv.Rows.Add();
+                    for (int i = 0; i < colCount; i++)
+                        dgv.Rows[idx].Cells[i].Value = row[i];
+                }
+
+                dgv.ClearSelection();
+            }
+            catch
+            {
+                // silently ignore if control was disposed mid-operation
+            }
+            finally
+            {
+                if (!dgv.IsDisposed)
+                    dgv.ResumeLayout();
             }
         }
 

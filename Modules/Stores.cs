@@ -28,9 +28,9 @@ namespace MIS_Admin.Modules
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
         }
 
-        private void InitializedData()
+        private async Task InitializedData()
         {
-            dgv_Services.DataSource = getAllStores(null);
+            dgv_Services.DataSource = await getAllStoresAsync();
         }
 
         public void OnEnterPressed()

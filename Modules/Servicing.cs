@@ -14,12 +14,12 @@ namespace MIS_Admin.Modules
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             //ShowWindowsNotification("Servicing", "Theres a new incoming service", ToolTipIcon.Info);
             InitializeHelpers();
-            InitializedData();
+            await InitializedData();
         }
 
         private void InitializeHelpers()
@@ -31,9 +31,9 @@ namespace MIS_Admin.Modules
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
         }
 
-        private void InitializedData()
+        private async Task InitializedData()
         {
-            dgv_Services.DataSource = getAllServices(null);
+            dgv_Services.DataSource = await getAllServicesAsync();
         }
 
         // Key pressed Events

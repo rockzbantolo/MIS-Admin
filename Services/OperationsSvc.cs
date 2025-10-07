@@ -1,7 +1,6 @@
 ﻿using MIS_Admin.Repository;
-using Mysqlx.Crud;
-using System.Collections.Generic;
 using System.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace MIS_Admin.Services
@@ -17,6 +16,24 @@ namespace MIS_Admin.Services
                 : search;
 
             return Ops.FindServices(param);
+        }
+
+        public async Task<DataTable> getServicesAsync(string? search)
+        {
+            object param = string.IsNullOrWhiteSpace(search)
+                ? DBNull.Value 
+                : search;
+
+            return await Ops.FindServicesAsync(param, 100);
+        }
+
+        public async Task<DataTable> getHelpdeskRequestAsync(string? search)
+        {
+            object param = string.IsNullOrWhiteSpace(search)
+                ? DBNull.Value
+                : search;
+
+            return await Ops.FindHelpdeskRequestAsync(param, DBNull.Value, 100);
         }
 
         public async Task<DataTable> getRecentServices()
@@ -39,12 +56,13 @@ namespace MIS_Admin.Services
 
         public async Task<DataTable> getServiceRequestAsync(DateTime? date)
         {
-            object param = date.HasValue 
-                ? date.Value.ToString("yyyy-MM-dd") 
+            object param = date.HasValue
+                ? date.Value
                 : DBNull.Value;
 
             return await Ops.FindServiceRequestAsync(param);
         }
+
 
         public async Task<DataTable> getMonthlyServiceCountAsync(int? id)
         {
@@ -55,14 +73,29 @@ namespace MIS_Admin.Services
             return await Ops.FindMonthlyServiceCountAsync(param);
         }
 
-        public async Task<DataTable> getUnclosedTicketsAsync(int? id)
+        public async Task<DataTable> getMonthlySLA(int? id, DateTime? targetDate)
         {
             object param = id.HasValue
-                ? id.Value
-                : DBNull.Value;
+              ? id.Value
+              : DBNull.Value;
 
-            return await Ops.FindUnclosedTicketsAsync(param);
+            DateTime dateValue = targetDate ?? DateTime.Now;
+
+            return await Ops.FindMonthlySLA(param, dateValue);
         }
+
+        public async Task<DataTable> getUnclosedTicketsAsync(int? id, DateTime? targetDate)
+        {
+            object param = id.HasValue
+             ? id.Value
+             : DBNull.Value;
+
+            DateTime dateValue = targetDate ?? DateTime.Now;
+
+            return await Ops.FindUnclosedTicketsAsync(param, dateValue);
+        }
+
+
 
         public DataTable getStores(string? search)
         {
@@ -71,6 +104,15 @@ namespace MIS_Admin.Services
                 : search;
 
             return Ops.FindStores(param);
+        }
+
+        public async Task<DataTable> getStoresAsync(string? search)
+        {
+            object param = string.IsNullOrWhiteSpace(search)
+                ? DBNull.Value
+                : search;
+
+            return await Ops.FindStoresAsync(param);
         }
 
         public DataTable getTerminals(string? search)
