@@ -1,20 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using MIS_Admin.Utilities.Handler;
+using MIS_Admin.Utilities.UI;
+using static MIS_Admin.Utilities.Functions;
+using static MIS_Admin.Controller.OperationsCtrl;
 
 namespace MIS_Admin.Forms
 {
-    public partial class ServiceDetailsForm : Form
+    public partial class ServiceDetailsForm : Form, IKeyHandler
     {
         public ServiceDetailsForm()
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            InitializeHelpers();
+            //InitializedData();
+        }
+
+        private void InitializeHelpers()
+        {
+            //EnableDoubleBuffering(pn_Body);
+            this.Radius(11, Color.Black);
+        }
+
+        private void InitializedData()
+        {
+            //BindToComboBox(cmb_Terminals, getAllAvailableTerminals(), "Serial", "ID");
+        }
+
+        public async void OnEnterPressed()
+        {
+            
+        }
+
+        public void OnEscapePressed()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnF1Pressed()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void ServiceDetailsForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            /*
+            else if (e.KeyCode == Keys.Enter)
+            {
+                BindToComboBox(cmb_Terminals, await getAllAvailableTerminals(), "Serial", "ID");
+            }
+            */
+        }
+
     }
 }

@@ -36,11 +36,11 @@
             btn_Services = new Button();
             btn_Stores = new Button();
             btn_Admin = new Button();
+            button1 = new Button();
             btn_Reports = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
             pn_Body = new Panel();
-            button1 = new Button();
             pn_Nav.SuspendLayout();
             flp_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -142,7 +142,7 @@
             btn_Stores.Padding = new Padding(25, 0, 0, 0);
             btn_Stores.Size = new Size(215, 54);
             btn_Stores.TabIndex = 2;
-            btn_Stores.Text = "        Stores";
+            btn_Stores.Text = "        Merchants";
             btn_Stores.TextAlign = ContentAlignment.MiddleLeft;
             btn_Stores.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Stores.UseVisualStyleBackColor = true;
@@ -169,6 +169,28 @@
             btn_Admin.TextAlign = ContentAlignment.MiddleLeft;
             btn_Admin.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Admin.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(5, 277);
+            button1.Margin = new Padding(5, 5, 3, 10);
+            button1.Name = "button1";
+            button1.Padding = new Padding(25, 0, 0, 0);
+            button1.Size = new Size(215, 54);
+            button1.TabIndex = 4;
+            button1.Text = "        Admin";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
             // 
             // btn_Reports
             // 
@@ -220,28 +242,6 @@
             pn_Body.Name = "pn_Body";
             pn_Body.Size = new Size(862, 786);
             pn_Body.TabIndex = 2;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(5, 277);
-            button1.Margin = new Padding(5, 5, 3, 10);
-            button1.Name = "button1";
-            button1.Padding = new Padding(25, 0, 0, 0);
-            button1.Size = new Size(215, 54);
-            button1.TabIndex = 4;
-            button1.Text = "        Admin";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
             // 
             // Home
             // 

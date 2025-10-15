@@ -1,6 +1,7 @@
 ﻿using MIS_Admin.Forms;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
+using Org.BouncyCastle.Pqc.Crypto.Frodo;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 using static MIS_Admin.Utilities.Notifications;
@@ -9,6 +10,8 @@ namespace MIS_Admin.Modules
 {
     public partial class Servicing : UserControl, IKeyHandler
     {
+        private bool isLoading { get; set; }
+
         public Servicing()
         {
             InitializeComponent();
@@ -28,12 +31,20 @@ namespace MIS_Admin.Modules
             EnableDoubleBuffering(dgv_Services);
             pn_Nav.Radius(8, Color.FromArgb(39, 60, 117));
             pn_Body.Radius(8, Color.White);
+            btn_New.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
         }
 
         private async Task InitializedData()
         {
-            dgv_Services.DataSource = await getAllServicesAsync();
+            isLoading = true;
+            dgv_Services.Refresh();
+
+            BindTableToGrid(await getAllServicesAsync(), dgv_Services);
+
+            isLoading = false;
+            dgv_Services.Refresh();
+
         }
 
         // Key pressed Events
@@ -54,14 +65,26 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgv_Services.Columns[e.ColumnIndex].Name == "Priority" && e.Value != null)
-            {
-                var priority = e.Value.ToString();
-                var cell = dgv_Services.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (e.Value == null) return;
 
+            string value = e.Value.ToString().Trim();
+            var cell = dgv_Services.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            var column = dgv_Services.Columns[e.ColumnIndex];
+
+            // Handle N/A
+            if (value.Equals("N/A", StringComparison.OrdinalIgnoreCase))
+            {
+                cell.Style.ForeColor = Color.Gray;
+                cell.Style.Font = new Font(dgv_Services.Font, FontStyle.Italic);
+                return;
+            }
+
+            // Handle Priority column
+            if (column.HeaderText == "Priority")
+            {
                 cell.Style.Font = new Font(dgv_Services.Font, FontStyle.Bold);
 
-                switch (priority)
+                switch (value)
                 {
                     case "Normal":
                         cell.Style.ForeColor = Color.Green;
@@ -84,8 +107,7 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ServiceDetailsForm Servicing = new ServiceDetailsForm();
-            Servicing.Show();
+            new ServiceDetailsForm().Show();
         }
 
         private void Servicing_Load(object sender, EventArgs e)
@@ -101,6 +123,20 @@ namespace MIS_Admin.Modules
         private void dgv_Services_Leave(object sender, EventArgs e)
         {
             ClearGridSelection(dgv_Services);
+        }
+
+        private void btn_New_Click(object sender, EventArgs e)
+        {
+            new ServiceDetailsForm().ShadowBackground(new Main());
+        }
+
+        private void dgv_Services_Paint(object sender, PaintEventArgs e)
+        {
+            if (dgv_Services.Rows.Count == 0)
+            {
+                string msg = isLoading ? "Fetching Services ..." : "No records found.";
+                LoadingGridMessage(dgv_Services, e, msg);
+            }
         }
     }
 }

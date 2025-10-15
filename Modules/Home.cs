@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using MIS_Admin.Utilities.UI;
+using Org.BouncyCastle.Asn1.Cmp;
 using static MIS_Admin.Utilities.Functions;
 
 namespace MIS_Admin.Modules
@@ -58,24 +59,13 @@ namespace MIS_Admin.Modules
             //dgv_Servicing.DataSource = getAllServices();
         }
 
-        private void btn_Home_Click(object sender, EventArgs e)
-        {
-            WaitCursor(() => new Overview().ShowUserControl(pn_Body));
-        }
+        private void btn_Home_Click(object sender, EventArgs e) => WaitCursor(() => new Overview().ShowUserControl(pn_Body));
 
-        private void btn_Services_Click(object sender, EventArgs e)
-        {
-            WaitCursor(() => new Servicing().ShowUserControl(pn_Body));
-        }
+        private void btn_Services_Click(object sender, EventArgs e) => WaitCursor(() => new Servicing().ShowUserControl(pn_Body));
 
-        private void btn_Stores_Click(object sender, EventArgs e)
-        {
-            WaitCursor(() => new Stores().ShowUserControl(pn_Body));
-        }
+        private void btn_Stores_Click(object sender, EventArgs e) => WaitCursor(() => new Merchants().ShowUserControl(pn_Body));
 
-        private void btn_Reports_Click(object sender, EventArgs e)
-        {
-            WaitCursor(() => new Reports().ShowUserControl(pn_Body));
-        }
+        private void btn_Reports_Click(object sender, EventArgs e)  => WaitCursor(() => new Reports().ShowUserControl(pn_Body));
+    
     }
 }

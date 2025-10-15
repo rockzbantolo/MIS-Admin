@@ -23,9 +23,9 @@ namespace MIS_Admin.Modules
             dgv_Reports.Radius(8, Color.FromArgb(224, 224, 224));
         }
 
-        public void OnEnterPressed()
+        public async void OnEnterPressed()
         {
-            LoadReportData(txt_Search.Text);
+            await LoadReportData(txt_Search.Text);
         }
 
         public void OnEscapePressed()
@@ -38,7 +38,7 @@ namespace MIS_Admin.Modules
             //throw new NotImplementedException();
         }
 
-        private void LoadReportData(string search = null)
+        private async Task LoadReportData(string search = null)
         {
             Cursor = Cursors.WaitCursor;
             try
@@ -46,11 +46,11 @@ namespace MIS_Admin.Modules
                 switch (cmb_Reports.SelectedIndex)
                 {
                     case 0: // Terminals
-                        dgv_Reports.DataSource = getAllTerminals(search);
+                        dgv_Reports.DataSource = await getAllListOfTerminals(search);
                         break;
 
                     case 1: // SIMs
-                        dgv_Reports.DataSource = getAllSimCards(search);
+                        dgv_Reports.DataSource = getAllListOfSimCards(search);
                         break;
 
                     case 2: // Stores
@@ -68,9 +68,9 @@ namespace MIS_Admin.Modules
             }
         }
 
-        private void cmb_Reports_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cmb_Reports_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadReportData();
+            await LoadReportData();
         }
 
         private void dgv_Reports_Leave(object sender, EventArgs e)

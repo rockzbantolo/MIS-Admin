@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\DeviceReplacementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\ServiceDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Main.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Modules\Admin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Modules\Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Modules\Login.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Modules\Overview.cs">
@@ -19,7 +28,7 @@
     <Compile Update="Modules\Servicing.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Modules\Stores.cs">
+    <Compile Update="Modules\Merchants.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

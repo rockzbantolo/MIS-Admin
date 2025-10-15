@@ -72,6 +72,46 @@ namespace MIS_Admin.Core
             }
         }
 
+        protected async Task<DataTable> SelectAsyncNoCache(string query, params MySqlParameter[] parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                await conn.OpenAsync();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null && parameters.Length > 0)
+                        cmd.Parameters.AddRange(parameters);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        var dt = new DataTable();
+                        dt.Load(reader);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        protected DataTable SelectNoCache(string query, params MySqlParameter[] parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null && parameters.Length > 0)
+                        cmd.Parameters.AddRange(parameters);
+
+                    using (var adapter = new MySqlDataAdapter(cmd))
+                    {
+                        var dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
         // ---------- EXECUTE (INSERT/UPDATE/DELETE) ----------
 
         protected int Execute(string query, string tableName, params MySqlParameter[] parameters)
@@ -108,6 +148,54 @@ namespace MIS_Admin.Core
 
                     InvalidateCacheForTable(tableName);
                     return rows;
+                }
+            }
+        }
+
+        // ---------- STORED PROCEDURE ----------
+
+        protected DataTable ExecuteProcedure(string procedureName, params MySqlParameter[] parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                conn.Open();
+
+                using (var cmd = new MySqlCommand(procedureName, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (parameters != null && parameters.Length > 0)
+                        cmd.Parameters.AddRange(parameters);
+
+                    using (var adapter = new MySqlDataAdapter(cmd))
+                    {
+                        var dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+        protected async Task<DataTable> ExecuteProcedureAsync(string procedureName, params MySqlParameter[] parameters)
+        {
+            using (var conn = GetConnection())
+            {
+                await conn.OpenAsync();
+
+                using (var cmd = new MySqlCommand(procedureName, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (parameters != null && parameters.Length > 0)
+                        cmd.Parameters.AddRange(parameters);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        var dt = new DataTable();
+                        dt.Load(reader);
+                        return dt;
+                    }
                 }
             }
         }

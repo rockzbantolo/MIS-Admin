@@ -64,10 +64,6 @@
             lb_TicketCount = new Label();
             label35 = new Label();
             dgv_CloseTickets = new DataGridView();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
-            Column10 = new DataGridViewTextBoxColumn();
-            Column11 = new DataGridViewTextBoxColumn();
             panel18 = new Panel();
             dgv_TotalServices = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -165,6 +161,11 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             label30 = new Label();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
+            Column10 = new DataGridViewTextBoxColumn();
+            Column13 = new DataGridViewTextBoxColumn();
+            Column11 = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).BeginInit();
@@ -324,9 +325,9 @@
             panel6.Controls.Add(lb_RequestCount);
             panel6.Controls.Add(dgv_Request);
             panel6.Controls.Add(label2);
-            panel6.Location = new Point(780, 79);
+            panel6.Location = new Point(777, 79);
             panel6.Name = "panel6";
-            panel6.Size = new Size(613, 434);
+            panel6.Size = new Size(548, 434);
             panel6.TabIndex = 15;
             // 
             // pictureBox2
@@ -394,7 +395,7 @@
             dgv_Request.RowTemplate.ReadOnly = true;
             dgv_Request.RowTemplate.Resizable = DataGridViewTriState.False;
             dgv_Request.ScrollBars = ScrollBars.Vertical;
-            dgv_Request.Size = new Size(577, 354);
+            dgv_Request.Size = new Size(512, 354);
             dgv_Request.TabIndex = 17;
             dgv_Request.DataBindingComplete += dgv_Request_DataBindingComplete;
             dgv_Request.Paint += dgv_Request_Paint;
@@ -456,7 +457,7 @@
             panel7.Controls.Add(label4);
             panel7.Location = new Point(25, 1019);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1368, 682);
+            panel7.Size = new Size(1300, 682);
             panel7.TabIndex = 16;
             // 
             // pictureBox3
@@ -477,7 +478,7 @@
             panel20.Controls.Add(dgv_CloseTickets);
             panel20.Location = new Point(305, 65);
             panel20.Name = "panel20";
-            panel20.Size = new Size(1026, 594);
+            panel20.Size = new Size(958, 594);
             panel20.TabIndex = 32;
             // 
             // panel21
@@ -489,7 +490,7 @@
             panel21.Dock = DockStyle.Top;
             panel21.Location = new Point(0, 0);
             panel21.Name = "panel21";
-            panel21.Size = new Size(1026, 43);
+            panel21.Size = new Size(958, 43);
             panel21.TabIndex = 32;
             // 
             // dtp_Month
@@ -498,7 +499,7 @@
             dtp_Month.CalendarFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtp_Month.CustomFormat = "MMMM";
             dtp_Month.Format = DateTimePickerFormat.Custom;
-            dtp_Month.Location = new Point(928, 9);
+            dtp_Month.Location = new Point(860, 9);
             dtp_Month.Name = "dtp_Month";
             dtp_Month.ShowUpDown = true;
             dtp_Month.Size = new Size(87, 23);
@@ -551,7 +552,7 @@
             dgv_CloseTickets.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgv_CloseTickets.ColumnHeadersHeight = 30;
             dgv_CloseTickets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv_CloseTickets.Columns.AddRange(new DataGridViewColumn[] { Column8, Column9, Column10, Column11 });
+            dgv_CloseTickets.Columns.AddRange(new DataGridViewColumn[] { Column8, Column9, Column10, Column13, Column11 });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -572,41 +573,11 @@
             dgv_CloseTickets.RowTemplate.ReadOnly = true;
             dgv_CloseTickets.RowTemplate.Resizable = DataGridViewTriState.False;
             dgv_CloseTickets.ScrollBars = ScrollBars.Vertical;
-            dgv_CloseTickets.Size = new Size(1004, 530);
+            dgv_CloseTickets.Size = new Size(936, 530);
             dgv_CloseTickets.TabIndex = 30;
             dgv_CloseTickets.DataBindingComplete += dgv_CloseTickets_DataBindingComplete;
             dgv_CloseTickets.Paint += dgv_CloseTickets_Paint;
             dgv_CloseTickets.Leave += dgv_CloseTickets_Leave;
-            // 
-            // Column8
-            // 
-            Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column8.HeaderText = "Request No.";
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            Column8.Width = 150;
-            // 
-            // Column9
-            // 
-            Column9.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column9.HeaderText = "Merchant";
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            Column10.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column10.HeaderText = "Status";
-            Column10.Name = "Column10";
-            Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            Column11.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column11.HeaderText = "Engineer";
-            Column11.Name = "Column11";
-            Column11.ReadOnly = true;
-            Column11.Width = 150;
             // 
             // panel18
             // 
@@ -1638,7 +1609,7 @@
             panel10.Controls.Add(label30);
             panel10.Location = new Point(523, 534);
             panel10.Name = "panel10";
-            panel10.Size = new Size(870, 465);
+            panel10.Size = new Size(802, 465);
             panel10.TabIndex = 24;
             // 
             // pictureBox4
@@ -1706,7 +1677,7 @@
             dgv_HelpdeskRequest.RowTemplate.ReadOnly = true;
             dgv_HelpdeskRequest.RowTemplate.Resizable = DataGridViewTriState.False;
             dgv_HelpdeskRequest.ScrollBars = ScrollBars.Vertical;
-            dgv_HelpdeskRequest.Size = new Size(836, 384);
+            dgv_HelpdeskRequest.Size = new Size(768, 384);
             dgv_HelpdeskRequest.TabIndex = 17;
             dgv_HelpdeskRequest.Paint += dgv_HelpdeskRequest_Paint;
             // 
@@ -1763,6 +1734,44 @@
             label30.TabIndex = 16;
             label30.Text = "Helpdesk Requests";
             // 
+            // Column8
+            // 
+            Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column8.HeaderText = "Request No.";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            Column8.Width = 150;
+            // 
+            // Column9
+            // 
+            Column9.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column9.HeaderText = "Merchant";
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            Column10.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column10.HeaderText = "Status";
+            Column10.Name = "Column10";
+            Column10.ReadOnly = true;
+            // 
+            // Column13
+            // 
+            Column13.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column13.HeaderText = "Dispatch By";
+            Column13.Name = "Column13";
+            Column13.ReadOnly = true;
+            Column13.Width = 200;
+            // 
+            // Column11
+            // 
+            Column11.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column11.HeaderText = "Engineer";
+            Column11.Name = "Column11";
+            Column11.ReadOnly = true;
+            Column11.Width = 200;
+            // 
             // Overview
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1785,7 +1794,7 @@
             Controls.Add(panel1);
             DoubleBuffered = true;
             Name = "Overview";
-            Size = new Size(1413, 909);
+            Size = new Size(1345, 909);
             Load += Overview_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1962,6 +1971,7 @@
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn Column13;
         private DataGridViewTextBoxColumn Column11;
     }
 }

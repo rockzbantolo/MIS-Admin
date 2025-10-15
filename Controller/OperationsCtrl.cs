@@ -1,4 +1,5 @@
-﻿using MIS_Admin.Services;
+﻿using MIS_Admin.Model;
+using MIS_Admin.Services;
 using System.Data;
 
 namespace MIS_Admin.Controller
@@ -8,68 +9,55 @@ namespace MIS_Admin.Controller
         private static OperationsSvc Ops = new OperationsSvc();
 
         public static DataTable getAllServices(string? search = null)
-        {
-            return Ops.getServices(search);
-        }
+            => Ops.getServices(search);
 
-        public static async Task<DataTable> getAllServicesAsync(string? search = null)
-        {
-            return await Ops.getServicesAsync(search);
-        }
+        public static async Task<DataTable> getAllServicesAsync(string? search = null) 
+            => await Ops.getServicesAsync(search);
 
-        public static async Task<DataTable> getAllHelpdeskRequest(string? search = null)
-        {
-            return await Ops.getHelpdeskRequestAsync(search);
-        }
+        public static async Task<DataTable> getAllHelpdeskRequest(string? search = null) 
+            => await Ops.getHelpdeskRequestAsync(search);
 
-        public static async Task<DataTable> getAllRecentServices()
-        {
-            return await Ops.getRecentServices();
-        }
+        public static async Task<DataTable> getAllRecentServices() 
+            => await Ops.getRecentServices();
 
-        public static async Task<DataTable> getAllServiceSummary(int? id = null)
-        {
-            return await Ops.getServiceSummary(id);
-        }
+        public static async Task<DataTable> getAllServiceSummary(int? id = null) 
+            => await Ops.getServiceSummary(id);
 
-        public static async Task<DataTable> getAllServiceRequest(DateTime? date = null)
-        {
-            return await Ops.getServiceRequestAsync(date);
-        }
+        public static async Task<DataTable> getAllServiceRequest(DateTime? date = null) 
+            => await Ops.getServiceRequestAsync(date);
 
         public static async Task<DataTable> getAllMonthlyServiceCount(int? id = null)
-        {
-            return await Ops.getMonthlyServiceCountAsync(id);
-        }
+            => await Ops.getMonthlyServiceCountAsync(id);
 
-        public static async Task<DataTable> getAllMonthlySLACount(int? id = null)
-        {
-            return await Ops.getMonthlySLA(id, null);
-        }
+        public static async Task<DataTable> getAllMonthlySLACount(int? id = null) 
+            => await Ops.getMonthlySLA(id, null);
 
         public static async Task<DataTable> getAllUnclosedTickets(int? id = null)
-        {
-            return await Ops.getUnclosedTicketsAsync(id, null);
-        }
+            => await Ops.getUnclosedTicketsAsync(id, null);
 
         public static DataTable getAllStores(string? search = null)
-        {
-            return Ops.getStores(search);
-        }
+            => Ops.getStores(search);
 
-        public static async Task<DataTable> getAllStoresAsync(string? search = null)
-        {
-            return await Ops.getStoresAsync(search);
-        }
+        public static async Task<DataTable> getAllMerchantAsync(string? search = null)
+            => await Ops.getMerchantAsync(search);
 
-        public static DataTable getAllTerminals(string? search = null)
-        {
-            return Ops.getTerminals(search);
-        }
+        public static async Task<DataTable> getAllListOfTerminals(string? search = null)
+            => await Ops.getListOfTerminals(search);
 
-        public static DataTable getAllSimCards(string? search = null)
-        {
-            return Ops.getSimCards(search);
-        }
+        public static DataTable getAllListOfSimCards(string? search = null)
+            => Ops.getListOfSimCards(search);
+
+        public static async Task<DataTable> getAllAvailableTerminals(string? search = null)
+            => await Ops.getAvailableTerminals(search);
+
+        public static DataTable getAllAvailableSimCards(string? search = null)
+            => Ops.getAvailableSims(search);
+
+        public static ProcedureResult ReplaceDevice(int Id, string terminalSN, string simSN)
+            => Ops.SetReplaceDevice(Id, terminalSN, simSN);
+
+        public static async Task<InstallationDetails> getInstallationDetails(int? Id = null)
+            => await Ops.GetInstallationRecord(Id);
+
     }
 }

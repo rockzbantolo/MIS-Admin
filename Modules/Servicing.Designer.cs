@@ -34,9 +34,23 @@
             pn_Body = new Panel();
             label3 = new Label();
             pn_Nav = new Panel();
+            btn_New = new Button();
             pb_Icon = new PictureBox();
             txt_Search = new TextBox();
             dgv_Services = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
+            Column10 = new DataGridViewTextBoxColumn();
+            Column11 = new DataGridViewTextBoxColumn();
+            Column12 = new DataGridViewTextBoxColumn();
+            Column13 = new DataGridViewTextBoxColumn();
             pn_Body.SuspendLayout();
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
@@ -52,7 +66,7 @@
             pn_Body.Location = new Point(10, 10);
             pn_Body.Name = "pn_Body";
             pn_Body.Padding = new Padding(20);
-            pn_Body.Size = new Size(1060, 225);
+            pn_Body.Size = new Size(810, 225);
             pn_Body.TabIndex = 8;
             // 
             // label3
@@ -70,12 +84,29 @@
             // 
             pn_Nav.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pn_Nav.BackColor = Color.White;
+            pn_Nav.Controls.Add(btn_New);
             pn_Nav.Controls.Add(pb_Icon);
             pn_Nav.Controls.Add(txt_Search);
             pn_Nav.Location = new Point(50, 101);
             pn_Nav.Name = "pn_Nav";
-            pn_Nav.Size = new Size(966, 47);
+            pn_Nav.Size = new Size(716, 47);
             pn_Nav.TabIndex = 9;
+            // 
+            // btn_New
+            // 
+            btn_New.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_New.BackColor = Color.FromArgb(39, 60, 117);
+            btn_New.FlatAppearance.BorderSize = 0;
+            btn_New.FlatStyle = FlatStyle.Flat;
+            btn_New.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_New.ForeColor = Color.White;
+            btn_New.Location = new Point(613, 5);
+            btn_New.Name = "btn_New";
+            btn_New.Size = new Size(98, 38);
+            btn_New.TabIndex = 11;
+            btn_New.Text = "New";
+            btn_New.UseVisualStyleBackColor = false;
+            btn_New.Click += btn_New_Click;
             // 
             // pb_Icon
             // 
@@ -94,7 +125,7 @@
             txt_Search.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txt_Search.Location = new Point(46, 13);
             txt_Search.Name = "txt_Search";
-            txt_Search.Size = new Size(904, 24);
+            txt_Search.Size = new Size(558, 24);
             txt_Search.TabIndex = 0;
             // 
             // dgv_Services
@@ -110,7 +141,7 @@
             dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
@@ -119,6 +150,7 @@
             dgv_Services.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Services.ColumnHeadersHeight = 45;
             dgv_Services.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgv_Services.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11, Column12, Column13 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -139,12 +171,112 @@
             dgv_Services.RowTemplate.ReadOnly = true;
             dgv_Services.RowTemplate.Resizable = DataGridViewTriState.False;
             dgv_Services.ScrollBars = ScrollBars.Vertical;
-            dgv_Services.Size = new Size(1054, 542);
+            dgv_Services.Size = new Size(804, 436);
             dgv_Services.TabIndex = 0;
             dgv_Services.CellDoubleClick += dgv_Services_CellDoubleClick;
             dgv_Services.CellFormatting += dgv_Services_CellFormatting;
             dgv_Services.DataBindingComplete += dgv_Services_DataBindingComplete;
+            dgv_Services.Paint += dgv_Services_Paint;
             dgv_Services.Leave += dgv_Services_Leave;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column1.HeaderText = "Service No.";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 90;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column2.HeaderText = "Request No.";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            Column2.Width = 130;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column3.HeaderText = "Store Name";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            Column3.Width = 250;
+            // 
+            // Column4
+            // 
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column4.HeaderText = "Service";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            Column4.Width = 110;
+            // 
+            // Column5
+            // 
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column5.HeaderText = "Priority";
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            Column6.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column6.HeaderText = "Status";
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            Column7.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column7.HeaderText = "Result";
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column8.HeaderText = "Terminal";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            Column8.Width = 110;
+            // 
+            // Column9
+            // 
+            Column9.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column9.HeaderText = "Sim";
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
+            Column9.Width = 170;
+            // 
+            // Column10
+            // 
+            Column10.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column10.HeaderText = "Region";
+            Column10.Name = "Column10";
+            Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            Column11.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column11.HeaderText = "SLA";
+            Column11.Name = "Column11";
+            Column11.ReadOnly = true;
+            Column11.Width = 60;
+            // 
+            // Column12
+            // 
+            Column12.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column12.HeaderText = "Request Date";
+            Column12.Name = "Column12";
+            Column12.ReadOnly = true;
+            Column12.Width = 125;
+            // 
+            // Column13
+            // 
+            Column13.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column13.HeaderText = "Dispatch Date";
+            Column13.Name = "Column13";
+            Column13.ReadOnly = true;
             // 
             // Servicing
             // 
@@ -156,7 +288,7 @@
             DoubleBuffered = true;
             Name = "Servicing";
             Padding = new Padding(10);
-            Size = new Size(1080, 800);
+            Size = new Size(830, 694);
             Load += Servicing_Load;
             pn_Body.ResumeLayout(false);
             pn_Body.PerformLayout();
@@ -175,5 +307,19 @@
         private Panel pn_Nav;
         private TextBox txt_Search;
         private PictureBox pb_Icon;
+        private Button btn_New;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column10;
+        private DataGridViewTextBoxColumn Column11;
+        private DataGridViewTextBoxColumn Column12;
+        private DataGridViewTextBoxColumn Column13;
     }
 }

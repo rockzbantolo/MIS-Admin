@@ -11,6 +11,7 @@ namespace MIS_Admin.Utilities.UI
         private const int WM_SETREDRAW = 0x000B;
         private static bool isOpen = true;
 
+        // Usage: new NewUserAuthForm().ShadowBackground(new MainForm());
         public static void ShowUserControl(this UserControl control, Panel container)
         {
             if (container == null) throw new ArgumentNullException(nameof(container));
@@ -116,34 +117,23 @@ namespace MIS_Admin.Utilities.UI
             }
         }
 
-        public static void ShadowBackground(this Form frm, Form ShadowProperty)
+        public static void ShadowBackground(this Form dialog, Form parent)
         {
-            using (Form shadowbg = new Form())
+            using (Form shadow = new Form())
             {
-                shadowbg.FormBorderStyle = FormBorderStyle.None;
-                shadowbg.Opacity = 0.5;
-                shadowbg.BackColor = Color.Black;
-                shadowbg.ShowInTaskbar = false;
-                shadowbg.StartPosition = FormStartPosition.Manual;
+                shadow.FormBorderStyle = FormBorderStyle.None;
+                shadow.Opacity = 0.5;
+                shadow.BackColor = Color.Black;
+                shadow.ShowInTaskbar = false;
+                shadow.StartPosition = FormStartPosition.Manual;
 
-                var screen = Screen.FromControl(ShadowProperty);
+                var screen = Screen.FromControl(parent);
+                shadow.Size = screen.WorkingArea.Size;
+                shadow.Location = screen.WorkingArea.Location;
 
-                if (ShadowProperty.WindowState == FormWindowState.Maximized)
-                {
-                    // Cover the working area only (excludes taskbar)
-                    shadowbg.Size = screen.WorkingArea.Size;
-                    shadowbg.Location = screen.WorkingArea.Location;
-                }
-                else
-                {
-                    // Match the PropForm position and size
-                    shadowbg.Size = ShadowProperty.Size;
-                    shadowbg.Location = ShadowProperty.PointToScreen(Point.Empty);
-                }
-
-                shadowbg.Show();
-                frm.Owner = shadowbg;
-                frm.ShowDialog();
+                shadow.Show();
+                dialog.Owner = shadow;
+                dialog.ShowDialog();
             }
         }
 

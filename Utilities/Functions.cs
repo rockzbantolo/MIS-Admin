@@ -68,7 +68,15 @@ namespace MIS_Admin.Utilities
             }
         }
 
-        public static void BindComboBox<T>(ComboBox comboBox,
+        public static void BindToComboBox(ComboBox comboBox, DataTable data, string displayMember, string valueMember)
+        {
+            comboBox.DataSource = data;
+            comboBox.DisplayMember = displayMember;
+            comboBox.ValueMember = valueMember;
+            comboBox.SelectedIndex = -1;
+        }
+
+        public static void BindToComboBoxFunc<T>(ComboBox comboBox,
             IEnumerable<T> data,
             Func<T, string> displaySelector,
             Func<T, object> valueSelector)

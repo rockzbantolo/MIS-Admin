@@ -1,4 +1,5 @@
 ﻿using MIS_Admin.Core;
+using MIS_Admin.Model;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using Mysqlx.Sql;
@@ -65,8 +66,8 @@ namespace MIS_Admin.Repository
             SELECT 
                 Job_ID AS `Order No`,
                 Request_No AS `Request No`,
-                Merchant_Name AS `Merchant`,
-                REPLACE(Request, 'FOR ', '') AS Service,
+                IFNULL(Merchant_Name, 'N/A') AS `Merchant`,
+                IFNULL(REPLACE(Request, 'FOR ', ''), 'N/A') AS Service,
                 CASE 
                     WHEN Days < 1 OR Days = 1 THEN 'Normal'
                     WHEN Days BETWEEN 2 AND 4 THEN 'Medium'
@@ -74,22 +75,22 @@ namespace MIS_Admin.Repository
                     WHEN Days >= 9 THEN 'Critical'
                     ELSE 'Unknown'
                 END AS Priority,
-                Service_Status AS `Status`,
-                Service_Result AS `Result`,
-                Terminal_SN AS `Terminal`,
-                Sim_SN AS `Sim`,
+                IFNULL(Service_Status, 'N/A') AS `Status`,
+                IFNULL(Service_Result, 'N/A') AS `Result`,
+                IFNULL(NULLIF(Terminal_SN, 0), 'N/A') AS Terminal,
+                IFNULL(NULLIF(Sim_SN, 0), 'N/A') AS Sim,
                 CASE 
                     WHEN Prov_ID = 5 THEN 'PROVINCE' 
                     WHEN Prov_ID = 4 THEN 'MANILA' 
-                    ELSE Province 
+                    ELSE IFNULL(Province, 'N/A')
                 END AS Region,
-                Days AS SLA,
-               IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL,
+                IFNULL(Days, 0) AS SLA,
+                IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL,
                     DATE_FORMAT(Dispatch_Date_Time, '%b %d, %Y'),
-                    NULL) AS `Request Date`,
+                    'N/A') AS `Request Date`,
                 IF(STR_TO_DATE(Dispatch_Date_Time, '%Y-%m-%d') IS NOT NULL, 
                     DATE_FORMAT(Dispatch_Date_Time, '%h:%i %p, %b %d, %Y'), 
-                    Dispatch_Date_Time) AS `Dispatch Date`
+                    'N/A') AS `Dispatch Date`
             FROM 
                 vw_service_info
             WHERE
@@ -106,7 +107,7 @@ namespace MIS_Admin.Repository
             ORDER BY Processed_Date_Time DESC
             LIMIT {limit};";
 
-            return await SelectAsync(stmt, new MySqlParameter("@Search", search));
+            return await SelectAsync(stmt, new MySqlParameter("@Search", search ?? DBNull.Value));
         }
 
         public async Task<DataTable> FindHelpdeskRequestAsync(object search, object id, int limit)
@@ -138,7 +139,6 @@ namespace MIS_Admin.Repository
                     new MySqlParameter("@search", search),
                     new MySqlParameter("@id", id));
         }
-
 
         public async Task<DataTable> FindServiceRequestAsync(object date)
         {
@@ -180,7 +180,6 @@ namespace MIS_Admin.Repository
 
             return await SelectAsync(stmt, new MySqlParameter("@dispatcherId", dispatcherId));
         }
-
 
         public async Task<DataTable> FindMonthlyServiceCountAsync(object id)
         {
@@ -225,7 +224,8 @@ namespace MIS_Admin.Repository
             SELECT 
                    Request_No AS `Request No`,
                    Merchant_Name AS `Merchant`, 
-                   Request_Status AS `Status`, 
+                   Request_Status AS `Status`,
+                   Dispatch_By AS `Dispatcher`,
                    FE_Name AS `Engineer`
             FROM vw_service_info
             WHERE (@id IS NULL OR Dispatcher_ID = @id)
@@ -281,41 +281,46 @@ namespace MIS_Admin.Repository
             return Select(stmt, new MySqlParameter("@Search", search));
         }
 
-        public async Task<DataTable> FindStoresAsync(object search, int limit = 100)
+        public async Task<DataTable> FindMerchantAsync(object search, int limit = 100)
         {
             string stmt = $@"
-            SELECT 
-                Merchant_ID AS `Store ID`,
-                Merchant_Name AS `Store Name`,
-                Address,
-                Region AS `City`,
-                Province,
-                Contact_Person AS `Contact`,
-                Contact_No AS `Contact No.`,
-                Tel_No AS `Tel No.`,
-                Mobile_No AS `Mobile No.`,
-                Fax_No AS `Fax No.`,
-                Email
-            FROM vw_merchant_info
-            WHERE 
-                (@Search IS NULL OR @Search = '')
-                OR Merchant_Name LIKE CONCAT('%', @Search, '%')
-                OR Contact_Person LIKE CONCAT('%', @Search, '%')
-                OR Province LIKE CONCAT('%', @Search, '%')
-                OR Region LIKE CONCAT('%', @Search, '%')
+            SELECT
+                i.IRIDNo as `ID`,
+                m.Merchant_ID AS `Code`,
+                m.Merchant_Name AS `Merchant`,
+                IFNULL(NULLIF(i.TID, '-'), 'N/A') AS TID,
+                IFNULL(NULLIF(i.MID, '-'), 'N/A') AS MID,
+                IFNULL(NULLIF(i.TerminalSN, 0), 'N/A') AS Terminal,
+                IFNULL(NULLIF(i.SIMSN, 0), 'N/A') AS Sim,
+                m.Region AS `City`,
+                IF(UPPER(NULLIF(TRIM(m.Contact_Person), '')) = 'X' OR m.Contact_Person IS NULL, 'N/A', m.Contact_Person) AS `Contact Person`,
+                IF(UPPER(NULLIF(TRIM(m.Contact_No), '')) = 'X' OR m.Contact_No IS NULL, 'N/A', m.Contact_No) AS `Contact No.`,
+                IF(UPPER(NULLIF(TRIM(m.Email), '')) = 'X' OR m.Email IS NULL, 'N/A', m.Email) AS Email
+            FROM vw_merchant_info m
+            LEFT JOIN tblirdetail i ON i.MerchantID = m.Merchant_ID
+            WHERE i.IRActive = 1 
+              AND i.IRStatus <> 11
+              AND (
+                    @Search IS NULL OR @Search = '' OR
+                    i.TID = @Search OR
+                    m.Merchant_Name LIKE CONCAT('%', @Search, '%') OR
+                    m.Contact_Person LIKE CONCAT('%', @Search, '%') OR
+                    m.Province LIKE CONCAT('%', @Search, '%') OR
+                    m.Region LIKE CONCAT('%', @Search, '%')
+                  )
             LIMIT {limit};";
 
             return await SelectAsync(stmt, new MySqlParameter("@Search", search));
         }
 
-        public DataTable FindTerminals(object search, int limit = 100)
+        public async Task<DataTable> FindTerminals(object search, int limit = 10)
         {
             string stmt = $@"
             SELECT 
+                Terminal_ID   AS `ID`,
                 Model_ID      AS `Model ID`,
                 Model         AS `Model`,
-                Terminal_ID   AS `Terminal ID`,
-                Terminal_SN   AS `Serial No`,
+                Terminal_SN   AS `Serial`,
                 Status        AS `Status`,
                 Location      AS `Location`,
                 Type          AS `Type`,
@@ -329,23 +334,22 @@ namespace MIS_Admin.Repository
             FROM vw_terminal_info
             WHERE 
                 (@Search IS NULL OR @Search = '' 
-                    OR Terminal_SN LIKE CONCAT('%', @Search, '%')
-                    OR Client_Name LIKE CONCAT('%', @Search, '%')
-                    OR Brand LIKE CONCAT('%', @Search, '%')
-                    OR Model LIKE CONCAT('%', @Search, '%'))
+                    OR Terminal_SN = @Search
+                    OR Brand = @Search
+                    OR Model = @Search )
             LIMIT {limit};";
 
-            return Select(stmt, new MySqlParameter("@Search", search));
+            return await SelectAsync(stmt, new MySqlParameter("@Search", search));
         }
 
-        public DataTable FindSimCards(object search, int limit = 100)
+        public DataTable FindSimCards(object search, int limit = 10)
         {
             string stmt = $@"
             SELECT 
+                SIM_ID         AS `ID`,
                 Carrier_ID     AS `Carrier ID`,
                 Carrier        AS `Carrier`,
-                SIM_ID         AS `Sim ID`,
-                SIM_SN         AS `Serial No`,
+                SIM_SN         AS `Serial`,
                 Status         AS `Status`,
                 Location       AS `Location`,
                 Delivery_Date  AS `Delivery Date`,
@@ -364,6 +368,52 @@ namespace MIS_Admin.Repository
             return Select(stmt, new MySqlParameter("@Search", search));
         }
 
+        public async Task<DataTable> FindInstallationRequest(object id)
+        {
+            string stmt = $@"
+            SELECT 
+	            Request_No,
+	            Merchant,
+	            TID,
+	            MID,
+	            Model_Name,
+	            Terminal_SN,
+	            Carrier,
+	            Sim_SN,
+	            Address,
+                IF(UPPER(NULLIF(TRIM(Contact_Person), '')) = 'X' OR Contact_Person IS NULL, 'N/A', Contact_Person) AS `Contact_Person`,
+                IF(UPPER(NULLIF(TRIM(Contact_No), '')) = 'X' OR Contact_No IS NULL, 'N/A', Contact_No) AS `Contact_No`,
+                IF(UPPER(NULLIF(TRIM(Email), '')) = 'X' OR Email IS NULL, 'N/A', Email) AS Email,
+	            Region,
+	            App_Crc,
+	            App_Version,
+	            Created_Date
+            FROM vw_installation_info
+            WHERE (@id IS NULL OR IR_ID = @id) 
+            AND   Status_ID = 7
+            AND   isActive = 1";
+
+            return await SelectAsyncNoCache(stmt, new MySqlParameter("@id", id));
+        }
+
+        // ---------- PROCEDURES ------------
+        public ProcedureResult CallReplaceDevice(int id, string terminalSN, string simSN)
+        {
+            var dt = ExecuteProcedure("spReplaceDevice",
+                new MySqlParameter("@in_id", id),
+                new MySqlParameter("@in_NewTerminalSn", terminalSN),
+                new MySqlParameter("@in_NewSimSn", simSN));
+
+            if (dt.Rows.Count == 0)
+                return new ProcedureResult { Result = 0, Message = "No response from procedure." };
+
+            var row = dt.Rows[0];
+            return new ProcedureResult
+            {
+                Result = Convert.ToInt32(row["Result"]),
+                Message = row["Message"].ToString()
+            };
+        }
 
         // ---------- CRUD Samples ----------
         public int AddUser(string username)

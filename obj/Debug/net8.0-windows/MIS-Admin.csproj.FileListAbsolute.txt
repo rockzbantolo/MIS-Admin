@@ -30,13 +30,16 @@ C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\bin\Debug\net8.0-
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.csproj.AssemblyReference.cache
+C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.DeviceReplacementForm.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.ServiceDetailsForm.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Main.resources
+C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Admin.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Home.resources
+C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Login.resources
+C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Merchants.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Overview.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Reports.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Servicing.resources
-C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Stores.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Properties.Resources.resources
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.csproj.GenerateResource.cache
 C:\Users\rocky\Documents\Visual Studio 2022\Projects\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.GeneratedMSBuildEditorConfig.editorconfig
