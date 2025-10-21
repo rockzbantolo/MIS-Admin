@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             flowLayoutPanel1 = new FlowLayoutPanel();
             pn_Nav = new Panel();
+            btn_Logout = new Button();
             flp_Nav = new FlowLayoutPanel();
             btn_Home = new Button();
             btn_Services = new Button();
@@ -40,10 +41,14 @@
             btn_Reports = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
+            pictureBox2 = new PictureBox();
+            lb_User = new Label();
             pn_Body = new Panel();
             pn_Nav.SuspendLayout();
             flp_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pn_Header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -58,6 +63,7 @@
             // pn_Nav
             // 
             pn_Nav.BackColor = Color.FromArgb(30, 39, 46);
+            pn_Nav.Controls.Add(btn_Logout);
             pn_Nav.Controls.Add(flp_Nav);
             pn_Nav.Controls.Add(pictureBox1);
             pn_Nav.Dock = DockStyle.Left;
@@ -65,6 +71,29 @@
             pn_Nav.Name = "pn_Nav";
             pn_Nav.Size = new Size(249, 846);
             pn_Nav.TabIndex = 0;
+            // 
+            // btn_Logout
+            // 
+            btn_Logout.Anchor = AnchorStyles.Bottom;
+            btn_Logout.FlatAppearance.BorderSize = 0;
+            btn_Logout.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            btn_Logout.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            btn_Logout.FlatStyle = FlatStyle.Flat;
+            btn_Logout.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btn_Logout.ForeColor = Color.White;
+            btn_Logout.Image = (Image)resources.GetObject("btn_Logout.Image");
+            btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Logout.Location = new Point(17, 772);
+            btn_Logout.Margin = new Padding(5, 5, 3, 10);
+            btn_Logout.Name = "btn_Logout";
+            btn_Logout.Padding = new Padding(25, 0, 0, 0);
+            btn_Logout.Size = new Size(215, 54);
+            btn_Logout.TabIndex = 2;
+            btn_Logout.Text = "        Logout";
+            btn_Logout.TextAlign = ContentAlignment.MiddleLeft;
+            btn_Logout.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_Logout.UseVisualStyleBackColor = true;
+            btn_Logout.Click += btn_Logout_Click;
             // 
             // flp_Nav
             // 
@@ -74,9 +103,9 @@
             flp_Nav.Controls.Add(btn_Admin);
             flp_Nav.Controls.Add(button1);
             flp_Nav.Controls.Add(btn_Reports);
-            flp_Nav.Location = new Point(12, 105);
+            flp_Nav.Location = new Point(12, 135);
             flp_Nav.Name = "flp_Nav";
-            flp_Nav.Size = new Size(225, 612);
+            flp_Nav.Size = new Size(225, 582);
             flp_Nav.TabIndex = 0;
             // 
             // btn_Home
@@ -169,6 +198,7 @@
             btn_Admin.TextAlign = ContentAlignment.MiddleLeft;
             btn_Admin.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Admin.UseVisualStyleBackColor = true;
+            btn_Admin.Visible = false;
             // 
             // button1
             // 
@@ -191,6 +221,7 @@
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
             // 
             // btn_Reports
             // 
@@ -228,15 +259,39 @@
             // pn_Header
             // 
             pn_Header.BackColor = Color.White;
+            pn_Header.Controls.Add(pictureBox2);
+            pn_Header.Controls.Add(lb_User);
             pn_Header.Dock = DockStyle.Top;
             pn_Header.Location = new Point(249, 0);
             pn_Header.Name = "pn_Header";
             pn_Header.Size = new Size(862, 60);
             pn_Header.TabIndex = 1;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Location = new Point(823, 16);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(27, 27);
+            pictureBox2.TabIndex = 9;
+            pictureBox2.TabStop = false;
+            // 
+            // lb_User
+            // 
+            lb_User.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_User.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_User.Location = new Point(638, 18);
+            lb_User.Name = "lb_User";
+            lb_User.Size = new Size(179, 23);
+            lb_User.TabIndex = 0;
+            lb_User.Text = "-";
+            lb_User.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // pn_Body
             // 
-            pn_Body.BackColor = SystemColors.Control;
+            pn_Body.BackColor = Color.FromArgb(206, 214, 224);
             pn_Body.Dock = DockStyle.Fill;
             pn_Body.Location = new Point(249, 60);
             pn_Body.Name = "pn_Body";
@@ -258,6 +313,8 @@
             pn_Nav.ResumeLayout(false);
             flp_Nav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pn_Header.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -274,5 +331,8 @@
         private Button btn_Reports;
         private Button btn_Admin;
         private Button button1;
+        private Label lb_User;
+        private PictureBox pictureBox2;
+        private Button btn_Logout;
     }
 }

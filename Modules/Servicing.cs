@@ -1,7 +1,6 @@
 ﻿using MIS_Admin.Forms;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
-using Org.BouncyCastle.Pqc.Crypto.Frodo;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 using static MIS_Admin.Utilities.Notifications;
@@ -29,7 +28,7 @@ namespace MIS_Admin.Modules
         {
             //EnableDoubleBuffering(pn_Body);
             EnableDoubleBuffering(dgv_Services);
-            pn_Nav.Radius(8, Color.FromArgb(39, 60, 117));
+            pn_Nav.Radius(8, Color.FromArgb(206, 214, 224));
             pn_Body.Radius(8, Color.White);
             btn_New.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));

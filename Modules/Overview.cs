@@ -31,7 +31,7 @@ namespace MIS_Admin.Modules
             EnableDoubleBuffering(dgv_Services);
             EnableDoubleBuffering(dgv_Request);
             EnableDoubleBuffering(dgv_CloseTickets);
-            ApplyRadiusToPanels(this, 8, Color.White);
+            ApplyRadiusToPanels(this, 8, Color.FromArgb(206, 214, 224));
             lb_TicketCount.Radius(6, Color.FromArgb(224, 224, 224));
             lb_RequestCount.Radius(6, Color.White);
             lb_HelpdeskCount.Radius(6, Color.White);

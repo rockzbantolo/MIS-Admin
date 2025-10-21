@@ -7,6 +7,8 @@ namespace MIS_Admin
 {
     public partial class Main : Form
     {
+        public Panel BodyPanel => pn_Body;
+
         public Main()
         {
             InitializeComponent();
@@ -56,8 +58,8 @@ namespace MIS_Admin
 
         private void InitializedDisplay()
         {
-            EnableDoubleBuffering(pn_Body);
-            new Home().ShowUserControl(pn_Body);
+            //EnableDoubleBuffering(pn_Body);
+            new Login(this).ShowUserControl(pn_Body);
         }
 
         private void Main_Load(object sender, EventArgs e)

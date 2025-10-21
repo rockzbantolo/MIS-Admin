@@ -96,7 +96,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(579, 63);
+            panel1.Size = new Size(569, 63);
             panel1.TabIndex = 1;
             // 
             // label3
@@ -113,7 +113,7 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.Location = new Point(1223, 16);
+            button1.Location = new Point(1213, 16);
             button1.Name = "button1";
             button1.Size = new Size(35, 28);
             button1.TabIndex = 1;
@@ -129,7 +129,7 @@
             pn_SimBody.Controls.Add(lb_Sim);
             pn_SimBody.Controls.Add(label14);
             pn_SimBody.Controls.Add(panel6);
-            pn_SimBody.Location = new Point(297, 292);
+            pn_SimBody.Location = new Point(293, 287);
             pn_SimBody.Name = "pn_SimBody";
             pn_SimBody.Size = new Size(259, 219);
             pn_SimBody.TabIndex = 2;
@@ -240,7 +240,7 @@
             pn_TerminalBody.Controls.Add(lb_Terminal);
             pn_TerminalBody.Controls.Add(label5);
             pn_TerminalBody.Controls.Add(panel4);
-            pn_TerminalBody.Location = new Point(21, 292);
+            pn_TerminalBody.Location = new Point(17, 287);
             pn_TerminalBody.Name = "pn_TerminalBody";
             pn_TerminalBody.Size = new Size(259, 219);
             pn_TerminalBody.TabIndex = 3;
@@ -400,7 +400,7 @@
             pn_MerchantBody.Controls.Add(label6);
             pn_MerchantBody.Controls.Add(lb_MerchantName);
             pn_MerchantBody.Controls.Add(panel5);
-            pn_MerchantBody.Location = new Point(21, 84);
+            pn_MerchantBody.Location = new Point(17, 79);
             pn_MerchantBody.Name = "pn_MerchantBody";
             pn_MerchantBody.Size = new Size(535, 192);
             pn_MerchantBody.TabIndex = 4;
@@ -463,7 +463,7 @@
             lb_Contact.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Contact.Location = new Point(97, 158);
             lb_Contact.Name = "lb_Contact";
-            lb_Contact.Size = new Size(173, 15);
+            lb_Contact.Size = new Size(162, 15);
             lb_Contact.TabIndex = 13;
             lb_Contact.Text = "-";
             // 
@@ -471,7 +471,7 @@
             // 
             lb_Person.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_Person.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Person.Location = new Point(108, 131);
+            lb_Person.Location = new Point(97, 131);
             lb_Person.Name = "lb_Person";
             lb_Person.Size = new Size(162, 15);
             lb_Person.TabIndex = 12;
@@ -515,9 +515,9 @@
             label11.ForeColor = Color.FromArgb(64, 64, 64);
             label11.Location = new Point(27, 158);
             label11.Name = "label11";
-            label11.Size = new Size(50, 15);
+            label11.Size = new Size(45, 15);
             label11.TabIndex = 7;
-            label11.Text = "Con No:";
+            label11.Text = "Tel No:";
             // 
             // label10
             // 
@@ -526,9 +526,9 @@
             label10.ForeColor = Color.FromArgb(64, 64, 64);
             label10.Location = new Point(27, 131);
             label10.Name = "label10";
-            label10.Size = new Size(75, 15);
+            label10.Size = new Size(53, 15);
             label10.TabIndex = 6;
-            label10.Text = "Con. Person:";
+            label10.Text = "Contact:";
             // 
             // label8
             // 
@@ -609,7 +609,7 @@
             // btn_Save
             // 
             btn_Save.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Save.Location = new Point(438, 531);
+            btn_Save.Location = new Point(434, 526);
             btn_Save.Name = "btn_Save";
             btn_Save.Size = new Size(118, 35);
             btn_Save.TabIndex = 5;
@@ -622,7 +622,7 @@
             lb_Message.AutoSize = true;
             lb_Message.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_Message.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Message.Location = new Point(20, 541);
+            lb_Message.Location = new Point(16, 536);
             lb_Message.Name = "lb_Message";
             lb_Message.Size = new Size(12, 15);
             lb_Message.TabIndex = 12;
@@ -633,8 +633,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(579, 580);
+            BackColor = Color.FromArgb(206, 214, 224);
+            ClientSize = new Size(569, 573);
             Controls.Add(lb_Message);
             Controls.Add(btn_Save);
             Controls.Add(pn_MerchantBody);
