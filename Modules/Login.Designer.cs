@@ -73,7 +73,7 @@
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(377, 333);
+            checkBox1.Location = new Point(381, 333);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(104, 19);
             checkBox1.TabIndex = 12;
@@ -83,6 +83,7 @@
             // lb_Message
             // 
             lb_Message.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Message.ForeColor = Color.FromArgb(192, 0, 0);
             lb_Message.Location = new Point(377, 365);
             lb_Message.Name = "lb_Message";
             lb_Message.Size = new Size(300, 21);

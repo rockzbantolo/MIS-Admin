@@ -1,14 +1,18 @@
 ﻿using MIS_Admin.Model;
 using MIS_Admin.Repository;
 using System.Data;
-using System.Linq;
 
 
 namespace MIS_Admin.Services
 {
     internal class OperationsSvc
     {
-        private Operations Ops = new Operations();
+        private Operations Ops;
+
+        public OperationsSvc() 
+        {
+            Ops = new Operations();
+        }
 
         public DataTable getServices(string? search)
         {
@@ -46,11 +50,20 @@ namespace MIS_Admin.Services
 
         public async Task<DataTable> getServiceSummary(int? id)
         {
-            object param = id.HasValue 
+            object userid = id.HasValue 
                 ? id.Value 
                 : DBNull.Value;
 
-            return await Ops.FindServiceSummary(param);
+            return await Ops.FindServiceSummary(userid, DateTime.Now);
+        }
+
+        public async Task<DataTable> getAreaSummary(int? id)
+        {
+            object userid = id.HasValue
+                ? id.Value
+                : DBNull.Value;
+
+            return await Ops.FindAreaSummary(userid, DateTime.Now);
         }
 
         public async Task<DataTable> getServiceRequestAsync(DateTime? date)

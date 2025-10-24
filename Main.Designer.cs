@@ -48,12 +48,15 @@
             BackColor = Color.FromArgb(47, 54, 64);
             ClientSize = new Size(1264, 861);
             Controls.Add(pn_Body);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Management";
             WindowState = FormWindowState.Maximized;
+            FormClosing += Main_FormClosing;
             Load += Main_Load;
             KeyPress += Main_KeyPress;
             ResumeLayout(false);

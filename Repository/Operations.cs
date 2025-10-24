@@ -1,8 +1,6 @@
 ﻿using MIS_Admin.Core;
 using MIS_Admin.Model;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Mysqlx.Sql;
 using System.Data;
 
 namespace MIS_Admin.Repository
@@ -156,7 +154,7 @@ namespace MIS_Admin.Repository
             return await SelectAsync(stmt, new MySqlParameter("@date", date));
         }
 
-        public async Task<DataTable> FindServiceSummary(object dispatcherId)
+        public async Task<DataTable> FindServiceSummary(object id, object date)
         {
             string stmt = @"
             SELECT
@@ -174,11 +172,32 @@ namespace MIS_Admin.Repository
                     ), 0
                 ) AS Total
             FROM vw_service_info
-            WHERE (@dispatcherId IS NULL OR Dispatcher_ID = @dispatcherId)
-              AND DATE(Created_Date) = CURRENT_DATE()
+            WHERE (@id IS NULL OR Dispatcher_ID = @id)
+              AND DATE(Created_Date) = DATE(@date)
+              AND YEAR(Created_Date) = YEAR(@date)
             GROUP BY Type_ID;";
 
-            return await SelectAsync(stmt, new MySqlParameter("@dispatcherId", dispatcherId));
+            return await SelectAsyncNoCache(stmt, 
+                new MySqlParameter("@id", id), 
+                new MySqlParameter("@date", date));
+        }
+
+        public async Task<DataTable> FindAreaSummary(object id, object date)
+        {
+            string stmt = @"
+            SELECT
+	            FORMAT(SUM(CASE WHEN Prov_ID = 4 THEN 1 ELSE 0 END), 0) AS Manila,
+	            FORMAT(SUM(CASE WHEN Prov_ID = 5 THEN 1 ELSE 0 END), 0) AS Province,
+	            FORMAT(COUNT(*), 0) AS Total
+            FROM
+                vw_service_info
+            WHERE (@id IS NULL OR Dispatcher_ID = @id)
+	            AND MONTH(Created_Date) = MONTH(@date)
+                AND YEAR(Created_Date) = YEAR(@date)";
+
+            return await SelectAsyncNoCache(stmt,
+                new MySqlParameter("@id", id),
+                new MySqlParameter("@date", date));
         }
 
         public async Task<DataTable> FindMonthlyServiceCountAsync(object id)
@@ -218,7 +237,7 @@ namespace MIS_Admin.Repository
                 new MySqlParameter("@year", yearParam));
         }
 
-        public async Task<DataTable> FindUnclosedTicketsAsync(object id, DateTime targetDate)
+        public async Task<DataTable> FindUnclosedTicketsAsync(object id, DateTime date)
         {
             string stmt = @"
             SELECT 
@@ -229,14 +248,14 @@ namespace MIS_Admin.Repository
                    FE_Name AS `Engineer`
             FROM vw_service_info
             WHERE (@id IS NULL OR Dispatcher_ID = @id)
-              AND MONTH(Created_Date) = MONTH(@targetDate)
-              AND YEAR(Created_Date) = YEAR(@targetDate)
+              AND MONTH(Created_Date) = MONTH(@date)
+              AND YEAR(Created_Date) = YEAR(@date)
               AND Request_Status IN ('SUCCESS','NEGATIVE')
               AND Ticket_ID = 0;";
 
-            return await SelectAsync(stmt,
+            return await SelectAsyncNoCache(stmt,
                 new MySqlParameter("@id", id),
-                new MySqlParameter("@targetDate", targetDate));
+                new MySqlParameter("@date", date));
         }
 
         public async Task<DataTable> FindSLACount(object id)

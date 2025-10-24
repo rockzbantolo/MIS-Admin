@@ -31,6 +31,7 @@
             panel1 = new Panel();
             label3 = new Label();
             button1 = new Button();
+            lb_Message = new Label();
             pn_SimBody = new Panel();
             lb_Carrier = new Label();
             label20 = new Label();
@@ -56,27 +57,26 @@
             panel4 = new Panel();
             label2 = new Label();
             pn_MerchantBody = new Panel();
-            lb_City = new Label();
-            label21 = new Label();
             label16 = new Label();
+            label15 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            lb_City = new Label();
             lb_Address = new Label();
             lb_Email = new Label();
             lb_Contact = new Label();
             lb_Person = new Label();
             lb_TID = new Label();
             lb_MID = new Label();
-            label12 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
             lb_MerchantName = new Label();
             panel5 = new Panel();
             lb_RequestNo = new Label();
             label1 = new Label();
+            label6 = new Label();
             btn_Save = new Button();
-            lb_Message = new Label();
             panel1.SuspendLayout();
             pn_SimBody.SuspendLayout();
             panel3.SuspendLayout();
@@ -96,7 +96,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(569, 63);
+            panel1.Size = new Size(917, 63);
             panel1.TabIndex = 1;
             // 
             // label3
@@ -113,12 +113,24 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.Location = new Point(1213, 16);
+            button1.Location = new Point(1561, 16);
             button1.Name = "button1";
             button1.Size = new Size(35, 28);
             button1.TabIndex = 1;
             button1.Text = "x";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // lb_Message
+            // 
+            lb_Message.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Message.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Message.Location = new Point(21, 492);
+            lb_Message.Name = "lb_Message";
+            lb_Message.Size = new Size(600, 35);
+            lb_Message.TabIndex = 12;
+            lb_Message.Text = "-";
+            lb_Message.TextAlign = ContentAlignment.MiddleLeft;
+            lb_Message.Visible = false;
             // 
             // pn_SimBody
             // 
@@ -129,9 +141,9 @@
             pn_SimBody.Controls.Add(lb_Sim);
             pn_SimBody.Controls.Add(label14);
             pn_SimBody.Controls.Add(panel6);
-            pn_SimBody.Location = new Point(293, 287);
+            pn_SimBody.Location = new Point(21, 79);
             pn_SimBody.Name = "pn_SimBody";
-            pn_SimBody.Size = new Size(259, 219);
+            pn_SimBody.Size = new Size(259, 166);
             pn_SimBody.TabIndex = 2;
             // 
             // lb_Carrier
@@ -161,7 +173,7 @@
             panel3.Controls.Add(tx_Sim);
             panel3.Controls.Add(label13);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 167);
+            panel3.Location = new Point(0, 114);
             panel3.Name = "panel3";
             panel3.Size = new Size(259, 52);
             panel3.TabIndex = 17;
@@ -240,7 +252,7 @@
             pn_TerminalBody.Controls.Add(lb_Terminal);
             pn_TerminalBody.Controls.Add(label5);
             pn_TerminalBody.Controls.Add(panel4);
-            pn_TerminalBody.Location = new Point(17, 287);
+            pn_TerminalBody.Location = new Point(21, 257);
             pn_TerminalBody.Name = "pn_TerminalBody";
             pn_TerminalBody.Size = new Size(259, 219);
             pn_TerminalBody.TabIndex = 3;
@@ -383,195 +395,178 @@
             // pn_MerchantBody
             // 
             pn_MerchantBody.BackColor = Color.White;
-            pn_MerchantBody.Controls.Add(lb_City);
-            pn_MerchantBody.Controls.Add(label21);
             pn_MerchantBody.Controls.Add(label16);
+            pn_MerchantBody.Controls.Add(label15);
+            pn_MerchantBody.Controls.Add(label12);
+            pn_MerchantBody.Controls.Add(label11);
+            pn_MerchantBody.Controls.Add(label10);
+            pn_MerchantBody.Controls.Add(label8);
+            pn_MerchantBody.Controls.Add(label6);
+            pn_MerchantBody.Controls.Add(label7);
+            pn_MerchantBody.Controls.Add(lb_City);
             pn_MerchantBody.Controls.Add(lb_Address);
             pn_MerchantBody.Controls.Add(lb_Email);
             pn_MerchantBody.Controls.Add(lb_Contact);
             pn_MerchantBody.Controls.Add(lb_Person);
             pn_MerchantBody.Controls.Add(lb_TID);
             pn_MerchantBody.Controls.Add(lb_MID);
-            pn_MerchantBody.Controls.Add(label12);
-            pn_MerchantBody.Controls.Add(label11);
-            pn_MerchantBody.Controls.Add(label10);
-            pn_MerchantBody.Controls.Add(label8);
-            pn_MerchantBody.Controls.Add(label7);
-            pn_MerchantBody.Controls.Add(label6);
             pn_MerchantBody.Controls.Add(lb_MerchantName);
             pn_MerchantBody.Controls.Add(panel5);
-            pn_MerchantBody.Location = new Point(17, 79);
+            pn_MerchantBody.Location = new Point(294, 79);
             pn_MerchantBody.Name = "pn_MerchantBody";
-            pn_MerchantBody.Size = new Size(535, 192);
+            pn_MerchantBody.Size = new Size(604, 397);
             pn_MerchantBody.TabIndex = 4;
-            // 
-            // lb_City
-            // 
-            lb_City.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_City.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_City.Location = new Point(332, 158);
-            lb_City.Name = "lb_City";
-            lb_City.Size = new Size(188, 15);
-            lb_City.TabIndex = 18;
-            lb_City.Text = "-";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.FromArgb(64, 64, 64);
-            label21.Location = new Point(276, 158);
-            label21.Name = "label21";
-            label21.Size = new Size(31, 15);
-            label21.TabIndex = 17;
-            label21.Text = "City:";
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.FromArgb(64, 64, 64);
-            label16.Location = new Point(27, 76);
+            label16.Location = new Point(290, 323);
             label16.Name = "label16";
-            label16.Size = new Size(54, 15);
-            label16.TabIndex = 16;
-            label16.Text = "Address:";
+            label16.Size = new Size(28, 15);
+            label16.TabIndex = 26;
+            label16.Text = "City";
             // 
-            // lb_Address
+            // label15
             // 
-            lb_Address.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Address.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Address.Location = new Point(97, 76);
-            lb_Address.Name = "lb_Address";
-            lb_Address.Size = new Size(423, 15);
-            lb_Address.TabIndex = 15;
-            lb_Address.Text = "-";
-            // 
-            // lb_Email
-            // 
-            lb_Email.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Email.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Email.Location = new Point(332, 131);
-            lb_Email.Name = "lb_Email";
-            lb_Email.Size = new Size(188, 15);
-            lb_Email.TabIndex = 14;
-            lb_Email.Text = "-";
-            // 
-            // lb_Contact
-            // 
-            lb_Contact.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Contact.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Contact.Location = new Point(97, 158);
-            lb_Contact.Name = "lb_Contact";
-            lb_Contact.Size = new Size(162, 15);
-            lb_Contact.TabIndex = 13;
-            lb_Contact.Text = "-";
-            // 
-            // lb_Person
-            // 
-            lb_Person.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Person.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Person.Location = new Point(97, 131);
-            lb_Person.Name = "lb_Person";
-            lb_Person.Size = new Size(162, 15);
-            lb_Person.TabIndex = 12;
-            lb_Person.Text = "-";
-            // 
-            // lb_TID
-            // 
-            lb_TID.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_TID.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_TID.Location = new Point(332, 105);
-            lb_TID.Name = "lb_TID";
-            lb_TID.Size = new Size(188, 15);
-            lb_TID.TabIndex = 11;
-            lb_TID.Text = "-";
-            // 
-            // lb_MID
-            // 
-            lb_MID.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_MID.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_MID.Location = new Point(97, 105);
-            lb_MID.Name = "lb_MID";
-            lb_MID.Size = new Size(162, 15);
-            lb_MID.TabIndex = 10;
-            lb_MID.Text = "-";
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.Location = new Point(290, 265);
+            label15.Name = "label15";
+            label15.Size = new Size(36, 15);
+            label15.TabIndex = 25;
+            label15.Text = "Email";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.ForeColor = Color.FromArgb(64, 64, 64);
-            label12.Location = new Point(276, 131);
+            label12.Location = new Point(28, 323);
             label12.Name = "label12";
-            label12.Size = new Size(39, 15);
-            label12.TabIndex = 8;
-            label12.Text = "Email:";
+            label12.Size = new Size(99, 15);
+            label12.TabIndex = 24;
+            label12.Text = "Contact Number";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.FromArgb(64, 64, 64);
-            label11.Location = new Point(27, 158);
+            label11.Location = new Point(28, 265);
             label11.Name = "label11";
-            label11.Size = new Size(45, 15);
-            label11.TabIndex = 7;
-            label11.Text = "Tel No:";
+            label11.Size = new Size(91, 15);
+            label11.TabIndex = 23;
+            label11.Text = "Contact Person";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.FromArgb(64, 64, 64);
-            label10.Location = new Point(27, 131);
+            label10.Location = new Point(290, 202);
             label10.Name = "label10";
-            label10.Size = new Size(53, 15);
-            label10.TabIndex = 6;
-            label10.Text = "Contact:";
+            label10.Size = new Size(27, 15);
+            label10.TabIndex = 22;
+            label10.Text = "TID";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.FromArgb(64, 64, 64);
-            label8.Location = new Point(27, 105);
+            label8.Location = new Point(28, 202);
             label8.Name = "label8";
-            label8.Size = new Size(34, 15);
-            label8.TabIndex = 4;
-            label8.Text = "MID:";
+            label8.Size = new Size(31, 15);
+            label8.TabIndex = 21;
+            label8.Text = "MID";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.FromArgb(64, 64, 64);
-            label7.Location = new Point(276, 105);
+            label7.Location = new Point(28, 127);
             label7.Name = "label7";
-            label7.Size = new Size(30, 15);
-            label7.TabIndex = 3;
-            label7.Text = "TID:";
+            label7.Size = new Size(51, 15);
+            label7.TabIndex = 20;
+            label7.Text = "Address";
             // 
-            // label6
+            // lb_City
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.FromArgb(64, 64, 64);
-            label6.Location = new Point(27, 51);
-            label6.Name = "label6";
-            label6.Size = new Size(64, 15);
-            label6.TabIndex = 2;
-            label6.Text = "Merchant:";
+            lb_City.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_City.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_City.Location = new Point(290, 344);
+            lb_City.Name = "lb_City";
+            lb_City.Size = new Size(296, 27);
+            lb_City.TabIndex = 18;
+            lb_City.Text = "-";
+            // 
+            // lb_Address
+            // 
+            lb_Address.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Address.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Address.Location = new Point(28, 151);
+            lb_Address.Name = "lb_Address";
+            lb_Address.Size = new Size(558, 27);
+            lb_Address.TabIndex = 15;
+            lb_Address.Text = "-";
+            // 
+            // lb_Email
+            // 
+            lb_Email.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Email.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Email.Location = new Point(290, 287);
+            lb_Email.Name = "lb_Email";
+            lb_Email.Size = new Size(296, 27);
+            lb_Email.TabIndex = 14;
+            lb_Email.Text = "-";
+            // 
+            // lb_Contact
+            // 
+            lb_Contact.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Contact.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Contact.Location = new Point(28, 344);
+            lb_Contact.Name = "lb_Contact";
+            lb_Contact.Size = new Size(245, 27);
+            lb_Contact.TabIndex = 13;
+            lb_Contact.Text = "-";
+            // 
+            // lb_Person
+            // 
+            lb_Person.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Person.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Person.Location = new Point(28, 287);
+            lb_Person.Name = "lb_Person";
+            lb_Person.Size = new Size(245, 27);
+            lb_Person.TabIndex = 12;
+            lb_Person.Text = "-";
+            // 
+            // lb_TID
+            // 
+            lb_TID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_TID.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_TID.Location = new Point(290, 223);
+            lb_TID.Name = "lb_TID";
+            lb_TID.Size = new Size(296, 24);
+            lb_TID.TabIndex = 11;
+            lb_TID.Text = "-";
+            // 
+            // lb_MID
+            // 
+            lb_MID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_MID.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_MID.Location = new Point(28, 223);
+            lb_MID.Name = "lb_MID";
+            lb_MID.Size = new Size(245, 24);
+            lb_MID.TabIndex = 10;
+            lb_MID.Text = "-";
             // 
             // lb_MerchantName
             // 
-            lb_MerchantName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_MerchantName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             lb_MerchantName.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_MerchantName.Location = new Point(97, 51);
+            lb_MerchantName.Location = new Point(28, 82);
             lb_MerchantName.Name = "lb_MerchantName";
-            lb_MerchantName.Size = new Size(423, 15);
+            lb_MerchantName.Size = new Size(558, 27);
             lb_MerchantName.TabIndex = 1;
             lb_MerchantName.Text = "-";
+            lb_MerchantName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel5
             // 
@@ -581,16 +576,16 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(535, 37);
+            panel5.Size = new Size(604, 37);
             panel5.TabIndex = 0;
             // 
             // lb_RequestNo
             // 
-            lb_RequestNo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_RequestNo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_RequestNo.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_RequestNo.Location = new Point(354, 9);
+            lb_RequestNo.Location = new Point(362, 9);
             lb_RequestNo.Name = "lb_RequestNo";
-            lb_RequestNo.Size = new Size(170, 20);
+            lb_RequestNo.Size = new Size(232, 20);
             lb_RequestNo.TabIndex = 18;
             lb_RequestNo.Text = "-";
             lb_RequestNo.TextAlign = ContentAlignment.TopRight;
@@ -606,35 +601,37 @@
             label1.TabIndex = 0;
             label1.Text = "Merchant Information";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(28, 59);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 15);
+            label6.TabIndex = 19;
+            label6.Text = "Merchant";
+            // 
             // btn_Save
             // 
+            btn_Save.BackColor = Color.Green;
+            btn_Save.FlatAppearance.BorderSize = 0;
+            btn_Save.FlatStyle = FlatStyle.Flat;
             btn_Save.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_Save.Location = new Point(434, 526);
+            btn_Save.ForeColor = Color.White;
+            btn_Save.Location = new Point(700, 492);
             btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(118, 35);
+            btn_Save.Size = new Size(198, 35);
             btn_Save.TabIndex = 5;
             btn_Save.Text = "Save";
-            btn_Save.UseVisualStyleBackColor = true;
+            btn_Save.UseVisualStyleBackColor = false;
             btn_Save.Click += btn_Save_Click;
-            // 
-            // lb_Message
-            // 
-            lb_Message.AutoSize = true;
-            lb_Message.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Message.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Message.Location = new Point(16, 536);
-            lb_Message.Name = "lb_Message";
-            lb_Message.Size = new Size(12, 15);
-            lb_Message.TabIndex = 12;
-            lb_Message.Text = "-";
-            lb_Message.Visible = false;
             // 
             // DeviceReplacementForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(206, 214, 224);
-            ClientSize = new Size(569, 573);
+            ClientSize = new Size(917, 543);
             Controls.Add(lb_Message);
             Controls.Add(btn_Save);
             Controls.Add(pn_MerchantBody);
@@ -647,6 +644,7 @@
             KeyPreview = true;
             MaximizeBox = false;
             Name = "DeviceReplacementForm";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Device Replacement";
             KeyDown += DeviceReplacementForm_KeyDown;
@@ -669,7 +667,6 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -688,17 +685,11 @@
         private Label label5;
         private Panel panel4;
         private Label label2;
-        private Label label8;
-        private Label label7;
-        private Label label6;
         private Label lb_Email;
         private Label lb_Contact;
         private Label lb_Person;
         private Label lb_TID;
         private Label lb_MID;
-        private Label label12;
-        private Label label11;
-        private Label label10;
         private TextBox tx_Sim;
         private Label lb_Sim;
         private Label label13;
@@ -713,15 +704,21 @@
         private Label label19;
         private Label label18;
         private Label label17;
-        private Label label16;
         private Label lb_Address;
         private Label label20;
-        private Label label21;
         private Label lb_RequestNo;
         private Label lb_Carrier;
         private Label lb_AppCrc;
         private Label lb_AppVersion;
         private Label lb_Model;
         private Label lb_City;
+        private Label label10;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label16;
+        private Label label15;
+        private Label label12;
+        private Label label11;
     }
 }

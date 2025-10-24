@@ -1,20 +1,22 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-using MIS_Admin.Model;
+using static MIS_Admin.Model.Authenticate;
+using static MIS_Admin.Controller.AuthCtrl;
 using MIS_Admin.Utilities.UI;
 
 namespace MIS_Admin.Modules
 {
     public partial class Home : UserControl
     {
-        private readonly Authenticate.UserSession _session;
+        public readonly UserSession _session;
         private readonly Main _main;
 
-        public Home(Authenticate.UserSession session, Main main)
+        public Home(UserSession session, Main main)
         {
             InitializeComponent();
             InitializeHelpers();
             _session = session;
             _main = main;
+            _main.UserId = session.UserID;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -58,10 +60,26 @@ namespace MIS_Admin.Modules
             panel.ResumeLayout();
         }
 
+        private void SignOutAccount()
+        {
+            if (MessageBox.Show("Are you sure to Sign out?", "Service Management", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                bool isLoggedOut = SignOutUser(_session.UserID);
+
+                if (isLoggedOut)
+                {
+                    _main.UserId = 0; // Reset
+                    new Login(_main).ShowUserControl(_main.BodyPanel);
+                }
+            }
+        }
+
         private void Home_Load(object sender, EventArgs e)
         {
             //dgv_Servicing.DataSource = getAllServices();
             lb_User.Text = _session.FullName;
+            lb_Role.Text = _session.Role;
+            SignInUser(_session.UserID);
         }
 
         private void btn_Home_Click(object sender, EventArgs e) => WaitCursor(() => new Overview().ShowUserControl(pn_Body));
@@ -74,10 +92,7 @@ namespace MIS_Admin.Modules
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to Sign out?", "Service Management", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                new Login(_main).ShowUserControl(_main.BodyPanel);
-            }
+            SignOutAccount();
         }
     }
 }

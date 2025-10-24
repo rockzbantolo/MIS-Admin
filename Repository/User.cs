@@ -1,4 +1,5 @@
-﻿using MIS_Admin.Core;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using MIS_Admin.Core;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -6,7 +7,7 @@ namespace MIS_Admin.Repository
 {
     internal class User : Base
     {
-        public DataTable FindUser(object username)
+        public DataTable FindAccount(object username)
         {
             string stmt = $@"
             SELECT   
@@ -29,5 +30,28 @@ namespace MIS_Admin.Repository
 
             return SelectNoCache(stmt, new MySqlParameter("@username", username));
         }
+
+        public bool UpdateUserStatus(object id, int status, string statusDesc)
+        {
+            string query = @"
+                UPDATE tbluser 
+                SET 
+                    LogStatus = @status,
+                    LogStatusDesc = @statusDesc
+                WHERE UserID = @id;
+            ";
+
+            int rows = Execute(
+                query,
+                "tbluser",
+                new MySqlParameter("@status", status),
+                new MySqlParameter("@statusDesc", statusDesc),
+                new MySqlParameter("@id", id)
+            );
+
+            return rows > 0;
+        }
+
+
     }
 }

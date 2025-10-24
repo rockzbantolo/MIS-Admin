@@ -41,6 +41,7 @@
             btn_Reports = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
+            lb_Role = new Label();
             pictureBox2 = new PictureBox();
             lb_User = new Label();
             pn_Body = new Panel();
@@ -69,7 +70,7 @@
             pn_Nav.Dock = DockStyle.Left;
             pn_Nav.Location = new Point(0, 0);
             pn_Nav.Name = "pn_Nav";
-            pn_Nav.Size = new Size(249, 846);
+            pn_Nav.Size = new Size(264, 846);
             pn_Nav.TabIndex = 0;
             // 
             // btn_Logout
@@ -83,13 +84,13 @@
             btn_Logout.ForeColor = Color.White;
             btn_Logout.Image = (Image)resources.GetObject("btn_Logout.Image");
             btn_Logout.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Logout.Location = new Point(17, 772);
+            btn_Logout.Location = new Point(32, 766);
             btn_Logout.Margin = new Padding(5, 5, 3, 10);
             btn_Logout.Name = "btn_Logout";
             btn_Logout.Padding = new Padding(25, 0, 0, 0);
-            btn_Logout.Size = new Size(215, 54);
+            btn_Logout.Size = new Size(191, 54);
             btn_Logout.TabIndex = 2;
-            btn_Logout.Text = "        Logout";
+            btn_Logout.Text = "     Logout";
             btn_Logout.TextAlign = ContentAlignment.MiddleLeft;
             btn_Logout.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Logout.UseVisualStyleBackColor = true;
@@ -103,9 +104,9 @@
             flp_Nav.Controls.Add(btn_Admin);
             flp_Nav.Controls.Add(button1);
             flp_Nav.Controls.Add(btn_Reports);
-            flp_Nav.Location = new Point(12, 135);
+            flp_Nav.Location = new Point(27, 131);
             flp_Nav.Name = "flp_Nav";
-            flp_Nav.Size = new Size(225, 582);
+            flp_Nav.Size = new Size(202, 582);
             flp_Nav.TabIndex = 0;
             // 
             // btn_Home
@@ -123,9 +124,9 @@
             btn_Home.Margin = new Padding(5, 5, 3, 10);
             btn_Home.Name = "btn_Home";
             btn_Home.Padding = new Padding(25, 0, 0, 0);
-            btn_Home.Size = new Size(215, 54);
+            btn_Home.Size = new Size(191, 54);
             btn_Home.TabIndex = 0;
-            btn_Home.Text = "        Home";
+            btn_Home.Text = "     Home";
             btn_Home.TextAlign = ContentAlignment.MiddleLeft;
             btn_Home.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Home.UseVisualStyleBackColor = true;
@@ -146,9 +147,9 @@
             btn_Services.Margin = new Padding(5, 3, 3, 10);
             btn_Services.Name = "btn_Services";
             btn_Services.Padding = new Padding(25, 0, 0, 0);
-            btn_Services.Size = new Size(215, 54);
+            btn_Services.Size = new Size(191, 54);
             btn_Services.TabIndex = 1;
-            btn_Services.Text = "        Services";
+            btn_Services.Text = "     Services";
             btn_Services.TextAlign = ContentAlignment.MiddleLeft;
             btn_Services.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Services.UseVisualStyleBackColor = true;
@@ -169,9 +170,9 @@
             btn_Stores.Margin = new Padding(5, 3, 3, 10);
             btn_Stores.Name = "btn_Stores";
             btn_Stores.Padding = new Padding(25, 0, 0, 0);
-            btn_Stores.Size = new Size(215, 54);
+            btn_Stores.Size = new Size(191, 54);
             btn_Stores.TabIndex = 2;
-            btn_Stores.Text = "        Merchants";
+            btn_Stores.Text = "     Merchants";
             btn_Stores.TextAlign = ContentAlignment.MiddleLeft;
             btn_Stores.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Stores.UseVisualStyleBackColor = true;
@@ -192,9 +193,9 @@
             btn_Admin.Margin = new Padding(5, 5, 3, 10);
             btn_Admin.Name = "btn_Admin";
             btn_Admin.Padding = new Padding(25, 0, 0, 0);
-            btn_Admin.Size = new Size(215, 54);
+            btn_Admin.Size = new Size(191, 54);
             btn_Admin.TabIndex = 3;
-            btn_Admin.Text = "        Inventory";
+            btn_Admin.Text = "     Inventory";
             btn_Admin.TextAlign = ContentAlignment.MiddleLeft;
             btn_Admin.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Admin.UseVisualStyleBackColor = true;
@@ -215,9 +216,9 @@
             button1.Margin = new Padding(5, 5, 3, 10);
             button1.Name = "button1";
             button1.Padding = new Padding(25, 0, 0, 0);
-            button1.Size = new Size(215, 54);
+            button1.Size = new Size(191, 54);
             button1.TabIndex = 4;
-            button1.Text = "        Admin";
+            button1.Text = "     Admin";
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
@@ -238,9 +239,9 @@
             btn_Reports.Margin = new Padding(5, 5, 3, 10);
             btn_Reports.Name = "btn_Reports";
             btn_Reports.Padding = new Padding(25, 0, 0, 0);
-            btn_Reports.Size = new Size(215, 54);
+            btn_Reports.Size = new Size(191, 54);
             btn_Reports.TabIndex = 1;
-            btn_Reports.Text = "        Reports";
+            btn_Reports.Text = "     Reports";
             btn_Reports.TextAlign = ContentAlignment.MiddleLeft;
             btn_Reports.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Reports.UseVisualStyleBackColor = true;
@@ -250,29 +251,41 @@
             // 
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(40, -41);
+            pictureBox1.Location = new Point(36, -15);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(167, 156);
+            pictureBox1.Size = new Size(184, 172);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pn_Header
             // 
             pn_Header.BackColor = Color.White;
+            pn_Header.Controls.Add(lb_Role);
             pn_Header.Controls.Add(pictureBox2);
             pn_Header.Controls.Add(lb_User);
             pn_Header.Dock = DockStyle.Top;
-            pn_Header.Location = new Point(249, 0);
+            pn_Header.Location = new Point(264, 0);
             pn_Header.Name = "pn_Header";
-            pn_Header.Size = new Size(862, 60);
+            pn_Header.Size = new Size(847, 60);
             pn_Header.TabIndex = 1;
+            // 
+            // lb_Role
+            // 
+            lb_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_Role.Font = new Font("Segoe UI", 5F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Role.Location = new Point(629, 33);
+            lb_Role.Name = "lb_Role";
+            lb_Role.Size = new Size(170, 10);
+            lb_Role.TabIndex = 10;
+            lb_Role.Text = "-";
+            lb_Role.TextAlign = ContentAlignment.MiddleRight;
             // 
             // pictureBox2
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
-            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox2.Location = new Point(823, 16);
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox2.Location = new Point(808, 18);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(27, 27);
             pictureBox2.TabIndex = 9;
@@ -281,10 +294,10 @@
             // lb_User
             // 
             lb_User.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lb_User.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_User.Location = new Point(638, 18);
+            lb_User.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_User.Location = new Point(629, 19);
             lb_User.Name = "lb_User";
-            lb_User.Size = new Size(179, 23);
+            lb_User.Size = new Size(170, 13);
             lb_User.TabIndex = 0;
             lb_User.Text = "-";
             lb_User.TextAlign = ContentAlignment.MiddleRight;
@@ -293,9 +306,9 @@
             // 
             pn_Body.BackColor = Color.FromArgb(206, 214, 224);
             pn_Body.Dock = DockStyle.Fill;
-            pn_Body.Location = new Point(249, 60);
+            pn_Body.Location = new Point(264, 60);
             pn_Body.Name = "pn_Body";
-            pn_Body.Size = new Size(862, 786);
+            pn_Body.Size = new Size(847, 786);
             pn_Body.TabIndex = 2;
             // 
             // Home
@@ -334,5 +347,6 @@
         private Label lb_User;
         private PictureBox pictureBox2;
         private Button btn_Logout;
+        private Label lb_Role;
     }
 }

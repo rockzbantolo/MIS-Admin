@@ -32,6 +32,12 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pn_Body = new Panel();
+            panel2 = new Panel();
+            lb_Province = new Label();
+            label5 = new Label();
+            panel1 = new Panel();
+            lb_Manila = new Label();
+            label1 = new Label();
             label3 = new Label();
             pn_Nav = new Panel();
             btn_New = new Button();
@@ -52,6 +58,8 @@
             Column12 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
             pn_Body.SuspendLayout();
+            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).BeginInit();
@@ -60,6 +68,8 @@
             // pn_Body
             // 
             pn_Body.BackColor = Color.FromArgb(39, 60, 117);
+            pn_Body.Controls.Add(panel2);
+            pn_Body.Controls.Add(panel1);
             pn_Body.Controls.Add(label3);
             pn_Body.Controls.Add(pn_Nav);
             pn_Body.Dock = DockStyle.Top;
@@ -68,6 +78,70 @@
             pn_Body.Padding = new Padding(20);
             pn_Body.Size = new Size(810, 225);
             pn_Body.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.White;
+            panel2.Controls.Add(lb_Province);
+            panel2.Controls.Add(label5);
+            panel2.Location = new Point(217, 66);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(150, 60);
+            panel2.TabIndex = 15;
+            // 
+            // lb_Province
+            // 
+            lb_Province.AutoSize = true;
+            lb_Province.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Province.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Province.Location = new Point(32, 28);
+            lb_Province.Name = "lb_Province";
+            lb_Province.Size = new Size(19, 25);
+            lb_Province.TabIndex = 3;
+            lb_Province.Text = "-";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(64, 64, 64);
+            label5.Location = new Point(12, 8);
+            label5.Name = "label5";
+            label5.Size = new Size(52, 13);
+            label5.TabIndex = 2;
+            label5.Text = "Province";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(lb_Manila);
+            panel1.Controls.Add(label1);
+            panel1.Location = new Point(50, 66);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(150, 60);
+            panel1.TabIndex = 14;
+            // 
+            // lb_Manila
+            // 
+            lb_Manila.AutoSize = true;
+            lb_Manila.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Manila.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Manila.Location = new Point(32, 28);
+            lb_Manila.Name = "lb_Manila";
+            lb_Manila.Size = new Size(19, 25);
+            lb_Manila.TabIndex = 1;
+            lb_Manila.Text = "-";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(64, 64, 64);
+            label1.Location = new Point(12, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(78, 13);
+            label1.TabIndex = 0;
+            label1.Text = "Metro Manila";
             // 
             // label3
             // 
@@ -87,7 +161,7 @@
             pn_Nav.Controls.Add(btn_New);
             pn_Nav.Controls.Add(pb_Icon);
             pn_Nav.Controls.Add(txt_Search);
-            pn_Nav.Location = new Point(50, 101);
+            pn_Nav.Location = new Point(50, 144);
             pn_Nav.Name = "pn_Nav";
             pn_Nav.Size = new Size(716, 47);
             pn_Nav.TabIndex = 9;
@@ -132,7 +206,6 @@
             // 
             dgv_Services.AllowUserToAddRows = false;
             dgv_Services.AllowUserToDeleteRows = false;
-            dgv_Services.AllowUserToOrderColumns = true;
             dgv_Services.AllowUserToResizeRows = false;
             dgv_Services.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Services.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -170,7 +243,6 @@
             dgv_Services.RowTemplate.Height = 40;
             dgv_Services.RowTemplate.ReadOnly = true;
             dgv_Services.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Services.ScrollBars = ScrollBars.Vertical;
             dgv_Services.Size = new Size(804, 436);
             dgv_Services.TabIndex = 0;
             dgv_Services.CellDoubleClick += dgv_Services_CellDoubleClick;
@@ -198,7 +270,7 @@
             // Column3
             // 
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column3.HeaderText = "Store Name";
+            Column3.HeaderText = "Merchant";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             Column3.Width = 250;
@@ -292,6 +364,10 @@
             Load += Servicing_Load;
             pn_Body.ResumeLayout(false);
             pn_Body.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             pn_Nav.ResumeLayout(false);
             pn_Nav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).EndInit();
@@ -308,6 +384,12 @@
         private TextBox txt_Search;
         private PictureBox pb_Icon;
         private Button btn_New;
+        private Panel panel2;
+        private Panel panel1;
+        private Label lb_Manila;
+        private Label label1;
+        private Label lb_Province;
+        private Label label5;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

@@ -7,8 +7,13 @@ namespace MIS_Admin.Controller
     {
         private static Auth auth = new Auth();
 
-        public static UserSession? Login(string username, string password)
-            =>auth.GetUserAccount(username, password);
-        
+        public static UserSession? Authenticate(string username, string password)
+            => auth.GetUserAccount(username, password);
+
+        public static bool SignOutUser(int id)
+           => auth.SignOutStatus(id);
+
+        public static bool SignInUser(int id)
+            => auth.SignInStatus(id);
     }
 }

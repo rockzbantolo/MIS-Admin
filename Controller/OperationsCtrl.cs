@@ -23,6 +23,9 @@ namespace MIS_Admin.Controller
         public static async Task<DataTable> getAllServiceSummary(int? id = null) 
             => await Ops.getServiceSummary(id);
 
+        public static async Task<DataTable> getAllAreaSummary(int? id = null)
+           => await Ops.getAreaSummary(id);
+
         public static async Task<DataTable> getAllServiceRequest(DateTime? date = null) 
             => await Ops.getServiceRequestAsync(date);
 

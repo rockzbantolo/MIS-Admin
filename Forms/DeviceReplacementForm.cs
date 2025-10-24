@@ -30,6 +30,7 @@ namespace MIS_Admin.Forms
             pn_MerchantBody.Radius(8, Color.White);
             pn_TerminalBody.Radius(8, Color.White);
             pn_SimBody.Radius(8, Color.White);
+            btn_Save.Radius(8, Color.White);
         }
 
         private async Task InitializedData()

@@ -1,6 +1,7 @@
 ﻿using MIS_Admin.Forms;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
+using System.Data;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 using static MIS_Admin.Utilities.Notifications;
@@ -32,6 +33,8 @@ namespace MIS_Admin.Modules
             pn_Body.Radius(8, Color.White);
             btn_New.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
+            panel1.Radius(8, Color.FromArgb(39, 60, 117));
+            panel2.Radius(8, Color.FromArgb(39, 60, 117));
         }
 
         private async Task InitializedData()
@@ -40,6 +43,7 @@ namespace MIS_Admin.Modules
             dgv_Services.Refresh();
 
             BindTableToGrid(await getAllServicesAsync(), dgv_Services);
+            await AreaSummary();
 
             isLoading = false;
             dgv_Services.Refresh();
@@ -47,9 +51,23 @@ namespace MIS_Admin.Modules
         }
 
         // Key pressed Events
-        public void OnEnterPressed()
+        public async void OnEnterPressed()
         {
-            dgv_Services.DataSource = getAllServices(txt_Search.Text);
+            //dgv_Services.DataSource = getAllServices(txt_Search.Text);
+            BindTableToGrid(await getAllServicesAsync(txt_Search.Text), dgv_Services);
+        }
+
+        private async Task AreaSummary()
+        {
+            DataTable dt = await getAllAreaSummary();
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                lb_Manila.Text = row["Manila"].ToString();
+                lb_Province.Text = row["Province"].ToString();
+                //lblTotal.Text = row["Total"].ToString();
+            }
         }
 
         public void OnEscapePressed()

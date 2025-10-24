@@ -1,18 +1,25 @@
 ﻿using MIS_Admin.Model;
 using MIS_Admin.Repository;
 using System.Data;
+using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Services
 {
     internal class Auth
     {
-        private User login = new User();
-        private readonly Authenticate _auth = new Authenticate();
+        private User _user;
+        private readonly Authenticate _auth;
 
-        public Authenticate.UserSession? GetUserAccount(string username, string password)
+        public Auth()
+        {
+            _user = new User();
+            _auth = new Authenticate();
+        }
+
+        public UserSession? GetUserAccount(string username, string password)
         {
             object param = string.IsNullOrWhiteSpace(username) ? DBNull.Value : username;
-            DataTable dt = login.FindUser(param); // repository call
+            DataTable dt = _user.FindAccount(param); // repository call
 
             if (dt.Rows.Count == 0)
                 return null;
@@ -25,7 +32,7 @@ namespace MIS_Admin.Services
             if (!string.Equals(dbPassword, encryptedInput, StringComparison.Ordinal))
                 return null;
 
-            return new Authenticate.UserSession
+            return new UserSession
             {
                 UserID = Convert.ToInt32(row["UserID"]),
                 UserName = row["UserName"]?.ToString(),
@@ -34,5 +41,28 @@ namespace MIS_Admin.Services
             };
         }
 
+        public bool SignInStatus(object id)
+        {
+            try
+            {
+                return _user.UpdateUserStatus(id, 1, "LOGIN"); ;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool SignOutStatus(object id)
+        {
+            try
+            {
+                return _user.UpdateUserStatus(id, 2, "LOGOUT"); ;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

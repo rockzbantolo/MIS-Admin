@@ -50,8 +50,8 @@
             ColContactPerson = new DataGridViewTextBoxColumn();
             ColContactNo = new DataGridViewTextBoxColumn();
             ColEmail = new DataGridViewTextBoxColumn();
-            ColBtnReplace = new DataGridViewButtonColumn();
-            ColBtnDelete = new DataGridViewButtonColumn();
+            ColBtnReplace = new DataGridViewImageColumn();
+            ColBtnDelete = new DataGridViewImageColumn();
             pn_Body.SuspendLayout();
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
@@ -153,7 +153,6 @@
             dgv_Services.RowTemplate.Height = 40;
             dgv_Services.RowTemplate.ReadOnly = true;
             dgv_Services.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Services.ScrollBars = ScrollBars.Vertical;
             dgv_Services.Size = new Size(813, 416);
             dgv_Services.TabIndex = 0;
             dgv_Services.CellContentClick += dgv_Services_CellContentClick;
@@ -255,17 +254,19 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.RoyalBlue;
+            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
             dataGridViewCellStyle2.Padding = new Padding(1, 0, 6, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.White;
             dataGridViewCellStyle2.SelectionForeColor = Color.RoyalBlue;
             ColBtnReplace.DefaultCellStyle = dataGridViewCellStyle2;
+            ColBtnReplace.Description = "Replace Device";
             ColBtnReplace.HeaderText = "";
+            ColBtnReplace.Image = (Image)resources.GetObject("ColBtnReplace.Image");
             ColBtnReplace.Name = "ColBtnReplace";
             ColBtnReplace.ReadOnly = true;
             ColBtnReplace.Resizable = DataGridViewTriState.True;
-            ColBtnReplace.Text = "Replace";
-            ColBtnReplace.UseColumnTextForButtonValue = true;
-            ColBtnReplace.Width = 75;
+            ColBtnReplace.ToolTipText = "Replace Device";
+            ColBtnReplace.Width = 50;
             // 
             // ColBtnDelete
             // 
@@ -273,16 +274,18 @@
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.FromArgb(192, 0, 0);
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
             dataGridViewCellStyle3.Padding = new Padding(1, 0, 6, 0);
             dataGridViewCellStyle3.SelectionBackColor = Color.White;
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 0, 0);
             ColBtnDelete.DefaultCellStyle = dataGridViewCellStyle3;
             ColBtnDelete.HeaderText = "";
+            ColBtnDelete.Image = (Image)resources.GetObject("ColBtnDelete.Image");
             ColBtnDelete.Name = "ColBtnDelete";
             ColBtnDelete.ReadOnly = true;
-            ColBtnDelete.Text = "Delete";
-            ColBtnDelete.UseColumnTextForButtonValue = true;
-            ColBtnDelete.Width = 75;
+            ColBtnDelete.Resizable = DataGridViewTriState.True;
+            ColBtnDelete.ToolTipText = "Uninstall Device";
+            ColBtnDelete.Width = 50;
             // 
             // Merchants
             // 
@@ -323,7 +326,7 @@
         private DataGridViewTextBoxColumn ColContactPerson;
         private DataGridViewTextBoxColumn ColContactNo;
         private DataGridViewTextBoxColumn ColEmail;
-        private DataGridViewButtonColumn ColBtnReplace;
-        private DataGridViewButtonColumn ColBtnDelete;
+        private DataGridViewImageColumn ColBtnReplace;
+        private DataGridViewImageColumn ColBtnDelete;
     }
 }

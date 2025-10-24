@@ -1,13 +1,14 @@
 ﻿using MIS_Admin.Modules;
-using MIS_Admin.Utilities.UI;
 using MIS_Admin.Utilities.Handler;
-using static MIS_Admin.Utilities.Functions;
+using MIS_Admin.Utilities.UI;
+using static MIS_Admin.Controller.AuthCtrl;
 
 namespace MIS_Admin
 {
     public partial class Main : Form
     {
         public Panel BodyPanel => pn_Body;
+        public int UserId { get; set; }
 
         public Main()
         {
@@ -18,6 +19,36 @@ namespace MIS_Admin
         {
             base.OnLoad(e);
             InitializedDisplay();
+        }
+
+        private void SignOutAccount(FormClosingEventArgs e)
+        {
+            // ignore automatic shutdown (like Application.Exit)
+            if (e.CloseReason == CloseReason.WindowsShutDown || e.CloseReason == CloseReason.TaskManagerClosing)
+                return;
+
+            // skip validation if no user logged in
+            if (UserId == 0)
+                return;
+
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to close the application?",
+                "Service Management",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm == DialogResult.No)
+            {
+                e.Cancel = true; // prevent closing
+                return;
+            }
+
+            bool isLoggedOut = SignOutUser(UserId);
+            if (!isLoggedOut)
+            {
+                e.Cancel = true; // also cancel if logout failed
+            }
         }
 
         private IKeyHandler FindKeyHandler(Control parent)
@@ -69,7 +100,12 @@ namespace MIS_Admin
 
         private void Main_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SignOutAccount(e);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace MIS_Admin.Modules
             lb_Password.Radius(11, Color.WhiteSmoke);
         }
 
-        private void SignIn()
+        private void SignInAccount()
         {
             string username = tx_Username.Text.Trim();
             string password = tx_Pass.Text.Trim();
@@ -44,7 +44,7 @@ namespace MIS_Admin.Modules
                 return;
             }
 
-            var session = Login(username, password);
+            var session = Authenticate(username, password);
 
             if (session != null)
             {
@@ -52,7 +52,6 @@ namespace MIS_Admin.Modules
             }
             else
             {
-                lb_Message.ForeColor = Color.Red;
                 lb_Message.Text = "Invalid account.";
                 lb_Message.Visible = true;
             }
@@ -60,12 +59,12 @@ namespace MIS_Admin.Modules
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            SignIn();
+            SignInAccount();
         }
 
         public void OnEnterPressed()
         {
-            SignIn();
+            SignInAccount();
         }
 
         public void OnEscapePressed()
@@ -77,5 +76,6 @@ namespace MIS_Admin.Modules
         {
             //throw new NotImplementedException();
         }
+   
     }
 }
