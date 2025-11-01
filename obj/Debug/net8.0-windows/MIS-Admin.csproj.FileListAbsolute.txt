@@ -107,3 +107,4 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\refint\MIS-Ad
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.pdb
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.genruntimeconfig.cache
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\ref\MIS-Admin.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Finance.resources

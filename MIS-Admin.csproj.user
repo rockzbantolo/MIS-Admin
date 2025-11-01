@@ -13,6 +13,9 @@
     <Compile Update="Modules\Admin.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Modules\Finance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Modules\Home.cs">
       <SubType>UserControl</SubType>
     </Compile>

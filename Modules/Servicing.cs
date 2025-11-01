@@ -33,8 +33,8 @@ namespace MIS_Admin.Modules
             pn_Body.Radius(8, Color.White);
             btn_New.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
-            panel1.Radius(8, Color.FromArgb(39, 60, 117));
-            panel2.Radius(8, Color.FromArgb(39, 60, 117));
+            pn_MM.Radius(8, Color.FromArgb(39, 60, 117));
+            pn_Prov.Radius(8, Color.FromArgb(39, 60, 117));
         }
 
         private async Task InitializedData()
@@ -103,16 +103,16 @@ namespace MIS_Admin.Modules
 
                 switch (value)
                 {
-                    case "Normal":
+                    case "NORMAL":
                         cell.Style.ForeColor = Color.Green;
                         break;
-                    case "Medium":
+                    case "MEDIUM":
                         cell.Style.ForeColor = Color.Orange;
                         break;
-                    case "High":
+                    case "HIGH":
                         cell.Style.ForeColor = Color.DarkOrange;
                         break;
-                    case "Critical":
+                    case "CRITICAL":
                         cell.Style.ForeColor = Color.Red;
                         break;
                     default:

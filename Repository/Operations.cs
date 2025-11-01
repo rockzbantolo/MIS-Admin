@@ -67,14 +67,33 @@ namespace MIS_Admin.Repository
                 IFNULL(Merchant_Name, 'N/A') AS `Merchant`,
                 IFNULL(REPLACE(Request, 'FOR ', ''), 'N/A') AS Service,
                 CASE 
-                    WHEN Days < 1 OR Days = 1 THEN 'Normal'
-                    WHEN Days BETWEEN 2 AND 4 THEN 'Medium'
-                    WHEN Days BETWEEN 5 AND 8 THEN 'High'
-                    WHEN Days >= 9 THEN 'Critical'
+                    WHEN Days < 1 OR Days = 1 THEN 'NORMAL'
+                    WHEN Days BETWEEN 2 AND 4 THEN 'MEDIUM'
+                    WHEN Days BETWEEN 5 AND 8 THEN 'HIGH'
+                    WHEN Days >= 9 THEN 'CRITICAL'
                     ELSE 'Unknown'
                 END AS Priority,
-                IFNULL(Service_Status, 'N/A') AS `Status`,
-                IFNULL(Service_Result, 'N/A') AS `Result`,
+                CASE 
+                    WHEN Service_Result = 'NEGATIVE' THEN
+                        CASE 
+                            WHEN Type_ID IN (1, 4) THEN 'FAILED'
+                            WHEN Type_ID IN (3, 6, 7) THEN 'NO RESPONSE'
+                            ELSE 'N/A'
+                        END
+                    WHEN Service_Result = 'COMPLETED' THEN
+                        CASE 
+                            WHEN Type_ID = 1 THEN 'INSTALLED'
+                            ELSE 'COMPLETED'
+                        END
+                    WHEN Status_ID = 2 THEN 'ALLOCATED'
+                    WHEN Status_ID = 8 THEN 'DISPATCHED'
+                    WHEN Service_Result = 'PENDING' THEN 'PROCESSING'
+                    ELSE 'N/A'
+                END AS `Status`,
+                CASE 
+				    WHEN Service_Result = 'COMPLETED' THEN 'SUCCESS'
+				    ELSE Service_Result
+			    END AS `Result`,
                 IFNULL(NULLIF(Terminal_SN, 0), 'N/A') AS Terminal,
                 IFNULL(NULLIF(Sim_SN, 0), 'N/A') AS Sim,
                 CASE 
@@ -258,19 +277,30 @@ namespace MIS_Admin.Repository
                 new MySqlParameter("@date", date));
         }
 
-        public async Task<DataTable> FindSLACount(object id)
+        public async Task<DataTable> FindDispatcherServices(object id, DateTime targetDate)
         {
+            var monthParam = targetDate.Month;
+            var yearParam = targetDate.Year;
+
             string stmt = @"
             SELECT
-                SUM(CASE WHEN TAT_Status = 'Beyond' THEN 1 ELSE 0 END) AS `Beyond Count`,
-                SUM(CASE WHEN TAT_Status = 'Within' THEN 1 ELSE 0 END) AS `Within Count`
-            FROM vw_service_info
+	            REPLACE(Request, 'FOR ', '') AS Service,
+	            Dispatch_By AS Dispatcher,
+	            SUM(CASE WHEN Status_ID = 8 OR Dispatcher_ID = NULL THEN 1 ELSE 0 END) AS Pending,
+	            SUM(CASE WHEN Status_ID = 7 AND Service_Result = 'COMPLETED' THEN 1 ELSE 0 END) AS Completed
+            FROM 
+                vw_service_info
             WHERE (@id IS NULL OR Dispatcher_ID = @id)
-              AND MONTH(Created_Date) = MONTH(CURDATE())
-              AND YEAR(Created_Date) = YEAR(CURDATE())
-              AND Request_Status = 'SUCCESS';";
+              AND MONTH(Created_Date) = MONTH(@month)
+              AND YEAR(Created_Date)  = YEAR(@year)                
+            GROUP BY Dispatcher_ID, Type_ID, Request
+            HAVING Pending <> 0 AND Completed <> 0
+            ORDER BY Status_ID, Dispatch_By;";
 
-            return await SelectAsync(stmt, new MySqlParameter("@id", id));
+            return await SelectAsync(stmt,
+                 new MySqlParameter("@id", id),
+                 new MySqlParameter("@month", monthParam),
+                 new MySqlParameter("@year", yearParam));
         }
 
         public DataTable FindStores(object search, int limit = 100)
@@ -306,6 +336,12 @@ namespace MIS_Admin.Repository
             SELECT
                 i.IRIDNo as `ID`,
                 m.Merchant_ID AS `Code`,
+                CASE i.IRStatus
+                    WHEN 1 THEN 'AVAILABLE'
+                    WHEN 7 THEN 'ACTIVE'
+                    WHEN 11 THEN 'INACTIVE'
+                    ELSE 'UNKNOWN'
+                END AS `Status`,
                 m.Merchant_Name AS `Merchant`,
                 IFNULL(NULLIF(i.TID, '-'), 'N/A') AS TID,
                 IFNULL(NULLIF(i.MID, '-'), 'N/A') AS MID,
@@ -318,7 +354,6 @@ namespace MIS_Admin.Repository
             FROM vw_merchant_info m
             LEFT JOIN tblirdetail i ON i.MerchantID = m.Merchant_ID
             WHERE i.IRActive = 1 
-              AND i.IRStatus <> 11
               AND (
                     @Search IS NULL OR @Search = '' OR
                     i.TID = @Search OR
@@ -447,27 +482,27 @@ namespace MIS_Admin.Repository
                 new MySqlParameter("@u", username));
         }
 
-        public void UpdateUser(int id, string username)
+        public void UpdateService(int id, string username)
         {
             Execute("UPDATE users SET username=@u WHERE id=@id", "users",
                 new MySqlParameter("@u", username),
                 new MySqlParameter("@id", id));
         }
 
-        public async Task<int> UpdateUserAsync(int id, string username)
+        public async Task<int> UpdateServiceAsync(int id, string username)
         {
             return await ExecuteAsync("UPDATE users SET username=@u WHERE id=@id", "users",
                 new MySqlParameter("@u", username),
                 new MySqlParameter("@id", id));
         }
 
-        public void DeleteUser(int id)
+        public void DeleteService(int id)
         {
             Execute("DELETE FROM users WHERE id=@id", "users",
                 new MySqlParameter("@id", id));
         }
 
-        public async Task<int> DeleteUserAsync(int id)
+        public async Task<int> DeleteServiceAsync(int id)
         {
             return await ExecuteAsync("DELETE FROM users WHERE id=@id", "users",
                 new MySqlParameter("@id", id));

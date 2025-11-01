@@ -63,6 +63,7 @@
             label11 = new Label();
             label10 = new Label();
             label8 = new Label();
+            label6 = new Label();
             label7 = new Label();
             lb_City = new Label();
             lb_Address = new Label();
@@ -75,7 +76,6 @@
             panel5 = new Panel();
             lb_RequestNo = new Label();
             label1 = new Label();
-            label6 = new Label();
             btn_Save = new Button();
             panel1.SuspendLayout();
             pn_SimBody.SuspendLayout();
@@ -96,24 +96,24 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(917, 63);
+            panel1.Size = new Size(643, 63);
             panel1.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.White;
             label3.Location = new Point(21, 19);
             label3.Name = "label3";
-            label3.Size = new Size(145, 19);
+            label3.Size = new Size(150, 20);
             label3.TabIndex = 11;
             label3.Text = "Device Replacement";
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.Location = new Point(1561, 16);
+            button1.Location = new Point(1287, 16);
             button1.Name = "button1";
             button1.Size = new Size(35, 28);
             button1.TabIndex = 1;
@@ -124,9 +124,9 @@
             // 
             lb_Message.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_Message.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Message.Location = new Point(21, 492);
+            lb_Message.Location = new Point(21, 715);
             lb_Message.Name = "lb_Message";
-            lb_Message.Size = new Size(600, 35);
+            lb_Message.Size = new Size(367, 46);
             lb_Message.TabIndex = 12;
             lb_Message.Text = "-";
             lb_Message.TextAlign = ContentAlignment.MiddleLeft;
@@ -141,29 +141,30 @@
             pn_SimBody.Controls.Add(lb_Sim);
             pn_SimBody.Controls.Add(label14);
             pn_SimBody.Controls.Add(panel6);
-            pn_SimBody.Location = new Point(21, 79);
+            pn_SimBody.Location = new Point(335, 482);
             pn_SimBody.Name = "pn_SimBody";
-            pn_SimBody.Size = new Size(259, 166);
+            pn_SimBody.Size = new Size(290, 219);
             pn_SimBody.TabIndex = 2;
             // 
             // lb_Carrier
             // 
-            lb_Carrier.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Carrier.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_Carrier.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_Carrier.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Carrier.Location = new Point(80, 52);
             lb_Carrier.Name = "lb_Carrier";
-            lb_Carrier.Size = new Size(164, 15);
+            lb_Carrier.Size = new Size(200, 15);
             lb_Carrier.TabIndex = 19;
             lb_Carrier.Text = "-";
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label20.ForeColor = Color.FromArgb(64, 64, 64);
             label20.Location = new Point(26, 52);
             label20.Name = "label20";
-            label20.Size = new Size(48, 15);
+            label20.Size = new Size(54, 17);
             label20.TabIndex = 18;
             label20.Text = "Carrier:";
             // 
@@ -173,48 +174,49 @@
             panel3.Controls.Add(tx_Sim);
             panel3.Controls.Add(label13);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 114);
+            panel3.Location = new Point(0, 167);
             panel3.Name = "panel3";
-            panel3.Size = new Size(259, 52);
+            panel3.Size = new Size(290, 52);
             panel3.TabIndex = 17;
             // 
             // tx_Sim
             // 
-            tx_Sim.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tx_Sim.Location = new Point(74, 11);
+            tx_Sim.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            tx_Sim.Location = new Point(67, 13);
             tx_Sim.Name = "tx_Sim";
-            tx_Sim.Size = new Size(170, 23);
+            tx_Sim.Size = new Size(205, 27);
             tx_Sim.TabIndex = 16;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label13.ForeColor = Color.FromArgb(64, 64, 64);
-            label13.Location = new Point(26, 14);
+            label13.Location = new Point(26, 18);
             label13.Name = "label13";
-            label13.Size = new Size(23, 15);
+            label13.Size = new Size(27, 17);
             label13.TabIndex = 5;
             label13.Text = "To:";
             // 
             // lb_Sim
             // 
-            lb_Sim.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Sim.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_Sim.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_Sim.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Sim.Location = new Point(80, 81);
             lb_Sim.Name = "lb_Sim";
-            lb_Sim.Size = new Size(164, 15);
+            lb_Sim.Size = new Size(200, 15);
             lb_Sim.TabIndex = 15;
             lb_Sim.Text = "-";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label14.ForeColor = Color.FromArgb(64, 64, 64);
             label14.Location = new Point(26, 81);
             label14.Name = "label14";
-            label14.Size = new Size(41, 15);
+            label14.Size = new Size(46, 17);
             label14.TabIndex = 4;
             label14.Text = "Serial:";
             // 
@@ -225,17 +227,17 @@
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(259, 37);
+            panel6.Size = new Size(290, 43);
             panel6.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(13, 10);
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(64, 64, 64);
+            label4.Location = new Point(13, 12);
             label4.Name = "label4";
-            label4.Size = new Size(98, 15);
+            label4.Size = new Size(124, 20);
             label4.TabIndex = 0;
             label4.Text = "Sim Information";
             // 
@@ -252,16 +254,17 @@
             pn_TerminalBody.Controls.Add(lb_Terminal);
             pn_TerminalBody.Controls.Add(label5);
             pn_TerminalBody.Controls.Add(panel4);
-            pn_TerminalBody.Location = new Point(21, 257);
+            pn_TerminalBody.Location = new Point(21, 482);
             pn_TerminalBody.Name = "pn_TerminalBody";
-            pn_TerminalBody.Size = new Size(259, 219);
+            pn_TerminalBody.Size = new Size(300, 219);
             pn_TerminalBody.TabIndex = 3;
             // 
             // lb_AppCrc
             // 
-            lb_AppCrc.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_AppCrc.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_AppCrc.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_AppCrc.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_AppCrc.Location = new Point(84, 138);
+            lb_AppCrc.Location = new Point(125, 138);
             lb_AppCrc.Name = "lb_AppCrc";
             lb_AppCrc.Size = new Size(162, 15);
             lb_AppCrc.TabIndex = 23;
@@ -269,9 +272,10 @@
             // 
             // lb_AppVersion
             // 
-            lb_AppVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_AppVersion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_AppVersion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_AppVersion.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_AppVersion.Location = new Point(84, 109);
+            lb_AppVersion.Location = new Point(125, 109);
             lb_AppVersion.Name = "lb_AppVersion";
             lb_AppVersion.Size = new Size(162, 15);
             lb_AppVersion.TabIndex = 22;
@@ -279,9 +283,10 @@
             // 
             // lb_Model
             // 
-            lb_Model.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Model.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_Model.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_Model.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Model.Location = new Point(84, 52);
+            lb_Model.Location = new Point(125, 52);
             lb_Model.Name = "lb_Model";
             lb_Model.Size = new Size(162, 15);
             lb_Model.TabIndex = 21;
@@ -295,66 +300,67 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 167);
             panel2.Name = "panel2";
-            panel2.Size = new Size(259, 52);
+            panel2.Size = new Size(300, 52);
             panel2.TabIndex = 20;
             // 
             // tx_Terminal
             // 
-            tx_Terminal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tx_Terminal.Location = new Point(67, 14);
+            tx_Terminal.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            tx_Terminal.Location = new Point(67, 13);
             tx_Terminal.Name = "tx_Terminal";
-            tx_Terminal.Size = new Size(168, 23);
+            tx_Terminal.Size = new Size(213, 27);
             tx_Terminal.TabIndex = 16;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label9.ForeColor = Color.FromArgb(64, 64, 64);
-            label9.Location = new Point(27, 17);
+            label9.Location = new Point(28, 18);
             label9.Name = "label9";
-            label9.Size = new Size(23, 15);
+            label9.Size = new Size(27, 17);
             label9.TabIndex = 3;
             label9.Text = "To:";
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label19.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label19.ForeColor = Color.FromArgb(64, 64, 64);
             label19.Location = new Point(27, 138);
             label19.Name = "label19";
-            label19.Size = new Size(28, 15);
+            label19.Size = new Size(31, 17);
             label19.TabIndex = 19;
             label19.Text = "Crc:";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label18.ForeColor = Color.FromArgb(64, 64, 64);
             label18.Location = new Point(27, 81);
             label18.Name = "label18";
-            label18.Size = new Size(41, 15);
+            label18.Size = new Size(46, 17);
             label18.TabIndex = 18;
             label18.Text = "Serial:";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label17.ForeColor = Color.FromArgb(64, 64, 64);
             label17.Location = new Point(27, 52);
             label17.Name = "label17";
-            label17.Size = new Size(45, 15);
+            label17.Size = new Size(51, 17);
             label17.TabIndex = 17;
             label17.Text = "Model:";
             // 
             // lb_Terminal
             // 
-            lb_Terminal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Terminal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lb_Terminal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lb_Terminal.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Terminal.Location = new Point(84, 81);
+            lb_Terminal.Location = new Point(125, 81);
             lb_Terminal.Name = "lb_Terminal";
             lb_Terminal.Size = new Size(162, 15);
             lb_Terminal.TabIndex = 15;
@@ -363,11 +369,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(64, 64, 64);
             label5.Location = new Point(27, 109);
             label5.Name = "label5";
-            label5.Size = new Size(51, 15);
+            label5.Size = new Size(58, 17);
             label5.TabIndex = 2;
             label5.Text = "Version:";
             // 
@@ -378,17 +384,17 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(259, 37);
+            panel4.Size = new Size(300, 43);
             panel4.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(13, 10);
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(64, 64, 64);
+            label2.Location = new Point(13, 12);
             label2.Name = "label2";
-            label2.Size = new Size(120, 15);
+            label2.Size = new Size(153, 20);
             label2.TabIndex = 0;
             label2.Text = "Teminal Information";
             // 
@@ -412,86 +418,96 @@
             pn_MerchantBody.Controls.Add(lb_MID);
             pn_MerchantBody.Controls.Add(lb_MerchantName);
             pn_MerchantBody.Controls.Add(panel5);
-            pn_MerchantBody.Location = new Point(294, 79);
+            pn_MerchantBody.Location = new Point(21, 82);
             pn_MerchantBody.Name = "pn_MerchantBody";
-            pn_MerchantBody.Size = new Size(604, 397);
+            pn_MerchantBody.Size = new Size(604, 383);
             pn_MerchantBody.TabIndex = 4;
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label16.Location = new Point(290, 323);
+            label16.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label16.Location = new Point(290, 311);
             label16.Name = "label16";
-            label16.Size = new Size(28, 15);
+            label16.Size = new Size(32, 17);
             label16.TabIndex = 26;
             label16.Text = "City";
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(290, 265);
+            label15.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label15.Location = new Point(290, 253);
             label15.Name = "label15";
-            label15.Size = new Size(36, 15);
+            label15.Size = new Size(42, 17);
             label15.TabIndex = 25;
             label15.Text = "Email";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(28, 323);
+            label12.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label12.Location = new Point(28, 311);
             label12.Name = "label12";
-            label12.Size = new Size(99, 15);
+            label12.Size = new Size(109, 17);
             label12.TabIndex = 24;
             label12.Text = "Contact Number";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(28, 265);
+            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label11.Location = new Point(28, 253);
             label11.Name = "label11";
-            label11.Size = new Size(91, 15);
+            label11.Size = new Size(101, 17);
             label11.TabIndex = 23;
             label11.Text = "Contact Person";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(290, 202);
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label10.Location = new Point(290, 190);
             label10.Name = "label10";
-            label10.Size = new Size(27, 15);
+            label10.Size = new Size(30, 17);
             label10.TabIndex = 22;
             label10.Text = "TID";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(28, 202);
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label8.Location = new Point(28, 190);
             label8.Name = "label8";
-            label8.Size = new Size(31, 15);
+            label8.Size = new Size(34, 17);
             label8.TabIndex = 21;
             label8.Text = "MID";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            label6.Location = new Point(28, 59);
+            label6.Name = "label6";
+            label6.Size = new Size(66, 17);
+            label6.TabIndex = 19;
+            label6.Text = "Merchant";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             label7.Location = new Point(28, 127);
             label7.Name = "label7";
-            label7.Size = new Size(51, 15);
+            label7.Size = new Size(57, 17);
             label7.TabIndex = 20;
             label7.Text = "Address";
             // 
             // lb_City
             // 
-            lb_City.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_City.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_City.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_City.Location = new Point(290, 344);
+            lb_City.Location = new Point(290, 332);
             lb_City.Name = "lb_City";
             lb_City.Size = new Size(296, 27);
             lb_City.TabIndex = 18;
@@ -499,7 +515,7 @@
             // 
             // lb_Address
             // 
-            lb_Address.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Address.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_Address.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Address.Location = new Point(28, 151);
             lb_Address.Name = "lb_Address";
@@ -509,9 +525,9 @@
             // 
             // lb_Email
             // 
-            lb_Email.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Email.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_Email.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Email.Location = new Point(290, 287);
+            lb_Email.Location = new Point(290, 275);
             lb_Email.Name = "lb_Email";
             lb_Email.Size = new Size(296, 27);
             lb_Email.TabIndex = 14;
@@ -519,9 +535,9 @@
             // 
             // lb_Contact
             // 
-            lb_Contact.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Contact.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_Contact.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Contact.Location = new Point(28, 344);
+            lb_Contact.Location = new Point(28, 332);
             lb_Contact.Name = "lb_Contact";
             lb_Contact.Size = new Size(245, 27);
             lb_Contact.TabIndex = 13;
@@ -529,9 +545,9 @@
             // 
             // lb_Person
             // 
-            lb_Person.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_Person.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_Person.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Person.Location = new Point(28, 287);
+            lb_Person.Location = new Point(28, 275);
             lb_Person.Name = "lb_Person";
             lb_Person.Size = new Size(245, 27);
             lb_Person.TabIndex = 12;
@@ -539,9 +555,9 @@
             // 
             // lb_TID
             // 
-            lb_TID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_TID.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_TID.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_TID.Location = new Point(290, 223);
+            lb_TID.Location = new Point(290, 211);
             lb_TID.Name = "lb_TID";
             lb_TID.Size = new Size(296, 24);
             lb_TID.TabIndex = 11;
@@ -549,9 +565,9 @@
             // 
             // lb_MID
             // 
-            lb_MID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lb_MID.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_MID.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_MID.Location = new Point(28, 223);
+            lb_MID.Location = new Point(28, 211);
             lb_MID.Name = "lb_MID";
             lb_MID.Size = new Size(245, 24);
             lb_MID.TabIndex = 10;
@@ -559,7 +575,7 @@
             // 
             // lb_MerchantName
             // 
-            lb_MerchantName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            lb_MerchantName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lb_MerchantName.ForeColor = Color.FromArgb(64, 64, 64);
             lb_MerchantName.Location = new Point(28, 82);
             lb_MerchantName.Name = "lb_MerchantName";
@@ -576,16 +592,16 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(604, 37);
+            panel5.Size = new Size(604, 47);
             panel5.TabIndex = 0;
             // 
             // lb_RequestNo
             // 
-            lb_RequestNo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_RequestNo.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_RequestNo.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_RequestNo.Location = new Point(362, 9);
+            lb_RequestNo.Location = new Point(270, 14);
             lb_RequestNo.Name = "lb_RequestNo";
-            lb_RequestNo.Size = new Size(232, 20);
+            lb_RequestNo.Size = new Size(324, 20);
             lb_RequestNo.TabIndex = 18;
             lb_RequestNo.Text = "-";
             lb_RequestNo.TextAlign = ContentAlignment.TopRight;
@@ -593,23 +609,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(13, 10);
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(64, 64, 64);
+            label1.Location = new Point(13, 13);
             label1.Name = "label1";
-            label1.Size = new Size(131, 15);
+            label1.Size = new Size(165, 20);
             label1.TabIndex = 0;
             label1.Text = "Merchant Information";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(28, 59);
-            label6.Name = "label6";
-            label6.Size = new Size(61, 15);
-            label6.TabIndex = 19;
-            label6.Text = "Merchant";
             // 
             // btn_Save
             // 
@@ -618,9 +624,9 @@
             btn_Save.FlatStyle = FlatStyle.Flat;
             btn_Save.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_Save.ForeColor = Color.White;
-            btn_Save.Location = new Point(700, 492);
+            btn_Save.Location = new Point(394, 715);
             btn_Save.Name = "btn_Save";
-            btn_Save.Size = new Size(198, 35);
+            btn_Save.Size = new Size(231, 46);
             btn_Save.TabIndex = 5;
             btn_Save.Text = "Save";
             btn_Save.UseVisualStyleBackColor = false;
@@ -631,7 +637,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(206, 214, 224);
-            ClientSize = new Size(917, 543);
+            ClientSize = new Size(643, 773);
             Controls.Add(lb_Message);
             Controls.Add(btn_Save);
             Controls.Add(pn_MerchantBody);

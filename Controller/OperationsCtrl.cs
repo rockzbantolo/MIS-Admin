@@ -8,6 +8,8 @@ namespace MIS_Admin.Controller
     {
         private static OperationsSvc Ops = new OperationsSvc();
 
+
+        // SERVICES
         public static DataTable getAllServices(string? search = null)
             => Ops.getServices(search);
 
@@ -38,6 +40,10 @@ namespace MIS_Admin.Controller
         public static async Task<DataTable> getAllUnclosedTickets(int? id = null)
             => await Ops.getUnclosedTicketsAsync(id, null);
 
+        public static async Task<DataTable> getAllDispatchersServices(int? id = null)
+            => await Ops.getDispatchersServices(id, null);
+
+        // RECORDS
         public static DataTable getAllStores(string? search = null)
             => Ops.getStores(search);
 

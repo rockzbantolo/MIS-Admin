@@ -1,12 +1,153 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\modules\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:modules\\overview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\repository\\operations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:repository\\operations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\services\\operationssvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:services\\operationssvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OperationsSvc.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\OperationsSvc.cs",
+              "RelativeDocumentMoniker": "Services\\OperationsSvc.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\OperationsSvc.cs",
+              "RelativeToolTip": "Services\\OperationsSvc.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T10:07:50.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Operations.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Repository\\Operations.cs",
+              "RelativeDocumentMoniker": "Repository\\Operations.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Repository\\Operations.cs",
+              "RelativeToolTip": "Repository\\Operations.cs",
+              "ViewState": "AgIAADEBAAAAAAAAAAA3wDwAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:46:47.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Overview.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Overview.cs",
+              "RelativeDocumentMoniker": "Modules\\Overview.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Overview.cs",
+              "RelativeToolTip": "Modules\\Overview.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:27:50.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Servicing.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Servicing.cs",
+              "RelativeDocumentMoniker": "Modules\\Servicing.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Servicing.cs",
+              "RelativeToolTip": "Modules\\Servicing.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:22:19.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Home.cs",
+              "RelativeDocumentMoniker": "Modules\\Home.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Home.cs [Design]",
+              "RelativeToolTip": "Modules\\Home.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:23:49.724Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Merchants.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Merchants.cs",
+              "RelativeDocumentMoniker": "Modules\\Merchants.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Merchants.cs",
+              "RelativeToolTip": "Modules\\Merchants.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAswGAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:21:48.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Servicing.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Servicing.cs",
+              "RelativeDocumentMoniker": "Modules\\Servicing.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Servicing.cs [Design]",
+              "RelativeToolTip": "Modules\\Servicing.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:18:36.758Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Merchants.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Merchants.cs",
+              "RelativeDocumentMoniker": "Modules\\Merchants.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Modules\\Merchants.cs [Design]",
+              "RelativeToolTip": "Modules\\Merchants.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T09:18:32.65Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -107,7 +107,16 @@ namespace MIS_Admin.Services
             return await Ops.FindUnclosedTicketsAsync(param, dateValue);
         }
 
+        public async Task<DataTable> getDispatchersServices(int? id, DateTime? targetDate)
+        {
+            object param = id.HasValue
+             ? id.Value
+             : DBNull.Value;
 
+            DateTime dateValue = targetDate ?? DateTime.Now;
+
+            return await Ops.FindDispatcherServices(param, dateValue);
+        }
 
         public DataTable getStores(string? search)
         {

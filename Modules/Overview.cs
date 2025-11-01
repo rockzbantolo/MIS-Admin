@@ -2,6 +2,7 @@
 using MIS_Admin.Utilities.UI;
 using System.Data;
 using System.Diagnostics;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
@@ -44,6 +45,7 @@ namespace MIS_Admin.Modules
             dgv_Services.Refresh();
             dgv_Request.Refresh();
             dgv_CloseTickets.Refresh();
+            dgv_HelpdeskRequest.Refresh();
 
             await ServiceSummary();
             await SLASummary();
@@ -62,6 +64,7 @@ namespace MIS_Admin.Modules
             dgv_Services.Refresh();
             dgv_Request.Refresh();
             dgv_CloseTickets.Refresh();
+            dgv_HelpdeskRequest.Refresh();
 
         }
 
@@ -208,6 +211,40 @@ namespace MIS_Admin.Modules
                 string msg = isLoading ? "Fetching Helpdesk Requests ..." : "No records found.";
                 LoadingGridMessage(dgv_HelpdeskRequest, e, msg);
             }
+        }
+
+        private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgv_Services.Columns[e.ColumnIndex].HeaderText != "Status" || e.Value == null)
+                return;
+
+            string status = e.Value.ToString().Trim().ToUpperInvariant();
+
+            Color back = Color.White;
+            Color fore = Color.Black;
+
+            switch (status)
+            {
+                case "DISPATCHED":
+                    fore = Color.Orange;
+                    break;
+                case "COMPLETED":
+                    fore = Color.DarkGreen;
+                    break;
+                case "ALLOCATED":
+                    fore = Color.Blue;
+                    break;
+                case "PROCESSING":
+                    fore = Color.Yellow;
+                    break;
+            }
+
+            // apply style
+            e.CellStyle.BackColor = back;
+            e.CellStyle.ForeColor = fore;
+            e.CellStyle.SelectionBackColor = back;
+            e.CellStyle.SelectionForeColor = fore;
+            e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
         }
     }
 }

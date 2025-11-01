@@ -39,6 +39,7 @@
             btn_Admin = new Button();
             button1 = new Button();
             btn_Reports = new Button();
+            button2 = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
             lb_Role = new Label();
@@ -88,7 +89,7 @@
             btn_Logout.Margin = new Padding(5, 5, 3, 10);
             btn_Logout.Name = "btn_Logout";
             btn_Logout.Padding = new Padding(25, 0, 0, 0);
-            btn_Logout.Size = new Size(191, 54);
+            btn_Logout.Size = new Size(191, 50);
             btn_Logout.TabIndex = 2;
             btn_Logout.Text = "     Logout";
             btn_Logout.TextAlign = ContentAlignment.MiddleLeft;
@@ -104,6 +105,7 @@
             flp_Nav.Controls.Add(btn_Admin);
             flp_Nav.Controls.Add(button1);
             flp_Nav.Controls.Add(btn_Reports);
+            flp_Nav.Controls.Add(button2);
             flp_Nav.Location = new Point(27, 131);
             flp_Nav.Name = "flp_Nav";
             flp_Nav.Size = new Size(202, 582);
@@ -124,7 +126,7 @@
             btn_Home.Margin = new Padding(5, 5, 3, 10);
             btn_Home.Name = "btn_Home";
             btn_Home.Padding = new Padding(25, 0, 0, 0);
-            btn_Home.Size = new Size(191, 54);
+            btn_Home.Size = new Size(191, 50);
             btn_Home.TabIndex = 0;
             btn_Home.Text = "     Home";
             btn_Home.TextAlign = ContentAlignment.MiddleLeft;
@@ -143,11 +145,11 @@
             btn_Services.ForeColor = Color.White;
             btn_Services.Image = (Image)resources.GetObject("btn_Services.Image");
             btn_Services.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Services.Location = new Point(5, 72);
+            btn_Services.Location = new Point(5, 68);
             btn_Services.Margin = new Padding(5, 3, 3, 10);
             btn_Services.Name = "btn_Services";
             btn_Services.Padding = new Padding(25, 0, 0, 0);
-            btn_Services.Size = new Size(191, 54);
+            btn_Services.Size = new Size(191, 50);
             btn_Services.TabIndex = 1;
             btn_Services.Text = "     Services";
             btn_Services.TextAlign = ContentAlignment.MiddleLeft;
@@ -166,11 +168,11 @@
             btn_Stores.ForeColor = Color.White;
             btn_Stores.Image = (Image)resources.GetObject("btn_Stores.Image");
             btn_Stores.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Stores.Location = new Point(5, 139);
+            btn_Stores.Location = new Point(5, 131);
             btn_Stores.Margin = new Padding(5, 3, 3, 10);
             btn_Stores.Name = "btn_Stores";
             btn_Stores.Padding = new Padding(25, 0, 0, 0);
-            btn_Stores.Size = new Size(191, 54);
+            btn_Stores.Size = new Size(191, 50);
             btn_Stores.TabIndex = 2;
             btn_Stores.Text = "     Merchants";
             btn_Stores.TextAlign = ContentAlignment.MiddleLeft;
@@ -189,11 +191,11 @@
             btn_Admin.ForeColor = Color.White;
             btn_Admin.Image = (Image)resources.GetObject("btn_Admin.Image");
             btn_Admin.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Admin.Location = new Point(5, 208);
+            btn_Admin.Location = new Point(5, 196);
             btn_Admin.Margin = new Padding(5, 5, 3, 10);
             btn_Admin.Name = "btn_Admin";
             btn_Admin.Padding = new Padding(25, 0, 0, 0);
-            btn_Admin.Size = new Size(191, 54);
+            btn_Admin.Size = new Size(191, 50);
             btn_Admin.TabIndex = 3;
             btn_Admin.Text = "     Inventory";
             btn_Admin.TextAlign = ContentAlignment.MiddleLeft;
@@ -212,11 +214,11 @@
             button1.ForeColor = Color.White;
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(5, 277);
+            button1.Location = new Point(5, 261);
             button1.Margin = new Padding(5, 5, 3, 10);
             button1.Name = "button1";
             button1.Padding = new Padding(25, 0, 0, 0);
-            button1.Size = new Size(191, 54);
+            button1.Size = new Size(191, 50);
             button1.TabIndex = 4;
             button1.Text = "     Admin";
             button1.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,17 +237,40 @@
             btn_Reports.ForeColor = Color.White;
             btn_Reports.Image = (Image)resources.GetObject("btn_Reports.Image");
             btn_Reports.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Reports.Location = new Point(5, 346);
+            btn_Reports.Location = new Point(5, 326);
             btn_Reports.Margin = new Padding(5, 5, 3, 10);
             btn_Reports.Name = "btn_Reports";
             btn_Reports.Padding = new Padding(25, 0, 0, 0);
-            btn_Reports.Size = new Size(191, 54);
+            btn_Reports.Size = new Size(191, 50);
             btn_Reports.TabIndex = 1;
             btn_Reports.Text = "     Reports";
             btn_Reports.TextAlign = ContentAlignment.MiddleLeft;
             btn_Reports.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_Reports.UseVisualStyleBackColor = true;
             btn_Reports.Click += btn_Reports_Click;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(10, 60, 75);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(10, 60, 75);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(5, 391);
+            button2.Margin = new Padding(5, 5, 3, 10);
+            button2.Name = "button2";
+            button2.Padding = new Padding(25, 0, 0, 0);
+            button2.Size = new Size(191, 50);
+            button2.TabIndex = 5;
+            button2.Text = "     Finance";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
             // 
             // pictureBox1
             // 
@@ -348,5 +373,6 @@
         private PictureBox pictureBox2;
         private Button btn_Logout;
         private Label lb_Role;
+        private Button button2;
     }
 }

@@ -185,6 +185,15 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAMdJREFUSEvd
+        lMsNwkAMBdMhlJBOoAPSGSmBDijhoZW80fOLvewiDoS55KMZW9lDpulvADBjnFnnpGjZyVPnpNRC32eM
+        +i748LhuOtNRLb4fRWc6WOoKiC6/tQDAYq8WFxnqh7CkQX0G8HCRoX4ISxoAuJbh5eoiQ/2QNwvOAC4A
+        Ti4y1A/JFgBY67Nxb7UpLEX3TNCWIwyPb4PjbBCzbUtQ//cWDDO6oDoZ6oeBOoy6ivol2P1B1fkaukjp
+        dVKir2HMaaIzj8sLP6Zb1aFGXB4AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="pictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s

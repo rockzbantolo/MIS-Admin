@@ -29,6 +29,8 @@ namespace MIS_Admin.Modules
             //EnableDoubleBuffering(pn_Body);
             EnableDoubleBuffering(dgv_Services);
             pn_Nav.Radius(8, Color.FromArgb(232, 65, 24));
+            pn_MM.Radius(8, Color.FromArgb(232, 65, 24));
+            pn_Prov.Radius(8, Color.FromArgb(232, 65, 24));
             pn_Body.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
         }
@@ -79,6 +81,36 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            // Handle Status column color coding
+            if (dgv_Services.Columns[e.ColumnIndex].HeaderText == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString().Trim().ToUpperInvariant();
+
+                Color back = Color.White;
+                Color fore = Color.Black;
+
+                switch (status)
+                {
+                    case "AVAILABLE":
+                        fore = Color.Blue;
+                        break;
+
+                    case "ACTIVE":
+                        fore = Color.Green;
+                        break;
+
+                    case "INACTIVE":
+                        fore = Color.DarkRed;
+                        break;
+                }
+
+                e.CellStyle.BackColor = back;
+                e.CellStyle.ForeColor = fore;
+                e.CellStyle.Font = new Font(dgv_Services.Font, FontStyle.Bold);
+                e.CellStyle.SelectionBackColor = back;
+                e.CellStyle.SelectionForeColor = fore;
+
+            }
             if (e.Value != null && e.Value.ToString().Trim().Equals("N/A", StringComparison.OrdinalIgnoreCase))
             {
                 e.CellStyle.ForeColor = Color.Gray;

@@ -32,10 +32,10 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pn_Body = new Panel();
-            panel2 = new Panel();
+            pn_Prov = new Panel();
             lb_Province = new Label();
             label5 = new Label();
-            panel1 = new Panel();
+            pn_MM = new Panel();
             lb_Manila = new Label();
             label1 = new Label();
             label3 = new Label();
@@ -58,8 +58,8 @@
             Column12 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
             pn_Body.SuspendLayout();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
+            pn_Prov.SuspendLayout();
+            pn_MM.SuspendLayout();
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).BeginInit();
@@ -68,8 +68,8 @@
             // pn_Body
             // 
             pn_Body.BackColor = Color.FromArgb(39, 60, 117);
-            pn_Body.Controls.Add(panel2);
-            pn_Body.Controls.Add(panel1);
+            pn_Body.Controls.Add(pn_Prov);
+            pn_Body.Controls.Add(pn_MM);
             pn_Body.Controls.Add(label3);
             pn_Body.Controls.Add(pn_Nav);
             pn_Body.Dock = DockStyle.Top;
@@ -79,15 +79,15 @@
             pn_Body.Size = new Size(810, 225);
             pn_Body.TabIndex = 8;
             // 
-            // panel2
+            // pn_Prov
             // 
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(lb_Province);
-            panel2.Controls.Add(label5);
-            panel2.Location = new Point(217, 66);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(150, 60);
-            panel2.TabIndex = 15;
+            pn_Prov.BackColor = Color.White;
+            pn_Prov.Controls.Add(lb_Province);
+            pn_Prov.Controls.Add(label5);
+            pn_Prov.Location = new Point(217, 66);
+            pn_Prov.Name = "pn_Prov";
+            pn_Prov.Size = new Size(150, 60);
+            pn_Prov.TabIndex = 15;
             // 
             // lb_Province
             // 
@@ -111,15 +111,15 @@
             label5.TabIndex = 2;
             label5.Text = "Province";
             // 
-            // panel1
+            // pn_MM
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(lb_Manila);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(50, 66);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(150, 60);
-            panel1.TabIndex = 14;
+            pn_MM.BackColor = Color.White;
+            pn_MM.Controls.Add(lb_Manila);
+            pn_MM.Controls.Add(label1);
+            pn_MM.Location = new Point(50, 66);
+            pn_MM.Name = "pn_MM";
+            pn_MM.Size = new Size(150, 60);
+            pn_MM.TabIndex = 14;
             // 
             // lb_Manila
             // 
@@ -174,9 +174,9 @@
             btn_New.FlatStyle = FlatStyle.Flat;
             btn_New.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_New.ForeColor = Color.White;
-            btn_New.Location = new Point(613, 5);
+            btn_New.Location = new Point(614, 4);
             btn_New.Name = "btn_New";
-            btn_New.Size = new Size(98, 38);
+            btn_New.Size = new Size(98, 40);
             btn_New.TabIndex = 11;
             btn_New.Text = "New";
             btn_New.UseVisualStyleBackColor = false;
@@ -211,9 +211,9 @@
             dgv_Services.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgv_Services.BackgroundColor = Color.White;
             dgv_Services.BorderStyle = BorderStyle.None;
-            dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 230, 233);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
@@ -296,6 +296,7 @@
             Column6.HeaderText = "Status";
             Column6.Name = "Column6";
             Column6.ReadOnly = true;
+            Column6.Width = 111;
             // 
             // Column7
             // 
@@ -341,7 +342,7 @@
             Column12.HeaderText = "Request Date";
             Column12.Name = "Column12";
             Column12.ReadOnly = true;
-            Column12.Width = 125;
+            Column12.Width = 115;
             // 
             // Column13
             // 
@@ -364,10 +365,10 @@
             Load += Servicing_Load;
             pn_Body.ResumeLayout(false);
             pn_Body.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pn_Prov.ResumeLayout(false);
+            pn_Prov.PerformLayout();
+            pn_MM.ResumeLayout(false);
+            pn_MM.PerformLayout();
             pn_Nav.ResumeLayout(false);
             pn_Nav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).EndInit();
@@ -384,8 +385,8 @@
         private TextBox txt_Search;
         private PictureBox pb_Icon;
         private Button btn_New;
-        private Panel panel2;
-        private Panel panel1;
+        private Panel pn_Prov;
+        private Panel pn_MM;
         private Label lb_Manila;
         private Label label1;
         private Label lb_Province;
