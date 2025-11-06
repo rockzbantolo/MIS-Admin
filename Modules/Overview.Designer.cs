@@ -273,7 +273,7 @@
             // 
             Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             Column1.FillWeight = 33.44414F;
-            Column1.HeaderText = "Job No.";
+            Column1.HeaderText = "Service ID";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
             // 
@@ -327,7 +327,7 @@
             panel6.Controls.Add(label2);
             panel6.Location = new Point(777, 79);
             panel6.Name = "panel6";
-            panel6.Size = new Size(395, 434);
+            panel6.Size = new Size(570, 434);
             panel6.TabIndex = 15;
             // 
             // pictureBox2
@@ -394,7 +394,7 @@
             dgv_Request.RowTemplate.Height = 40;
             dgv_Request.RowTemplate.ReadOnly = true;
             dgv_Request.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Request.Size = new Size(359, 354);
+            dgv_Request.Size = new Size(534, 354);
             dgv_Request.TabIndex = 17;
             dgv_Request.DataBindingComplete += dgv_Request_DataBindingComplete;
             dgv_Request.Paint += dgv_Request_Paint;
@@ -403,7 +403,7 @@
             // Column4
             // 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column4.HeaderText = "Request No.";
+            Column4.HeaderText = "Request ID";
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             Column4.Width = 150;
@@ -456,7 +456,7 @@
             panel7.Controls.Add(label4);
             panel7.Location = new Point(25, 1019);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1147, 682);
+            panel7.Size = new Size(1322, 682);
             panel7.TabIndex = 16;
             // 
             // pictureBox3
@@ -477,7 +477,7 @@
             panel20.Controls.Add(dgv_CloseTickets);
             panel20.Location = new Point(305, 65);
             panel20.Name = "panel20";
-            panel20.Size = new Size(805, 594);
+            panel20.Size = new Size(980, 594);
             panel20.TabIndex = 32;
             // 
             // panel21
@@ -489,7 +489,7 @@
             panel21.Dock = DockStyle.Top;
             panel21.Location = new Point(0, 0);
             panel21.Name = "panel21";
-            panel21.Size = new Size(805, 43);
+            panel21.Size = new Size(980, 43);
             panel21.TabIndex = 32;
             // 
             // dtp_Month
@@ -498,7 +498,7 @@
             dtp_Month.CalendarFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtp_Month.CustomFormat = "MMMM";
             dtp_Month.Format = DateTimePickerFormat.Custom;
-            dtp_Month.Location = new Point(707, 9);
+            dtp_Month.Location = new Point(882, 9);
             dtp_Month.Name = "dtp_Month";
             dtp_Month.ShowUpDown = true;
             dtp_Month.Size = new Size(87, 23);
@@ -571,8 +571,9 @@
             dgv_CloseTickets.RowTemplate.Height = 40;
             dgv_CloseTickets.RowTemplate.ReadOnly = true;
             dgv_CloseTickets.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_CloseTickets.Size = new Size(783, 530);
+            dgv_CloseTickets.Size = new Size(958, 530);
             dgv_CloseTickets.TabIndex = 30;
+            dgv_CloseTickets.CellFormatting += dgv_CloseTickets_CellFormatting;
             dgv_CloseTickets.DataBindingComplete += dgv_CloseTickets_DataBindingComplete;
             dgv_CloseTickets.Paint += dgv_CloseTickets_Paint;
             dgv_CloseTickets.Leave += dgv_CloseTickets_Leave;
@@ -580,7 +581,7 @@
             // Column8
             // 
             Column8.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column8.HeaderText = "Request No.";
+            Column8.HeaderText = "Request ID";
             Column8.Name = "Column8";
             Column8.ReadOnly = true;
             Column8.Width = 150;
@@ -598,6 +599,7 @@
             Column10.HeaderText = "Status";
             Column10.Name = "Column10";
             Column10.ReadOnly = true;
+            Column10.Width = 150;
             // 
             // Column13
             // 
@@ -1645,7 +1647,7 @@
             panel10.Controls.Add(label30);
             panel10.Location = new Point(523, 534);
             panel10.Name = "panel10";
-            panel10.Size = new Size(649, 465);
+            panel10.Size = new Size(824, 465);
             panel10.TabIndex = 24;
             // 
             // pictureBox4
@@ -1712,8 +1714,9 @@
             dgv_HelpdeskRequest.RowTemplate.Height = 40;
             dgv_HelpdeskRequest.RowTemplate.ReadOnly = true;
             dgv_HelpdeskRequest.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_HelpdeskRequest.Size = new Size(615, 384);
+            dgv_HelpdeskRequest.Size = new Size(790, 384);
             dgv_HelpdeskRequest.TabIndex = 17;
+            dgv_HelpdeskRequest.CellFormatting += dgv_HelpdeskRequest_CellFormatting;
             dgv_HelpdeskRequest.Paint += dgv_HelpdeskRequest_Paint;
             // 
             // Column12
@@ -1722,7 +1725,7 @@
             Column12.HeaderText = "Service Request";
             Column12.Name = "Column12";
             Column12.ReadOnly = true;
-            Column12.Width = 200;
+            Column12.Width = 150;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -1730,7 +1733,7 @@
             dataGridViewTextBoxColumn3.HeaderText = "Request No.";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 200;
+            dataGridViewTextBoxColumn3.Width = 150;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -1747,7 +1750,7 @@
             dataGridViewTextBoxColumn5.HeaderText = "Helpdesk";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 250;
+            dataGridViewTextBoxColumn5.Width = 200;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -1756,7 +1759,7 @@
             dataGridViewTextBoxColumn6.HeaderText = "Status";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 120;
+            dataGridViewTextBoxColumn6.Width = 150;
             // 
             // label30
             // 
@@ -1776,7 +1779,7 @@
             AutoScroll = true;
             AutoScrollMargin = new Size(0, 20);
             AutoScrollMinSize = new Size(0, 1700);
-            BackColor = Color.FromArgb(206, 214, 224);
+            BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(panel10);
             Controls.Add(label42);
             Controls.Add(panel9);
@@ -1791,7 +1794,7 @@
             Controls.Add(panel1);
             DoubleBuffered = true;
             Name = "Overview";
-            Size = new Size(1192, 909);
+            Size = new Size(1367, 909);
             Load += Overview_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1953,22 +1956,22 @@
         private Label lb_HelpdeskCount;
         private DataGridView dgv_HelpdeskRequest;
         private Label label30;
-        private DataGridViewTextBoxColumn Column12;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
         private DataGridViewTextBoxColumn Column13;
         private DataGridViewTextBoxColumn Column11;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn Column12;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

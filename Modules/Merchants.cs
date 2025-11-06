@@ -65,7 +65,7 @@ namespace MIS_Admin.Modules
         {
             var id = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value);
 
-            using (var frm = new DeviceReplacementForm(id))
+            using (var frm = new DeviceReplaceForm(id))
                 frm.ShadowBackground(new Main());
         }
 

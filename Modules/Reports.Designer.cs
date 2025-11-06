@@ -180,7 +180,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = Color.FromArgb(224, 224, 224);
+            BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(dgv_Reports);
             Controls.Add(pn_Body);
             DoubleBuffered = true;

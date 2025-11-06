@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Merchants));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pn_Body = new Panel();
             pn_Prov = new Panel();
             lb_Province = new Label();
@@ -57,6 +58,7 @@
             ColContactPerson = new DataGridViewTextBoxColumn();
             ColContactNo = new DataGridViewTextBoxColumn();
             ColEmail = new DataGridViewTextBoxColumn();
+            ColBtnUpdate = new DataGridViewImageColumn();
             ColBtnReplace = new DataGridViewImageColumn();
             ColBtnDelete = new DataGridViewImageColumn();
             pn_Body.SuspendLayout();
@@ -198,7 +200,7 @@
             dgv_Services.BorderStyle = BorderStyle.None;
             dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 230, 233);
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
@@ -208,16 +210,16 @@
             dgv_Services.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_Services.ColumnHeadersHeight = 45;
             dgv_Services.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv_Services.Columns.AddRange(new DataGridViewColumn[] { ColID, ColMerchantID, Status, ColMerchantName, ColTID, ColMID, ColTerminal, ColSim, ColRegion, ColContactPerson, ColContactNo, ColEmail, ColBtnReplace, ColBtnDelete });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle4.Padding = new Padding(12, 0, 0, 0);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgv_Services.DefaultCellStyle = dataGridViewCellStyle4;
+            dgv_Services.Columns.AddRange(new DataGridViewColumn[] { ColID, ColMerchantID, Status, ColMerchantName, ColTID, ColMID, ColTerminal, ColSim, ColRegion, ColContactPerson, ColContactNo, ColEmail, ColBtnUpdate, ColBtnReplace, ColBtnDelete });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle5.Padding = new Padding(12, 0, 0, 0);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgv_Services.DefaultCellStyle = dataGridViewCellStyle5;
             dgv_Services.EnableHeadersVisualStyles = false;
             dgv_Services.GridColor = Color.White;
             dgv_Services.Location = new Point(13, 245);
@@ -331,50 +333,68 @@
             ColEmail.Name = "ColEmail";
             ColEmail.ReadOnly = true;
             // 
-            // ColBtnReplace
+            // ColBtnUpdate
             // 
-            ColBtnReplace.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            ColBtnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.RoyalBlue;
             dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
             dataGridViewCellStyle2.Padding = new Padding(1, 0, 0, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.White;
             dataGridViewCellStyle2.SelectionForeColor = Color.RoyalBlue;
-            ColBtnReplace.DefaultCellStyle = dataGridViewCellStyle2;
+            ColBtnUpdate.DefaultCellStyle = dataGridViewCellStyle2;
+            ColBtnUpdate.Description = "Update Merchant";
+            ColBtnUpdate.HeaderText = "";
+            ColBtnUpdate.Image = (Image)resources.GetObject("ColBtnUpdate.Image");
+            ColBtnUpdate.Name = "ColBtnUpdate";
+            ColBtnUpdate.ReadOnly = true;
+            ColBtnUpdate.Width = 40;
+            // 
+            // ColBtnReplace
+            // 
+            ColBtnReplace.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = Color.RoyalBlue;
+            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
+            dataGridViewCellStyle3.Padding = new Padding(1, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = Color.RoyalBlue;
+            ColBtnReplace.DefaultCellStyle = dataGridViewCellStyle3;
             ColBtnReplace.Description = "Replace Device";
-            ColBtnReplace.HeaderText = "Actions";
+            ColBtnReplace.HeaderText = "";
             ColBtnReplace.Image = (Image)resources.GetObject("ColBtnReplace.Image");
             ColBtnReplace.Name = "ColBtnReplace";
             ColBtnReplace.ReadOnly = true;
             ColBtnReplace.Resizable = DataGridViewTriState.False;
             ColBtnReplace.ToolTipText = "Replace Device";
-            ColBtnReplace.Width = 80;
+            ColBtnReplace.Width = 40;
             // 
             // ColBtnDelete
             // 
             ColBtnDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(192, 0, 0);
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(0, 0, 8, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(192, 0, 0);
-            ColBtnDelete.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(192, 0, 0);
+            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
+            dataGridViewCellStyle4.Padding = new Padding(0, 0, 8, 0);
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(192, 0, 0);
+            ColBtnDelete.DefaultCellStyle = dataGridViewCellStyle4;
             ColBtnDelete.HeaderText = "";
             ColBtnDelete.Image = (Image)resources.GetObject("ColBtnDelete.Image");
             ColBtnDelete.Name = "ColBtnDelete";
             ColBtnDelete.ReadOnly = true;
             ColBtnDelete.Resizable = DataGridViewTriState.False;
             ColBtnDelete.ToolTipText = "Uninstall Device";
-            ColBtnDelete.Width = 50;
+            ColBtnDelete.Width = 40;
             // 
             // Merchants
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = Color.FromArgb(206, 214, 224);
+            BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(dgv_Services);
             Controls.Add(pn_Body);
             DoubleBuffered = true;
@@ -420,6 +440,7 @@
         private DataGridViewTextBoxColumn ColContactPerson;
         private DataGridViewTextBoxColumn ColContactNo;
         private DataGridViewTextBoxColumn ColEmail;
+        private DataGridViewImageColumn ColBtnUpdate;
         private DataGridViewImageColumn ColBtnReplace;
         private DataGridViewImageColumn ColBtnDelete;
     }

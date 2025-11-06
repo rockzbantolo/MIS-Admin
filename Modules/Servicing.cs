@@ -59,7 +59,7 @@ namespace MIS_Admin.Modules
 
         private async Task AreaSummary()
         {
-            DataTable dt = await getAllAreaSummary();
+            DataTable dt = await getAllServiceAreaSummary();
 
             if (dt.Rows.Count > 0)
             {
@@ -99,8 +99,6 @@ namespace MIS_Admin.Modules
             // Handle Priority column
             if (column.HeaderText == "Priority")
             {
-                cell.Style.Font = new Font(dgv_Services.Font, FontStyle.Bold);
-
                 switch (value)
                 {
                     case "NORMAL":
@@ -124,7 +122,7 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            new ServiceDetailsForm().Show();
+            new ServiceDetailsForm().ShadowBackground(new Main());
         }
 
         private void Servicing_Load(object sender, EventArgs e)

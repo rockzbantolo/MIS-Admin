@@ -57,13 +57,13 @@ namespace MIS_Admin.Services
             return await Ops.FindServiceSummary(userid, DateTime.Now);
         }
 
-        public async Task<DataTable> getAreaSummary(int? id)
+        public async Task<DataTable> getServiceAreaSummary(int? id)
         {
             object userid = id.HasValue
                 ? id.Value
                 : DBNull.Value;
 
-            return await Ops.FindAreaSummary(userid, DateTime.Now);
+            return await Ops.FindServiceAreaSummary(userid, DateTime.Now);
         }
 
         public async Task<DataTable> getServiceRequestAsync(DateTime? date)

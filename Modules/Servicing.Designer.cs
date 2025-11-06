@@ -213,7 +213,7 @@
             dgv_Services.BorderStyle = BorderStyle.None;
             dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(223, 230, 233);
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
@@ -254,7 +254,7 @@
             // Column1
             // 
             Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Column1.HeaderText = "Service No.";
+            Column1.HeaderText = "Service ID";
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
             Column1.Width = 90;
@@ -355,7 +355,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = Color.FromArgb(206, 214, 224);
+            BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(dgv_Services);
             Controls.Add(pn_Body);
             DoubleBuffered = true;

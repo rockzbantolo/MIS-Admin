@@ -201,7 +201,7 @@ namespace MIS_Admin.Repository
                 new MySqlParameter("@date", date));
         }
 
-        public async Task<DataTable> FindAreaSummary(object id, object date)
+        public async Task<DataTable> FindServiceAreaSummary(object id, object date)
         {
             string stmt = @"
             SELECT
@@ -261,8 +261,11 @@ namespace MIS_Admin.Repository
             string stmt = @"
             SELECT 
                    Request_No AS `Request No`,
-                   Merchant_Name AS `Merchant`, 
-                   Request_Status AS `Status`,
+                   Merchant_Name AS `Merchant`,
+                   CASE 
+				    WHEN Request_Status = 'SUCCESS' THEN 'COMPLETED'
+				    ELSE Request_Status
+			       END AS `Status`,
                    Dispatch_By AS `Dispatcher`,
                    FE_Name AS `Engineer`
             FROM vw_service_info

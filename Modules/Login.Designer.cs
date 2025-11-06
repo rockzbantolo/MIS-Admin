@@ -73,7 +73,7 @@
             // 
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(381, 333);
+            checkBox1.Location = new Point(381, 340);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(104, 19);
             checkBox1.TabIndex = 12;
@@ -84,7 +84,7 @@
             // 
             lb_Message.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_Message.ForeColor = Color.FromArgb(192, 0, 0);
-            lb_Message.Location = new Point(377, 365);
+            lb_Message.Location = new Point(377, 369);
             lb_Message.Name = "lb_Message";
             lb_Message.Size = new Size(300, 21);
             lb_Message.TabIndex = 11;
@@ -113,7 +113,7 @@
             lb_Password.AutoSize = true;
             lb_Password.BackColor = Color.White;
             lb_Password.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lb_Password.Location = new Point(391, 260);
+            lb_Password.Location = new Point(391, 261);
             lb_Password.Name = "lb_Password";
             lb_Password.Size = new Size(73, 20);
             lb_Password.TabIndex = 6;
@@ -124,7 +124,7 @@
             lb_Username.AutoSize = true;
             lb_Username.BackColor = Color.White;
             lb_Username.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lb_Username.Location = new Point(391, 185);
+            lb_Username.Location = new Point(391, 182);
             lb_Username.Name = "lb_Username";
             lb_Username.Size = new Size(78, 20);
             lb_Username.TabIndex = 5;
@@ -135,7 +135,7 @@
             pn_Password.BackColor = Color.White;
             pn_Password.Controls.Add(pictureBox2);
             pn_Password.Controls.Add(tx_Pass);
-            pn_Password.Location = new Point(377, 272);
+            pn_Password.Location = new Point(377, 275);
             pn_Password.Name = "pn_Password";
             pn_Password.Size = new Size(300, 55);
             pn_Password.TabIndex = 4;
@@ -227,7 +227,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(206, 214, 224);
+            BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(pn_LoginBody);
             DoubleBuffered = true;
             Name = "Login";

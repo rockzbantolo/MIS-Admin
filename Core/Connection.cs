@@ -7,7 +7,7 @@ namespace MIS_Admin.Core
     {
         private readonly string _connectionString =
             "Persist Security Info=false;" +
-            "Server=18.142.99.40;" +
+            "Server=citas.com.ph;" +
             "Port=3306;" +
             "Database=miscastlesdb;" +
             "User=miscastles;" +

@@ -1,9 +1,5 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿using System.Data;
 using MIS_Admin.Utilities.UI;
-using System.Data;
-using System.Diagnostics;
-using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 
@@ -228,11 +224,12 @@ namespace MIS_Admin.Modules
                 case "DISPATCHED":
                     fore = Color.Orange;
                     break;
+                case "INSTALLED":
                 case "COMPLETED":
-                    fore = Color.DarkGreen;
+                    fore = Color.Green;
                     break;
                 case "ALLOCATED":
-                    fore = Color.Blue;
+                    fore = Color.Turquoise;
                     break;
                 case "PROCESSING":
                     fore = Color.Yellow;
@@ -244,7 +241,69 @@ namespace MIS_Admin.Modules
             e.CellStyle.ForeColor = fore;
             e.CellStyle.SelectionBackColor = back;
             e.CellStyle.SelectionForeColor = fore;
-            e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
+        }
+
+        private void dgv_CloseTickets_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgv_CloseTickets.Columns[e.ColumnIndex].HeaderText != "Status" || e.Value == null)
+                return;
+
+            string status = e.Value.ToString().Trim().ToUpperInvariant();
+
+            Color back = Color.White;
+            Color fore = Color.Black;
+
+            switch (status)
+            {
+                case "NEGATIVE":
+                    fore = Color.Red;
+                    break;
+                case "COMPLETED":
+                    fore = Color.Green;
+                    break;
+            }
+
+            // apply style
+            e.CellStyle.BackColor = back;
+            e.CellStyle.ForeColor = fore;
+            e.CellStyle.SelectionBackColor = back;
+            e.CellStyle.SelectionForeColor = fore;
+        }
+
+        private void dgv_HelpdeskRequest_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgv_HelpdeskRequest.Columns[e.ColumnIndex].HeaderText != "Status" || e.Value == null)
+                return;
+
+            string status = e.Value.ToString().Trim().ToUpperInvariant();
+
+            Color back = Color.White;
+            Color fore = Color.Black;
+
+            switch (status)
+            {
+                case "DISPATCHED":
+                    fore = Color.Orange;
+                    break;
+                case "COMPLETED":
+                    fore = Color.Green;
+                    break;
+                case "ALLOCATED":
+                    fore = Color.Turquoise;
+                    break;
+                case "PROCESSING":
+                    fore = Color.DodgerBlue;
+                    break;
+                case "PENDING":
+                    fore = Color.Yellow;
+                    break;
+            }
+
+            // apply style
+            e.CellStyle.BackColor = back;
+            e.CellStyle.ForeColor = fore;
+            e.CellStyle.SelectionBackColor = back;
+            e.CellStyle.SelectionForeColor = fore;
         }
     }
 }
