@@ -32,10 +32,16 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pn_Body = new Panel();
+            pn_Total = new Panel();
+            pictureBox3 = new PictureBox();
+            lb_Total = new Label();
+            label4 = new Label();
             pn_Prov = new Panel();
+            pictureBox2 = new PictureBox();
             lb_Province = new Label();
             label5 = new Label();
             pn_MM = new Panel();
+            pictureBox1 = new PictureBox();
             lb_Manila = new Label();
             label1 = new Label();
             label3 = new Label();
@@ -58,8 +64,12 @@
             Column12 = new DataGridViewTextBoxColumn();
             Column13 = new DataGridViewTextBoxColumn();
             pn_Body.SuspendLayout();
+            pn_Total.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             pn_Prov.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             pn_MM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).BeginInit();
@@ -68,10 +78,10 @@
             // pn_Body
             // 
             pn_Body.BackColor = Color.FromArgb(39, 60, 117);
+            pn_Body.Controls.Add(pn_Total);
             pn_Body.Controls.Add(pn_Prov);
             pn_Body.Controls.Add(pn_MM);
             pn_Body.Controls.Add(label3);
-            pn_Body.Controls.Add(pn_Nav);
             pn_Body.Dock = DockStyle.Top;
             pn_Body.Location = new Point(10, 10);
             pn_Body.Name = "pn_Body";
@@ -79,33 +89,85 @@
             pn_Body.Size = new Size(810, 225);
             pn_Body.TabIndex = 8;
             // 
+            // pn_Total
+            // 
+            pn_Total.BackColor = Color.White;
+            pn_Total.Controls.Add(pictureBox3);
+            pn_Total.Controls.Add(lb_Total);
+            pn_Total.Controls.Add(label4);
+            pn_Total.Location = new Point(387, 82);
+            pn_Total.Name = "pn_Total";
+            pn_Total.Size = new Size(150, 105);
+            pn_Total.TabIndex = 16;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(10, 9);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(26, 26);
+            pictureBox3.TabIndex = 18;
+            pictureBox3.TabStop = false;
+            // 
+            // lb_Total
+            // 
+            lb_Total.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            lb_Total.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Total.Location = new Point(17, 35);
+            lb_Total.Name = "lb_Total";
+            lb_Total.Size = new Size(117, 29);
+            lb_Total.TabIndex = 3;
+            lb_Total.Text = "-";
+            lb_Total.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(64, 64, 64);
+            label4.Location = new Point(62, 72);
+            label4.Name = "label4";
+            label4.Size = new Size(32, 13);
+            label4.TabIndex = 2;
+            label4.Text = "Total";
+            // 
             // pn_Prov
             // 
             pn_Prov.BackColor = Color.White;
+            pn_Prov.Controls.Add(pictureBox2);
             pn_Prov.Controls.Add(lb_Province);
             pn_Prov.Controls.Add(label5);
-            pn_Prov.Location = new Point(217, 66);
+            pn_Prov.Location = new Point(217, 82);
             pn_Prov.Name = "pn_Prov";
-            pn_Prov.Size = new Size(150, 60);
+            pn_Prov.Size = new Size(150, 105);
             pn_Prov.TabIndex = 15;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(10, 9);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(26, 26);
+            pictureBox2.TabIndex = 18;
+            pictureBox2.TabStop = false;
             // 
             // lb_Province
             // 
-            lb_Province.AutoSize = true;
-            lb_Province.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Province.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             lb_Province.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Province.Location = new Point(32, 28);
+            lb_Province.Location = new Point(17, 35);
             lb_Province.Name = "lb_Province";
-            lb_Province.Size = new Size(19, 25);
+            lb_Province.Size = new Size(117, 29);
             lb_Province.TabIndex = 3;
             lb_Province.Text = "-";
+            lb_Province.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(64, 64, 64);
-            label5.Location = new Point(12, 8);
+            label5.Location = new Point(50, 72);
             label5.Name = "label5";
             label5.Size = new Size(52, 13);
             label5.TabIndex = 2;
@@ -114,30 +176,40 @@
             // pn_MM
             // 
             pn_MM.BackColor = Color.White;
+            pn_MM.Controls.Add(pictureBox1);
             pn_MM.Controls.Add(lb_Manila);
             pn_MM.Controls.Add(label1);
-            pn_MM.Location = new Point(50, 66);
+            pn_MM.Location = new Point(46, 82);
             pn_MM.Name = "pn_MM";
-            pn_MM.Size = new Size(150, 60);
+            pn_MM.Size = new Size(150, 105);
             pn_MM.TabIndex = 14;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(10, 9);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(26, 26);
+            pictureBox1.TabIndex = 17;
+            pictureBox1.TabStop = false;
             // 
             // lb_Manila
             // 
-            lb_Manila.AutoSize = true;
-            lb_Manila.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Manila.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lb_Manila.ForeColor = Color.FromArgb(64, 64, 64);
-            lb_Manila.Location = new Point(32, 28);
+            lb_Manila.Location = new Point(17, 35);
             lb_Manila.Name = "lb_Manila";
-            lb_Manila.Size = new Size(19, 25);
+            lb_Manila.Size = new Size(117, 29);
             lb_Manila.TabIndex = 1;
             lb_Manila.Text = "-";
+            lb_Manila.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(64, 64, 64);
-            label1.Location = new Point(12, 8);
+            label1.Location = new Point(37, 72);
             label1.Name = "label1";
             label1.Size = new Size(78, 13);
             label1.TabIndex = 0;
@@ -161,20 +233,21 @@
             pn_Nav.Controls.Add(btn_New);
             pn_Nav.Controls.Add(pb_Icon);
             pn_Nav.Controls.Add(txt_Search);
-            pn_Nav.Location = new Point(50, 144);
+            pn_Nav.Location = new Point(10, 245);
             pn_Nav.Name = "pn_Nav";
-            pn_Nav.Size = new Size(716, 47);
+            pn_Nav.Size = new Size(810, 47);
             pn_Nav.TabIndex = 9;
             // 
             // btn_New
             // 
             btn_New.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_New.BackColor = Color.FromArgb(39, 60, 117);
+            btn_New.Enabled = false;
             btn_New.FlatAppearance.BorderSize = 0;
             btn_New.FlatStyle = FlatStyle.Flat;
             btn_New.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_New.ForeColor = Color.White;
-            btn_New.Location = new Point(614, 4);
+            btn_New.Location = new Point(708, 4);
             btn_New.Name = "btn_New";
             btn_New.Size = new Size(98, 40);
             btn_New.TabIndex = 11;
@@ -199,7 +272,7 @@
             txt_Search.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txt_Search.Location = new Point(46, 13);
             txt_Search.Name = "txt_Search";
-            txt_Search.Size = new Size(558, 24);
+            txt_Search.Size = new Size(652, 24);
             txt_Search.TabIndex = 0;
             // 
             // dgv_Services
@@ -235,7 +308,7 @@
             dgv_Services.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_Services.EnableHeadersVisualStyles = false;
             dgv_Services.GridColor = Color.White;
-            dgv_Services.Location = new Point(13, 245);
+            dgv_Services.Location = new Point(13, 308);
             dgv_Services.Name = "dgv_Services";
             dgv_Services.ReadOnly = true;
             dgv_Services.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -243,7 +316,7 @@
             dgv_Services.RowTemplate.Height = 40;
             dgv_Services.RowTemplate.ReadOnly = true;
             dgv_Services.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Services.Size = new Size(804, 436);
+            dgv_Services.Size = new Size(804, 373);
             dgv_Services.TabIndex = 0;
             dgv_Services.CellDoubleClick += dgv_Services_CellDoubleClick;
             dgv_Services.CellFormatting += dgv_Services_CellFormatting;
@@ -358,6 +431,7 @@
             BackColor = Color.FromArgb(223, 228, 234);
             Controls.Add(dgv_Services);
             Controls.Add(pn_Body);
+            Controls.Add(pn_Nav);
             DoubleBuffered = true;
             Name = "Servicing";
             Padding = new Padding(10);
@@ -365,10 +439,15 @@
             Load += Servicing_Load;
             pn_Body.ResumeLayout(false);
             pn_Body.PerformLayout();
+            pn_Total.ResumeLayout(false);
+            pn_Total.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             pn_Prov.ResumeLayout(false);
             pn_Prov.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             pn_MM.ResumeLayout(false);
             pn_MM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pn_Nav.ResumeLayout(false);
             pn_Nav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).EndInit();
@@ -404,5 +483,11 @@
         private DataGridViewTextBoxColumn Column11;
         private DataGridViewTextBoxColumn Column12;
         private DataGridViewTextBoxColumn Column13;
+        private Panel pn_Total;
+        private Label lb_Total;
+        private Label label4;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
     }
 }

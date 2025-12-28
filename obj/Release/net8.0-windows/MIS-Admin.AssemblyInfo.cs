@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MIS-Admin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+21c9cb08e10fd26d8b9f335216c8d6f76c189691")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1edf91e146879132a1585cc167bf53120861778")]
 [assembly: System.Reflection.AssemblyProductAttribute("MIS-Admin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MIS-Admin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

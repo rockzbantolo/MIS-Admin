@@ -265,8 +265,6 @@
             dgv_Services.Size = new Size(442, 390);
             dgv_Services.TabIndex = 16;
             dgv_Services.CellFormatting += dgv_Services_CellFormatting;
-            dgv_Services.DataBindingComplete += dgv_Services_DataBindingComplete;
-            dgv_Services.Paint += dgv_Services_Paint;
             dgv_Services.Leave += dgv_Services_Leave;
             // 
             // Column1
@@ -396,8 +394,6 @@
             dgv_Request.RowTemplate.Resizable = DataGridViewTriState.False;
             dgv_Request.Size = new Size(534, 354);
             dgv_Request.TabIndex = 17;
-            dgv_Request.DataBindingComplete += dgv_Request_DataBindingComplete;
-            dgv_Request.Paint += dgv_Request_Paint;
             dgv_Request.Leave += dgv_Request_Leave;
             // 
             // Column4
@@ -574,8 +570,6 @@
             dgv_CloseTickets.Size = new Size(958, 530);
             dgv_CloseTickets.TabIndex = 30;
             dgv_CloseTickets.CellFormatting += dgv_CloseTickets_CellFormatting;
-            dgv_CloseTickets.DataBindingComplete += dgv_CloseTickets_DataBindingComplete;
-            dgv_CloseTickets.Paint += dgv_CloseTickets_Paint;
             dgv_CloseTickets.Leave += dgv_CloseTickets_Leave;
             // 
             // Column8
@@ -1717,7 +1711,6 @@
             dgv_HelpdeskRequest.Size = new Size(790, 384);
             dgv_HelpdeskRequest.TabIndex = 17;
             dgv_HelpdeskRequest.CellFormatting += dgv_HelpdeskRequest_CellFormatting;
-            dgv_HelpdeskRequest.Paint += dgv_HelpdeskRequest_Paint;
             // 
             // Column12
             // 
@@ -1795,7 +1788,6 @@
             DoubleBuffered = true;
             Name = "Overview";
             Size = new Size(1367, 909);
-            Load += Overview_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

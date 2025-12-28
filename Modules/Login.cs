@@ -1,12 +1,15 @@
 ﻿using MIS_Admin.Utilities.Handler;
-using MIS_Admin.Utilities.UI;
+using Next.Controls;
+using Next.Controls.Extention;
 using static MIS_Admin.Controller.AuthCtrl;
+using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Modules
 {
     public partial class Login : UserControl, IKeyHandler
     {
         private readonly Main _main;
+        private RadiusProvider RadiusProvider;
 
         public Login(Main main)
         {
@@ -17,46 +20,37 @@ namespace MIS_Admin.Modules
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            InitializeHelpers();
+            tx_Pass.ShowPasswordEye();
         }
 
-        private void InitializeHelpers()
+        private async void SignInAccount()
         {
-            //EnableDoubleBuffering(pn_Body);
-            pn_LoginBody.Radius(11, Color.FromArgb(206, 214, 224));
-            pn_Username.Radius(11, Color.White);
-            pn_Password.Radius(11, Color.White);
-            btn_Login.Radius(11, Color.White);
-            lb_Username.Radius(11, Color.WhiteSmoke);
-            lb_Password.Radius(11, Color.WhiteSmoke);
-        }
+            btn_Login.SetLoading(true);
 
-        private void SignInAccount()
-        {
-            string username = tx_Username.Text.Trim();
-            string password = tx_Pass.Text.Trim();
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(tx_Username.Text.Trim()) || string.IsNullOrEmpty(tx_Pass.Text.Trim()))
             {
                 lb_Message.ForeColor = Color.Red;
                 lb_Message.Text = "Please enter username and password.";
                 lb_Message.Visible = true;
+                btn_Login.SetLoading(false);
                 return;
             }
 
-            var session = Authenticate(username, password);
+            UserSession session = await AuthenticateAsync(tx_Username.Text.Trim(), tx_Pass.Text.Trim());
 
             if (session != null)
             {
-                new Home(session, _main).ShowUserControl(_main.BodyPanel);
+                await Task.Delay(1000);
+                new Home(session, _main).LoadUserControl(_main.BodyPanel);
             }
             else
             {
                 lb_Message.Text = "Invalid account.";
                 lb_Message.Visible = true;
+                btn_Login.SetLoading(false);
             }
         }
-
+        
         private void btn_Login_Click(object sender, EventArgs e)
         {
             SignInAccount();

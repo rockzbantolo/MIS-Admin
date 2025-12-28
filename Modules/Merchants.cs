@@ -1,20 +1,26 @@
 ﻿using MIS_Admin.Forms;
-using MIS_Admin.Model;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
-using System.Windows.Forms;
+using Prime.Extentions;
+using Prime.UI;
+using System.Data;
 using static MIS_Admin.Controller.OperationsCtrl;
+using static MIS_Admin.Model.Authenticate;
 using static MIS_Admin.Utilities.Functions;
 
 namespace MIS_Admin.Modules
 {
     public partial class Merchants : UserControl, IKeyHandler
     {
+        private readonly UserSession _session;
+        private string currentMode = null;
+
         private bool isLoading { get; set; }
 
-        public Merchants()
+        public Merchants(UserSession session)
         {
             InitializeComponent();
+            _session = session;
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -28,22 +34,51 @@ namespace MIS_Admin.Modules
         {
             //EnableDoubleBuffering(pn_Body);
             EnableDoubleBuffering(dgv_Services);
-            pn_Nav.Radius(8, Color.FromArgb(232, 65, 24));
-            pn_MM.Radius(8, Color.FromArgb(232, 65, 24));
-            pn_Prov.Radius(8, Color.FromArgb(232, 65, 24));
-            pn_Body.Radius(8, Color.White);
-            dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
+            pn_Nav.Round(8, Color.FromArgb(223, 228, 234));
+            pn_Body.Round(8, Color.White);
+
+            pn_MM.Round(8, Color.FromArgb(232, 65, 24));
+            pn_Prov.Round(8, Color.FromArgb(232, 65, 24));
+            pn_Duplicate.Round(8, Color.FromArgb(232, 65, 24));
+            pn_Total.Round(8, Color.FromArgb(232, 65, 24));
+            dgv_Services.Round(8, Color.FromArgb(224, 224, 224));
+
         }
 
         private async Task InitializedData()
         {
-            isLoading = true;
-            dgv_Services.Refresh();
+            RoleChecked(_session);
+            await DisplayData();
+        }
 
-            BindTableToGrid(await getAllMerchantAsync(), dgv_Services);
+        private void RoleChecked(UserSession session)
+        {
+            if (!session.Role.Equals("ADMIN", StringComparison.OrdinalIgnoreCase))
+            {
+                dgv_Services.Columns["ColBtnUpdate"].Visible = false;
+                dgv_Services.Columns["ColBtnReplace"].Visible = false;
+                dgv_Services.Columns["ColBtnDelete"].Visible = false;
+            }
+        }
 
-            isLoading = false;
-            dgv_Services.Refresh();
+        private async Task InstalledTerminalCount()
+        {
+            DataTable dt = await getAllInstalledTerminalCount();
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                lb_Manila.Text = row["Manila"].ToString();
+                lb_Province.Text = row["Province"].ToString();
+                lb_Duplicate.Text = row["Duplicates"].ToString();
+                lb_Total.Text = row["Total"].ToString();
+            }
+        }
+
+        private async Task getMerchantDetails(string filter = null, string mode = null)
+        {
+            var data = await getAllMerchantAsync(filter, mode);
+            BindTableToGrid(data, dgv_Services);
         }
 
         public async void OnEnterPressed()
@@ -61,12 +96,55 @@ namespace MIS_Admin.Modules
             //throw new NotImplementedException();
         }
 
+        private async Task DisplayData()
+        {
+            isLoading = true;
+            dgv_Services.Refresh();
+
+            await InstalledTerminalCount();
+            await getMerchantDetails(currentMode);
+
+            isLoading = false;
+            dgv_Services.Refresh();
+        }
+
         private void ReplaceDevice(DataGridViewCellEventArgs e)
         {
             var id = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value);
 
             using (var frm = new DeviceReplaceForm(id))
                 frm.ShadowBackground(new Main());
+        }
+
+        private async Task PullOutMerchantRecord(DataGridViewCellEventArgs e)
+        {
+            // Safely get the ID
+            var cellValue = dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value;
+
+            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int id))
+            {
+                MessageBox.Show("Invalid ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Ask for confirmation
+            if (MessageBox.Show(
+                    "Are you sure you want to pull out this merchant?",
+                    "Confirm Pull-Out",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            // Execute pull-out
+            var result = PulledOutMerchant(id);
+
+            // Show result message
+            MessageBox.Show(result.Message,
+                result.Success ? "Success" : "Error",
+                MessageBoxButtons.OK,
+                result.Success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+
+            await DisplayData();
         }
 
         private void dgv_Services_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -92,7 +170,7 @@ namespace MIS_Admin.Modules
                 switch (status)
                 {
                     case "AVAILABLE":
-                        fore = Color.Blue;
+                        fore = Color.DarkGreen;
                         break;
 
                     case "ACTIVE":
@@ -100,13 +178,20 @@ namespace MIS_Admin.Modules
                         break;
 
                     case "INACTIVE":
-                        fore = Color.DarkRed;
+                        fore = Color.DarkGray;
+                        break;
+
+                    case "ASSIGNED":
+                        fore = Color.SteelBlue;
+                        break;
+
+                    case "DISPATCH":
+                        fore = Color.Orange;
                         break;
                 }
 
                 e.CellStyle.BackColor = back;
                 e.CellStyle.ForeColor = fore;
-                e.CellStyle.Font = new Font(dgv_Services.Font, FontStyle.Bold);
                 e.CellStyle.SelectionBackColor = back;
                 e.CellStyle.SelectionForeColor = fore;
 
@@ -118,15 +203,15 @@ namespace MIS_Admin.Modules
             }
         }
 
-        private void dgv_Services_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgv_Services_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            int merchantId = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells[0].Value);
-            var Tid = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-            var Mid = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-            var merchantName = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-
+            //int IrId       = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells[0].Value);
+            //int merchantId = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells[0].Value);
+            //var Tid        = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
+            //var Mid        = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
+            //var merchantName = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
 
             var columnName = dgv_Services.Columns[e.ColumnIndex].Name;
 
@@ -137,7 +222,7 @@ namespace MIS_Admin.Modules
                     break;
 
                 case "ColBtnDelete":
-                    // handle deletion
+                    await PullOutMerchantRecord(e);
                     break;
             }
         }
@@ -147,8 +232,34 @@ namespace MIS_Admin.Modules
             if (dgv_Services.Rows.Count == 0)
             {
                 string msg = isLoading ? "Fetching Merchants ..." : "No records found.";
-                LoadingGridMessage(dgv_Services, e, msg);
+                //LoadingGridMessage(dgv_Services, e, msg);
+                dgv_Services.Overlay(msg);
             }
         }
+
+        private async void lb_Manila_Click(object sender, EventArgs e)
+        {
+            currentMode = "MANILA";
+            await getMerchantDetails(null, currentMode);
+        }
+
+        private async void lb_Province_Click(object sender, EventArgs e)
+        {
+            currentMode = "PROVINCE";
+            await getMerchantDetails(null, currentMode);
+        }
+       
+        private async void lb_Duplicate_Click(object sender, EventArgs e)
+        {
+            currentMode = "DUPLICATE";
+            await getMerchantDetails(null, currentMode);
+        }
+
+        private async void pb_Icon_Click(object sender, EventArgs e)
+        {
+            currentMode = null;
+            await getMerchantDetails(null, currentMode);
+        }
+
     }
 }

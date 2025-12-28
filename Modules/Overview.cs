@@ -1,15 +1,16 @@
-﻿using System.Data;
-using MIS_Admin.Utilities.UI;
+﻿using MIS_Admin.Utilities.UI;
+using Next.Common;
+using Next.Controls.Extention;
+using System.Data;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
+using static Next.Controls.Extention.Gridviews;
 
 
 namespace MIS_Admin.Modules
 {
     public partial class Overview : UserControl
     {
-        private bool isLoading { get; set; }
-
         public Overview()
         {
             InitializeComponent();
@@ -24,44 +25,52 @@ namespace MIS_Admin.Modules
 
         private void InitializeHelpers()
         {
-            //EnableDoubleBuffering(this);
-            EnableDoubleBuffering(dgv_Services);
-            EnableDoubleBuffering(dgv_Request);
-            EnableDoubleBuffering(dgv_CloseTickets);
             ApplyRadiusToPanels(this, 8, Color.FromArgb(206, 214, 224));
             lb_TicketCount.Radius(6, Color.FromArgb(224, 224, 224));
             lb_RequestCount.Radius(6, Color.White);
             lb_HelpdeskCount.Radius(6, Color.White);
         }
 
+        public static Task<IResult> LoadGridAsync<T>(
+            DataGridView dgv,
+            Task<T> dataTask,
+            string loadingMessage = "Loading...",
+            string emptyMessage = "No data found")
+        {
+            return dgv.BindDataWithLoaderAsync(
+                dataTask,
+                loadingMessage,
+                emptyMessage,
+                Color.Gray,
+                minSpinnerMilliseconds: 2000,
+                loaderType: LoaderType.Skeleton
+            );
+        }
+
         private async Task InitializedData()
         {
-
-            isLoading = true;
-            dgv_Services.Refresh();
-            dgv_Request.Refresh();
-            dgv_CloseTickets.Refresh();
-            dgv_HelpdeskRequest.Refresh();
-
+            await LoadDashboard();
             await ServiceSummary();
             await SLASummary();
-
-            BindTableToGrid(await getAllRecentServices(), dgv_Services);
-            BindTableToGrid(await getAllServiceRequest(DateTime.Now), dgv_Request);
-            BindTableToGrid(await getAllUnclosedTickets(), dgv_CloseTickets);
-            BindTableToGrid(await getAllMonthlyServiceCount(), dgv_TotalServices);
-            BindTableToGrid(await getAllHelpdeskRequest(), dgv_HelpdeskRequest);
 
             lb_RequestCount.Text = $"{dgv_Request.Rows.Count:N0}";
             lb_TicketCount.Text = $"{dgv_CloseTickets.Rows.Count:N0}";
             lb_HelpdeskCount.Text = $"{dgv_HelpdeskRequest.Rows.Count:N0}";
 
-            isLoading = false;
-            dgv_Services.Refresh();
-            dgv_Request.Refresh();
-            dgv_CloseTickets.Refresh();
-            dgv_HelpdeskRequest.Refresh();
+        }
 
+        private async Task LoadDashboard()
+        {
+            var tasks = new List<Task>
+            {
+                LoadGridAsync(dgv_Services, getAllRecentServices(), "Loading Services ...", "No Services Found."),
+                LoadGridAsync(dgv_Request, getAllServiceRequest(DateTime.Now), "Loading Request ...", "No Request Found."),
+                LoadGridAsync(dgv_CloseTickets, getAllUnclosedTickets(), "Loading Tickets ...", "No Request Found."),
+                LoadGridAsync(dgv_TotalServices, getAllMonthlyServiceCount(), "Loading Details ...", "No Summary Found."),
+                LoadGridAsync(dgv_HelpdeskRequest, getAllHelpdeskRequest(), "Loading Helpdesk Request ...", "No Request Found."),
+            };
+
+            await Task.WhenAll(tasks);
         }
 
         private async Task ServiceSummary()
@@ -138,24 +147,9 @@ namespace MIS_Admin.Modules
             }
         }
 
-        private void Overview_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgv_Services_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            ClearGridSelection(dgv_Services);
-        }
-
         private void dgv_Services_Leave(object sender, EventArgs e)
         {
             ClearGridSelection(dgv_Services);
-        }
-
-        private void dgv_Request_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            ClearGridSelection(dgv_Request);
         }
 
         private void dgv_Request_Leave(object sender, EventArgs e)
@@ -166,47 +160,6 @@ namespace MIS_Admin.Modules
         private void dgv_CloseTickets_Leave(object sender, EventArgs e)
         {
             ClearGridSelection(dgv_CloseTickets);
-        }
-
-        private void dgv_CloseTickets_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            ClearGridSelection(dgv_CloseTickets);
-        }
-
-        private void dgv_Request_Paint(object sender, PaintEventArgs e)
-        {
-            if (dgv_Request.Rows.Count == 0)
-            {
-                string msg = isLoading ? "Fetching request ..." : "No records found.";
-                LoadingGridMessage(dgv_Request, e, msg);
-            }
-        }
-
-        private void dgv_Services_Paint(object sender, PaintEventArgs e)
-        {
-            if (dgv_Services.Rows.Count == 0)
-            {
-                string msg = isLoading ? "Fetching services ..." : "No records found.";
-                LoadingGridMessage(dgv_Services, e, msg);
-            }
-        }
-
-        private void dgv_CloseTickets_Paint(object sender, PaintEventArgs e)
-        {
-            if (dgv_CloseTickets.Rows.Count == 0)
-            {
-                string msg = isLoading ? "Fetching Unclosed Tickets ..." : "No records found.";
-                LoadingGridMessage(dgv_CloseTickets, e, msg);
-            }
-        }
-
-        private void dgv_HelpdeskRequest_Paint(object sender, PaintEventArgs e)
-        {
-            if (dgv_HelpdeskRequest.Rows.Count == 0)
-            {
-                string msg = isLoading ? "Fetching Helpdesk Requests ..." : "No records found.";
-                LoadingGridMessage(dgv_HelpdeskRequest, e, msg);
-            }
         }
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -226,13 +179,16 @@ namespace MIS_Admin.Modules
                     break;
                 case "INSTALLED":
                 case "COMPLETED":
-                    fore = Color.Green;
+                    fore = Color.DarkGreen;
                     break;
-                case "ALLOCATED":
-                    fore = Color.Turquoise;
+                case "ASSIGNED":
+                    fore = Color.SteelBlue;
                     break;
                 case "PROCESSING":
-                    fore = Color.Yellow;
+                    fore = Color.Teal;
+                    break;
+                case "NO RESPONSE":
+                    fore = Color.DarkGray;
                     break;
             }
 
@@ -259,7 +215,7 @@ namespace MIS_Admin.Modules
                     fore = Color.Red;
                     break;
                 case "COMPLETED":
-                    fore = Color.Green;
+                    fore = Color.DarkGreen;
                     break;
             }
 
@@ -285,17 +241,14 @@ namespace MIS_Admin.Modules
                 case "DISPATCHED":
                     fore = Color.Orange;
                     break;
-                case "COMPLETED":
-                    fore = Color.Green;
-                    break;
-                case "ALLOCATED":
-                    fore = Color.Turquoise;
+                case "ASSIGNED":
+                    fore = Color.SteelBlue;
                     break;
                 case "PROCESSING":
-                    fore = Color.DodgerBlue;
+                    fore = Color.Teal;
                     break;
                 case "PENDING":
-                    fore = Color.Yellow;
+                    fore = Color.YellowGreen;
                     break;
             }
 

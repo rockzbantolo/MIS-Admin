@@ -131,7 +131,7 @@ namespace MIS_Admin.Utilities
                     dataGridView.Rows.Add(values);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }
@@ -141,7 +141,6 @@ namespace MIS_Admin.Utilities
         {
             if (dgv == null || dgv.IsDisposed || dgv.Disposing)
                 return;
-
             if (dt == null || dt.Rows.Count == 0)
             {
                 if (!dgv.IsDisposed)
@@ -151,16 +150,12 @@ namespace MIS_Admin.Utilities
                 }
                 return;
             }
-
             try
             {
                 dgv.SuspendLayout();
-
-                // recheck in case user changed control mid-load
-                if (dgv.IsDisposed || dgv.Disposing) return;
-
+                // recheck in case user changed control mid-load
+                if (dgv.IsDisposed || dgv.Disposing) return;
                 dgv.Rows.Clear();
-
                 int colCount = Math.Min(dt.Columns.Count, dgv.Columns.Count);
                 foreach (DataRow row in dt.Rows)
                 {
@@ -169,13 +164,12 @@ namespace MIS_Admin.Utilities
                     for (int i = 0; i < colCount; i++)
                         dgv.Rows[idx].Cells[i].Value = row[i];
                 }
-
                 dgv.ClearSelection();
             }
             catch
             {
-                // silently ignore if control was disposed mid-operation
-            }
+                // silently ignore if control was disposed mid-operation
+            }
             finally
             {
                 if (!dgv.IsDisposed)
@@ -194,8 +188,9 @@ namespace MIS_Admin.Utilities
             var cellText = grid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString();
             var id = grid.Rows[e.RowIndex].Cells[0].Value?.ToString(); // Assuming ID is in column 0
 
+            /*
             switch (cellText)
-            {/*
+            {
                 case AppDataActions.Remove:
                     if (MessageBox.Show($"Remove record with User ID: {id}?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
@@ -213,8 +208,9 @@ namespace MIS_Admin.Utilities
 
                 case AppDataActions.Update:
                     onUpdate?.Invoke(id);
-                    break;*/
+                    break;
             }
+            */
         }
 
         // Global Logger/Debugger

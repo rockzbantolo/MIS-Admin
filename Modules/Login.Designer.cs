@@ -1,4 +1,6 @@
-﻿namespace MIS_Admin.Modules
+﻿using Next.Controls;
+
+namespace MIS_Admin.Modules
 {
     partial class Login
     {
@@ -29,6 +31,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            RadiusProvider = new RadiusProvider();
             pn_LoginBody = new Panel();
             checkBox1 = new CheckBox();
             lb_Message = new Label();
@@ -56,6 +59,7 @@
             // 
             pn_LoginBody.Anchor = AnchorStyles.None;
             pn_LoginBody.BackColor = Color.WhiteSmoke;
+            RadiusProvider.SetBorderColor(pn_LoginBody, Color.White);
             pn_LoginBody.Controls.Add(checkBox1);
             pn_LoginBody.Controls.Add(lb_Message);
             pn_LoginBody.Controls.Add(btn_Login);
@@ -66,6 +70,7 @@
             pn_LoginBody.Controls.Add(panel2);
             pn_LoginBody.Location = new Point(32, 30);
             pn_LoginBody.Name = "pn_LoginBody";
+            RadiusProvider.SetRadius(pn_LoginBody, 11);
             pn_LoginBody.Size = new Size(703, 462);
             pn_LoginBody.TabIndex = 0;
             // 
@@ -95,6 +100,7 @@
             // btn_Login
             // 
             btn_Login.BackColor = Color.Green;
+            RadiusProvider.SetBorderColor(btn_Login, Color.WhiteSmoke);
             btn_Login.FlatAppearance.BorderColor = Color.Green;
             btn_Login.FlatAppearance.BorderSize = 0;
             btn_Login.FlatStyle = FlatStyle.Flat;
@@ -102,6 +108,7 @@
             btn_Login.ForeColor = Color.White;
             btn_Login.Location = new Point(378, 399);
             btn_Login.Name = "btn_Login";
+            RadiusProvider.SetRadius(btn_Login, 8);
             btn_Login.Size = new Size(300, 46);
             btn_Login.TabIndex = 7;
             btn_Login.Text = "Sign In";
@@ -110,33 +117,41 @@
             // 
             // lb_Password
             // 
-            lb_Password.AutoSize = true;
-            lb_Password.BackColor = Color.White;
+            lb_Password.BackColor = Color.FromArgb(223, 228, 234);
+            RadiusProvider.SetBorderColor(lb_Password, Color.WhiteSmoke);
             lb_Password.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lb_Password.Location = new Point(391, 261);
+            lb_Password.Location = new Point(391, 257);
             lb_Password.Name = "lb_Password";
-            lb_Password.Size = new Size(73, 20);
+            lb_Password.Padding = new Padding(6, 0, 0, 0);
+            RadiusProvider.SetRadius(lb_Password, 8);
+            lb_Password.Size = new Size(94, 26);
             lb_Password.TabIndex = 6;
             lb_Password.Text = "Password";
+            lb_Password.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lb_Username
             // 
-            lb_Username.AutoSize = true;
-            lb_Username.BackColor = Color.White;
+            lb_Username.BackColor = Color.FromArgb(223, 228, 234);
+            RadiusProvider.SetBorderColor(lb_Username, Color.WhiteSmoke);
             lb_Username.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lb_Username.Location = new Point(391, 182);
+            lb_Username.Location = new Point(391, 169);
             lb_Username.Name = "lb_Username";
-            lb_Username.Size = new Size(78, 20);
+            lb_Username.Padding = new Padding(6, 0, 0, 0);
+            RadiusProvider.SetRadius(lb_Username, 8);
+            lb_Username.Size = new Size(94, 26);
             lb_Username.TabIndex = 5;
             lb_Username.Text = "Username";
+            lb_Username.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pn_Password
             // 
-            pn_Password.BackColor = Color.White;
+            pn_Password.BackColor = Color.FromArgb(223, 228, 234);
+            RadiusProvider.SetBorderColor(pn_Password, Color.WhiteSmoke);
             pn_Password.Controls.Add(pictureBox2);
             pn_Password.Controls.Add(tx_Pass);
             pn_Password.Location = new Point(377, 275);
             pn_Password.Name = "pn_Password";
+            RadiusProvider.SetRadius(pn_Password, 8);
             pn_Password.Size = new Size(300, 55);
             pn_Password.TabIndex = 4;
             // 
@@ -152,22 +167,25 @@
             // 
             // tx_Pass
             // 
-            tx_Pass.BackColor = Color.White;
+            tx_Pass.BackColor = Color.FromArgb(223, 228, 234);
             tx_Pass.BorderStyle = BorderStyle.None;
             tx_Pass.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             tx_Pass.Location = new Point(48, 18);
             tx_Pass.Name = "tx_Pass";
-            tx_Pass.PasswordChar = '•';
+            tx_Pass.PlaceholderText = "Password";
             tx_Pass.Size = new Size(238, 23);
             tx_Pass.TabIndex = 1;
+            tx_Pass.UseSystemPasswordChar = true;
             // 
             // pn_Username
             // 
-            pn_Username.BackColor = Color.White;
+            pn_Username.BackColor = Color.FromArgb(223, 228, 234);
+            RadiusProvider.SetBorderColor(pn_Username, Color.WhiteSmoke);
             pn_Username.Controls.Add(pictureBox1);
             pn_Username.Controls.Add(tx_Username);
-            pn_Username.Location = new Point(377, 197);
+            pn_Username.Location = new Point(377, 187);
             pn_Username.Name = "pn_Username";
+            RadiusProvider.SetRadius(pn_Username, 8);
             pn_Username.Size = new Size(300, 55);
             pn_Username.TabIndex = 1;
             // 
@@ -183,11 +201,12 @@
             // 
             // tx_Username
             // 
-            tx_Username.BackColor = Color.White;
+            tx_Username.BackColor = Color.FromArgb(223, 228, 234);
             tx_Username.BorderStyle = BorderStyle.None;
             tx_Username.Font = new Font("Segoe UI Semibold", 12.75F, FontStyle.Bold);
             tx_Username.Location = new Point(48, 18);
             tx_Username.Name = "tx_Username";
+            tx_Username.PlaceholderText = "Username";
             tx_Username.Size = new Size(238, 23);
             tx_Username.TabIndex = 0;
             // 
@@ -228,6 +247,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(223, 228, 234);
+            RadiusProvider.SetBorderColor(this, Color.FromArgb(223, 228, 234));
             Controls.Add(pn_LoginBody);
             DoubleBuffered = true;
             Name = "Login";

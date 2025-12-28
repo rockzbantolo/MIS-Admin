@@ -30,7 +30,6 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Release\net8.0-windows\runtimes\wi
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Release\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS-Admin.csproj.AssemblyReference.cache
-C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Forms.DeviceReplacementForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Forms.ServiceDetailsForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Main.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Modules.Admin.resources
@@ -54,6 +53,8 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\refint\MIS-
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS-Admin.pdb
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS-Admin.genruntimeconfig.cache
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\ref\MIS-Admin.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Forms.DeviceReplaceForm.resources
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS_Admin.Forms.MerchantDetailsForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Release\net8.0-windows\MIS-Admin.dll.manifest
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Release\net8.0-windows\MIS-Admin.application
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Release\net8.0-windows\MIS-Admin.dll.manifest

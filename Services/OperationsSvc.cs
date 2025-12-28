@@ -1,5 +1,7 @@
 ﻿using MIS_Admin.Model;
+using MIS_Admin.Model.Dto;
 using MIS_Admin.Repository;
+using Next.Controls.Extention;
 using System.Data;
 
 
@@ -14,7 +16,7 @@ namespace MIS_Admin.Services
             Ops = new Operations();
         }
 
-        public DataTable getServices(string? search)
+        public DataTable getServices(string search)
         {
             object param = string.IsNullOrWhiteSpace(search) 
                 ? DBNull.Value 
@@ -23,30 +25,44 @@ namespace MIS_Admin.Services
             return Ops.FindServices(param);
         }
 
-        public async Task<DataTable> getServicesAsync(string? search)
+        public async Task<DataTable> getServicesAsync(string search = null)
+            => (await Ops.FindServicesAsync(string.IsNullOrWhiteSpace(search) ? DBNull.Value : search, 100)).ToDataTable("Services");
+
+        /*
+        public async Task<DataTable> getServicesAsync(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search)
+            object filter = string.IsNullOrWhiteSpace(search)
                 ? DBNull.Value 
                 : search;
 
-            return await Ops.FindServicesAsync(param, 100);
+            return await Ops.FindServicesAsync(filter, 100);
         }
+        */
 
-        public async Task<DataTable> getHelpdeskRequestAsync(string? search)
+        public async Task<DataTable> getHelpdeskRequestAsync(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search)
+            object filter = string.IsNullOrWhiteSpace(search)
                 ? DBNull.Value
                 : search;
 
-            return await Ops.FindHelpdeskRequestAsync(param, DBNull.Value, 100);
+            return await Ops.FindHelpdeskRequestAsync(filter, DBNull.Value, 100);
         }
 
+        public async Task<DataTable> getRecentServices() =>
+            (await Ops.FindServicesAsync(DBNull.Value, 10))
+                .ToDataTable("RecentServices")
+                .DefaultView
+                .ToTable(false, "Order No", "Merchant", "Status");
+
+
+        /*
         public async Task<DataTable> getRecentServices()
         {
             var details = await Ops.FindServicesAsync(string.Empty, 10);
 
             return details.DefaultView.ToTable(false, "Order No", "Merchant", "Status");
         }
+        */
 
         public async Task<DataTable> getServiceSummary(int? id)
         {
@@ -66,6 +82,15 @@ namespace MIS_Admin.Services
             return await Ops.FindServiceAreaSummary(userid, DateTime.Now);
         }
 
+        public async Task<DataTable> getInstalledTerminalCount(int? id)
+        {
+            object regionId = id.HasValue
+                ? id.Value
+                : DBNull.Value;
+
+            return await Ops.FindInstalledTerminalCount(regionId);
+        }
+
         public async Task<DataTable> getServiceRequestAsync(DateTime? date)
         {
             object param = date.HasValue
@@ -74,7 +99,6 @@ namespace MIS_Admin.Services
 
             return await Ops.FindServiceRequestAsync(param);
         }
-
 
         public async Task<DataTable> getMonthlyServiceCountAsync(int? id)
         {
@@ -118,49 +142,53 @@ namespace MIS_Admin.Services
             return await Ops.FindDispatcherServices(param, dateValue);
         }
 
-        public DataTable getStores(string? search)
+        public DataTable getStores(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search) 
+            object filter = string.IsNullOrWhiteSpace(search) 
                 ? DBNull.Value 
                 : search;
 
-            return Ops.FindStores(param);
+            return Ops.FindStores(filter);
         }
 
-        public async Task<DataTable> getMerchantAsync(string? search)
+        public async Task<DataTable> getMerchantAsync(string search, string mode = null)
         {
-            object param = string.IsNullOrWhiteSpace(search)
+            object filter = string.IsNullOrWhiteSpace(search)
                 ? DBNull.Value
                 : search;
 
-            return await Ops.FindMerchantAsync(param);
+            object filterMode = string.IsNullOrWhiteSpace(mode)
+                ? DBNull.Value
+                : mode;
+
+            return await Ops.FindMerchantAsync(filter, filterMode);
         }
 
-        public async Task<DataTable> getListOfTerminals(string? search)
+        public async Task<DataTable> getListOfTerminals(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search) 
+            object filter = string.IsNullOrWhiteSpace(search) 
                 ? DBNull.Value 
                 : search;
 
-            return await Ops.FindTerminals(param);
+            return await Ops.FindTerminals(filter);
         }
 
-        public DataTable getListOfSimCards(string? search)
+        public DataTable getListOfSimCards(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search) 
+            object filter = string.IsNullOrWhiteSpace(search) 
                 ? DBNull.Value 
                 : search;
 
-            return Ops.FindSimCards(param);
+            return Ops.FindSimCards(filter);
         }
 
-        public async Task<DataTable> getAvailableTerminals(string? search)
+        public async Task<DataTable> getAvailableTerminals(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search)
+            object filter = string.IsNullOrWhiteSpace(search)
                 ? DBNull.Value
                 : search;
 
-            var dt = await Ops.FindTerminals(param, 10);
+            var dt = await Ops.FindTerminals(filter, 10);
 
             var filtered = dt.AsEnumerable()
                 .Where(r => r.Field<string>("Status") == "AVAILABLE");
@@ -170,13 +198,13 @@ namespace MIS_Admin.Services
             return result.DefaultView.ToTable(false, "ID", "Serial");
         }
 
-        public DataTable getAvailableSims(string? search)
+        public DataTable getAvailableSims(string search)
         {
-            object param = string.IsNullOrWhiteSpace(search)
+            object filter = string.IsNullOrWhiteSpace(search)
                 ? DBNull.Value
                 : search;
 
-            var dt = Ops.FindSimCards(param, 10);
+            var dt = Ops.FindSimCards(filter, 10);
 
             var filtered = dt.AsEnumerable()
                 .Where(r => r.Field<string>("Status") == "AVAILABLE");
@@ -186,7 +214,7 @@ namespace MIS_Admin.Services
             return result.DefaultView.ToTable(false, "ID", "Serial");
         }
 
-        public ProcedureResult SetReplaceDevice(int id, string? terminalSn, string? simSn)
+        public ProcedureResult SetReplaceDevice(int id, string terminalSn, string simSn)
         {
             var Tsn = string.IsNullOrWhiteSpace(terminalSn) ? null : terminalSn;
             var Ssn = string.IsNullOrWhiteSpace(simSn) ? null : simSn;
@@ -222,6 +250,16 @@ namespace MIS_Admin.Services
                 AppVersion  = r["App_Version"]?.ToString(),
                 CreatedDate = r["Created_Date"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(r["Created_Date"])
             };
+        }
+
+        public ExeResult setPullOutMerchant(int? Id)
+        {
+            if (!Id.HasValue)
+                return ExeResult.Fail("Invalid ID");
+
+            ExeResult result = Ops.PullOutMerchant(Id.Value);
+
+            return result;
         }
 
     }

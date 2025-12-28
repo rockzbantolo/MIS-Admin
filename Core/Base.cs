@@ -202,13 +202,19 @@ namespace MIS_Admin.Core
 
         // ---------- SCALAR ----------
 
-        protected object Scalar(string query, params MySqlParameter[] parameters)
+        protected object Scalar(string query, MySqlConnection conn = null, MySqlTransaction tx = null, params MySqlParameter[] parameters)
         {
-            using (var conn = GetConnection())
-            {
-                conn.Open();
+            bool ownConnection = conn == null;
 
-                using (var cmd = new MySqlCommand(query, conn))
+            if (ownConnection)
+            {
+                conn = GetConnection();
+                conn.Open();
+            }
+
+            try
+            {
+                using (var cmd = new MySqlCommand(query, conn, tx))
                 {
                     if (parameters != null && parameters.Length > 0)
                         cmd.Parameters.AddRange(parameters);
@@ -216,7 +222,13 @@ namespace MIS_Admin.Core
                     return cmd.ExecuteScalar();
                 }
             }
+            finally
+            {
+                if (ownConnection)
+                    conn.Dispose();
+            }
         }
+
 
         protected async Task<object> ScalarAsync(string query, params MySqlParameter[] parameters)
         {

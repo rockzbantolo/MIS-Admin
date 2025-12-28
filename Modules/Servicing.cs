@@ -1,10 +1,13 @@
 ﻿using MIS_Admin.Forms;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
+using Next.Controls;
+using Next.Controls.Extention;
 using System.Data;
+using System.Windows.Forms;
 using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
-using static MIS_Admin.Utilities.Notifications;
+using static Next.Controls.Extention.Gridviews;
 
 namespace MIS_Admin.Modules
 {
@@ -28,33 +31,27 @@ namespace MIS_Admin.Modules
         private void InitializeHelpers()
         {
             //EnableDoubleBuffering(pn_Body);
-            EnableDoubleBuffering(dgv_Services);
-            pn_Nav.Radius(8, Color.FromArgb(206, 214, 224));
+            //EnableDoubleBuffering(dgv_Services);
+            //dgv_Services.EnabledBuffer();
+            pn_Nav.Radius(8, Color.FromArgb(223, 228, 234));
             pn_Body.Radius(8, Color.White);
             btn_New.Radius(8, Color.White);
             dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
             pn_MM.Radius(8, Color.FromArgb(39, 60, 117));
             pn_Prov.Radius(8, Color.FromArgb(39, 60, 117));
+            pn_Total.Radius(8, Color.FromArgb(39, 60, 117));
         }
 
         private async Task InitializedData()
         {
-            isLoading = true;
-            dgv_Services.Refresh();
-
-            BindTableToGrid(await getAllServicesAsync(), dgv_Services);
+            await dgv_Services.BindDataWithLoaderAsync(getAllServicesAsync(), "Loading Services ...", "No Services Found.");
             await AreaSummary();
-
-            isLoading = false;
-            dgv_Services.Refresh();
-
         }
 
         // Key pressed Events
         public async void OnEnterPressed()
         {
-            //dgv_Services.DataSource = getAllServices(txt_Search.Text);
-            BindTableToGrid(await getAllServicesAsync(txt_Search.Text), dgv_Services);
+            dgv_Services.BindData(await getAllServicesAsync(txt_Search.Text));
         }
 
         private async Task AreaSummary()
@@ -66,7 +63,7 @@ namespace MIS_Admin.Modules
                 DataRow row = dt.Rows[0];
                 lb_Manila.Text = row["Manila"].ToString();
                 lb_Province.Text = row["Province"].ToString();
-                //lblTotal.Text = row["Total"].ToString();
+                lb_Total.Text = row["Total"].ToString();
             }
         }
 
@@ -122,7 +119,7 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            new ServiceDetailsForm().ShadowBackground(new Main());
+            //new ServiceDetailsForm().ShadowBackground(new Main());
         }
 
         private void Servicing_Load(object sender, EventArgs e)
@@ -142,16 +139,18 @@ namespace MIS_Admin.Modules
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-            new ServiceDetailsForm().ShadowBackground(new Main());
+            new ServiceDetailsForm().ShowWithDimmedBackground(new Main());
         }
 
         private void dgv_Services_Paint(object sender, PaintEventArgs e)
         {
+            /*
             if (dgv_Services.Rows.Count == 0)
             {
                 string msg = isLoading ? "Fetching Services ..." : "No records found.";
                 LoadingGridMessage(dgv_Services, e, msg);
             }
+            */
         }
     }
 }

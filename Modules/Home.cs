@@ -1,13 +1,14 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
-using static MIS_Admin.Model.Authenticate;
-using static MIS_Admin.Controller.AuthCtrl;
+using MIS_Admin.Controller;
 using MIS_Admin.Utilities.UI;
+using static MIS_Admin.Controller.AuthCtrl;
+using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Modules
 {
     public partial class Home : UserControl
     {
-        public readonly UserSession _session;
+        private readonly UserSession _session;
         private readonly Main _main;
 
         public Home(UserSession session, Main main)
@@ -60,11 +61,11 @@ namespace MIS_Admin.Modules
             panel.ResumeLayout();
         }
 
-        private void SignOutAccount()
+        private async void SignOutAccount()
         {
             if (MessageBox.Show("Are you sure to Sign out?", "Service Management", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool isLoggedOut = SignOutUser(_session.UserID);
+                bool isLoggedOut = await SignOutUserAsync(_session.UserID).ConfigureAwait(true);
 
                 if (isLoggedOut)
                 {
@@ -74,19 +75,19 @@ namespace MIS_Admin.Modules
             }
         }
 
-        private void Home_Load(object sender, EventArgs e)
+        private async void Home_Load(object sender, EventArgs e)
         {
-            //dgv_Servicing.DataSource = getAllServices();
             lb_User.Text = _session.FullName;
             lb_Role.Text = _session.Role;
-            SignInUser(_session.UserID);
+            await SignInUserAsync(_session.UserID).ConfigureAwait(true);
         }
+
 
         private void btn_Home_Click(object sender, EventArgs e) => WaitCursor(() => new Overview().ShowUserControl(pn_Body));
 
         private void btn_Services_Click(object sender, EventArgs e) => WaitCursor(() => new Servicing().ShowUserControl(pn_Body));
 
-        private void btn_Stores_Click(object sender, EventArgs e) => WaitCursor(() => new Merchants().ShowUserControl(pn_Body));
+        private void btn_Stores_Click(object sender, EventArgs e) => WaitCursor(() => new Merchants(_session).ShowUserControl(pn_Body));
 
         private void btn_Reports_Click(object sender, EventArgs e) => WaitCursor(() => new Reports().ShowUserControl(pn_Body));
 
