@@ -1,23 +1,23 @@
 ﻿using MIS_Admin.Forms;
+using MIS_Admin.Services;
 using MIS_Admin.Utilities.Handler;
-using MIS_Admin.Utilities.UI;
-using Next.Controls;
 using Next.Controls.Extention;
-using System.Data;
-using System.Windows.Forms;
-using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 using static Next.Controls.Extention.Gridviews;
+using static Next.Controls.Extention.Labels;
+using static Next.Controls.Extention.Radius;
 
 namespace MIS_Admin.Modules
 {
     public partial class Servicing : UserControl, IKeyHandler
     {
-        private bool isLoading { get; set; }
+        private readonly OpsService _Ops;
+
 
         public Servicing()
         {
             InitializeComponent();
+            _Ops = new OpsService();
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -30,41 +30,47 @@ namespace MIS_Admin.Modules
 
         private void InitializeHelpers()
         {
-            //EnableDoubleBuffering(pn_Body);
-            //EnableDoubleBuffering(dgv_Services);
-            //dgv_Services.EnabledBuffer();
-            pn_Nav.Radius(8, Color.FromArgb(223, 228, 234));
-            pn_Body.Radius(8, Color.White);
-            btn_New.Radius(8, Color.White);
-            dgv_Services.Radius(8, Color.FromArgb(224, 224, 224));
-            pn_MM.Radius(8, Color.FromArgb(39, 60, 117));
-            pn_Prov.Radius(8, Color.FromArgb(39, 60, 117));
-            pn_Total.Radius(8, Color.FromArgb(39, 60, 117));
+            new RadiusBatch()
+             .Default(radius: 8, borderColor: Color.FromArgb(39, 60, 117), width: 1)
+             .Add(pn_MM, pn_Prov, pn_Total)
+             .Add(pn_Body, borderColor: Color.White)
+             .Add(pn_Nav, borderColor: Color.FromArgb(223, 228, 234))
+             .Add(btn_New, borderColor: Color.White)
+             .Add(dgv_Services, borderColor: Color.FromArgb(224, 224, 224))
+             .Apply();
         }
 
         private async Task InitializedData()
         {
-            await dgv_Services.BindDataWithLoaderAsync(getAllServicesAsync(), "Loading Services ...", "No Services Found.");
-            await AreaSummary();
+            await Task.WhenAll(
+                dgv_Services.BindDataWithLoaderAsync(_Ops.GetServicesAsync(), "Loading Services ...", "No Services Found."),
+                AreaSummaryAsync()
+             );
+        }
+        
+        private async Task AreaSummaryAsync()
+        {
+            var rowMap = new Dictionary<string, List<LabelBinding>>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["Summary"] = new List<LabelBinding>  
+                {
+                    new (lb_Manila, "Manila", formatString: "N0"),
+                    new (lb_Province, "Province", formatString: "N0"),
+                    new (lb_Total, "TotalServices", formatString: "N0")
+                }
+            };
+
+            await LoadLabelsAsync(
+                dataTask: _Ops.GetServiceAreaSummaryAsync(),
+                keyColumn: "Description", 
+                rowMap: rowMap
+            );
         }
 
         // Key pressed Events
         public async void OnEnterPressed()
         {
-            dgv_Services.BindData(await getAllServicesAsync(txt_Search.Text));
-        }
-
-        private async Task AreaSummary()
-        {
-            DataTable dt = await getAllServiceAreaSummary();
-
-            if (dt.Rows.Count > 0)
-            {
-                DataRow row = dt.Rows[0];
-                lb_Manila.Text = row["Manila"].ToString();
-                lb_Province.Text = row["Province"].ToString();
-                lb_Total.Text = row["Total"].ToString();
-            }
+            dgv_Services.BindData(await _Ops.GetServicesAsync(txt_Search.Text));
         }
 
         public void OnEscapePressed()
@@ -139,7 +145,7 @@ namespace MIS_Admin.Modules
 
         private void btn_New_Click(object sender, EventArgs e)
         {
-            new ServiceDetailsForm().ShowWithDimmedBackground(new Main());
+            new ServiceDetailsForm().DimmedBackground(new Main());
         }
 
         private void dgv_Services_Paint(object sender, PaintEventArgs e)

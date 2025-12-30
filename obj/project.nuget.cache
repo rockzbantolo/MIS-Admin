@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "+ywIox8RvaE=",
+  "dgSpecHash": "r9pqCV1iLcQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\MIS-Admin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rocky\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\rocky\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\google.protobuf\\3.32.0\\google.protobuf.3.32.0.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\k4os.compression.lz4\\1.3.8\\k4os.compression.lz4.1.3.8.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.8\\k4os.compression.lz4.streams.1.3.8.nupkg.sha512",

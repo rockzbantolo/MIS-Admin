@@ -1,7 +1,5 @@
 ﻿using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
-using static MIS_Admin.Utilities.Functions;
-using static MIS_Admin.Controller.OperationsCtrl;
 
 namespace MIS_Admin.Forms
 {

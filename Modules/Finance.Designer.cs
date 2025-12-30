@@ -34,6 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            DoubleBuffered = true;
             Name = "Finance";
             Size = new Size(893, 719);
             ResumeLayout(false);

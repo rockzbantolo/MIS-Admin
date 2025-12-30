@@ -1,18 +1,20 @@
 ﻿using MIS_Admin.Forms;
+using MIS_Admin.Services;
 using MIS_Admin.Utilities.Handler;
 using MIS_Admin.Utilities.UI;
-using Prime.Extentions;
-using Prime.UI;
+using Next.Controls;
+using Next.Controls.Extention;
 using System.Data;
-using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Model.Authenticate;
 using static MIS_Admin.Utilities.Functions;
+using static Next.Controls.Extention.Radius;
 
 namespace MIS_Admin.Modules
 {
     public partial class Merchants : UserControl, IKeyHandler
     {
         private readonly UserSession _session;
+        private readonly OpsService _Ops;
         private string currentMode = null;
 
         private bool isLoading { get; set; }
@@ -21,6 +23,7 @@ namespace MIS_Admin.Modules
         {
             InitializeComponent();
             _session = session;
+            _Ops = new OpsService();
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -32,17 +35,15 @@ namespace MIS_Admin.Modules
 
         private void InitializeHelpers()
         {
-            //EnableDoubleBuffering(pn_Body);
-            EnableDoubleBuffering(dgv_Services);
-            pn_Nav.Round(8, Color.FromArgb(223, 228, 234));
-            pn_Body.Round(8, Color.White);
+            dgv_Services.EnabledBuffer();
 
-            pn_MM.Round(8, Color.FromArgb(232, 65, 24));
-            pn_Prov.Round(8, Color.FromArgb(232, 65, 24));
-            pn_Duplicate.Round(8, Color.FromArgb(232, 65, 24));
-            pn_Total.Round(8, Color.FromArgb(232, 65, 24));
-            dgv_Services.Round(8, Color.FromArgb(224, 224, 224));
-
+            new RadiusBatch()
+            .Default(radius: 8, borderColor: Color.FromArgb(232, 65, 24), width: 1)
+            .Add(pn_MM, pn_Prov, pn_Total, pn_Duplicate, pn_Total)
+            .Add(pn_Body, borderColor: Color.White)
+            .Add(pn_Nav, borderColor: Color.FromArgb(223, 228, 234))
+            .Add(dgv_Services, borderColor: Color.FromArgb(224, 224, 224))
+            .Apply();
         }
 
         private async Task InitializedData()
@@ -63,7 +64,7 @@ namespace MIS_Admin.Modules
 
         private async Task InstalledTerminalCount()
         {
-            DataTable dt = await getAllInstalledTerminalCount();
+            DataTable dt = await _Ops.GetInstalledTerminalCountAsync();
 
             if (dt.Rows.Count > 0)
             {
@@ -77,13 +78,13 @@ namespace MIS_Admin.Modules
 
         private async Task getMerchantDetails(string filter = null, string mode = null)
         {
-            var data = await getAllMerchantAsync(filter, mode);
+            var data = await _Ops.GetMerchantAsync(filter, mode);
             BindTableToGrid(data, dgv_Services);
         }
 
         public async void OnEnterPressed()
         {
-            BindTableToGrid(await getAllMerchantAsync(txt_Search.Text), dgv_Services);
+            BindTableToGrid(await _Ops.GetMerchantAsync(txt_Search.Text), dgv_Services);
         }
 
         public void OnEscapePressed()
@@ -116,11 +117,10 @@ namespace MIS_Admin.Modules
                 frm.ShadowBackground(new Main());
         }
 
-        private async Task PullOutMerchantRecord(DataGridViewCellEventArgs e)
+        private async void PullOutMerchantRecord(DataGridViewCellEventArgs e)
         {
             // Safely get the ID
             var cellValue = dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value;
-
             if (cellValue == null || !int.TryParse(cellValue.ToString(), out int id))
             {
                 MessageBox.Show("Invalid ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -133,17 +133,32 @@ namespace MIS_Admin.Modules
                     "Confirm Pull-Out",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) != DialogResult.Yes)
+            {
                 return;
+            }
 
-            // Execute pull-out
-            var result = PulledOutMerchant(id);
+            try
+            {
+                // Await the async operation
+                var result = await _Ops.SetPullOutMerchantAsync(id);
 
-            // Show result message
-            MessageBox.Show(result.Message,
-                result.Success ? "Success" : "Error",
-                MessageBoxButtons.OK,
-                result.Success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                // Show result message
+                MessageBox.Show(
+                    result.Message ?? "Operation completed.",
+                    result.Success ? "Success" : "Error",
+                    MessageBoxButtons.OK,
+                    result.Success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"An unexpected error occurred: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
 
+            // Refresh the grid regardless of success/failure
             await DisplayData();
         }
 
@@ -159,43 +174,19 @@ namespace MIS_Admin.Modules
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Handle Status column color coding
-            if (dgv_Services.Columns[e.ColumnIndex].HeaderText == "Status" && e.Value != null)
+            var serviceStatusRules = new Dictionary<string, (Color back, Color fore)>
             {
-                string status = e.Value.ToString().Trim().ToUpperInvariant();
+                { "AVAILABLE", (Color.White, Color.DarkGreen) },
+                { "ACTIVE", (Color.White, Color.Green) },
+                { "INACTIVE", (Color.White, Color.DarkGray) },
+                { "ASSIGNED", (Color.White, Color.SteelBlue) },
+                { "DISPATCH", (Color.White, Color.Orange) }
+            };
 
-                Color back = Color.White;
-                Color fore = Color.Black;
+            // Apply predefined status colors
+            dgv_Services.ApplyStatusStyle(e, "Status", serviceStatusRules);
 
-                switch (status)
-                {
-                    case "AVAILABLE":
-                        fore = Color.DarkGreen;
-                        break;
-
-                    case "ACTIVE":
-                        fore = Color.Green;
-                        break;
-
-                    case "INACTIVE":
-                        fore = Color.DarkGray;
-                        break;
-
-                    case "ASSIGNED":
-                        fore = Color.SteelBlue;
-                        break;
-
-                    case "DISPATCH":
-                        fore = Color.Orange;
-                        break;
-                }
-
-                e.CellStyle.BackColor = back;
-                e.CellStyle.ForeColor = fore;
-                e.CellStyle.SelectionBackColor = back;
-                e.CellStyle.SelectionForeColor = fore;
-
-            }
+            // Special N/A styling
             if (e.Value != null && e.Value.ToString().Trim().Equals("N/A", StringComparison.OrdinalIgnoreCase))
             {
                 e.CellStyle.ForeColor = Color.Gray;
@@ -207,12 +198,6 @@ namespace MIS_Admin.Modules
         {
             if (e.RowIndex < 0) return;
 
-            //int IrId       = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells[0].Value);
-            //int merchantId = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells[0].Value);
-            //var Tid        = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-            //var Mid        = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-            //var merchantName = dgv_Services.CurrentRow.Cells[0].Value?.ToString();
-
             var columnName = dgv_Services.Columns[e.ColumnIndex].Name;
 
             switch (columnName)
@@ -222,19 +207,20 @@ namespace MIS_Admin.Modules
                     break;
 
                 case "ColBtnDelete":
-                    await PullOutMerchantRecord(e);
+                    PullOutMerchantRecord(e);
                     break;
             }
         }
 
         private void dgv_Services_Paint(object sender, PaintEventArgs e)
-        {
+        {/*
             if (dgv_Services.Rows.Count == 0)
             {
                 string msg = isLoading ? "Fetching Merchants ..." : "No records found.";
                 //LoadingGridMessage(dgv_Services, e, msg);
-                dgv_Services.Overlay(msg);
+                //dgv_Services.Overlay(msg);
             }
+            */
         }
 
         private async void lb_Manila_Click(object sender, EventArgs e)

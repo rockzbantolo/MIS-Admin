@@ -117,7 +117,6 @@
             lb_Total.Name = "lb_Total";
             lb_Total.Size = new Size(117, 29);
             lb_Total.TabIndex = 3;
-            lb_Total.Text = "-";
             lb_Total.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -159,7 +158,6 @@
             lb_Province.Name = "lb_Province";
             lb_Province.Size = new Size(117, 29);
             lb_Province.TabIndex = 3;
-            lb_Province.Text = "-";
             lb_Province.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -201,7 +199,6 @@
             lb_Manila.Name = "lb_Manila";
             lb_Manila.Size = new Size(117, 29);
             lb_Manila.TabIndex = 1;
-            lb_Manila.Text = "-";
             lb_Manila.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1

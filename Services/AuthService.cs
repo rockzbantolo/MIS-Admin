@@ -4,12 +4,12 @@ using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Services
 {
-    internal class Auth
+    public sealed class AuthService
     {
         private readonly User _user;
         private readonly Authenticate _auth;
 
-        public Auth()
+        public AuthService()
         {
             _user = new User();
             _auth = new Authenticate();

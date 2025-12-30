@@ -34,6 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            DoubleBuffered = true;
             Name = "Admin";
             Size = new Size(1065, 788);
             ResumeLayout(false);

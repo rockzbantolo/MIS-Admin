@@ -1,19 +1,20 @@
 ﻿using MIS_Admin.Model;
-using MIS_Admin.Modules;
+using MIS_Admin.Services;
 using MIS_Admin.Utilities.UI;
-using static MIS_Admin.Controller.OperationsCtrl;
 using static MIS_Admin.Utilities.Functions;
 
 namespace MIS_Admin.Forms
 {
     public partial class DeviceReplaceForm : Form
     {
+        private readonly OpsService _Ops;
         private readonly int _IrID;
 
         public DeviceReplaceForm(int IrID)
         {
             InitializeComponent();
             _IrID = IrID;
+            _Ops = new OpsService();
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -34,22 +35,13 @@ namespace MIS_Admin.Forms
 
         private async Task InitializedData()
         {
-            BindMerchantDataToLabel(await getInstallationDetails(_IrID));
+            BindMerchantDataToLabel(await _Ops.GetInstallationRecordAsync(_IrID));
         }
 
         private void BindMerchantDataToLabel(InstallationDetails details)
         {
             if (details is null) return;
 
-            //lb_RequestNo.Text = details.RequestNo;
-            //lb_MerchantName.Text = details.Merchant;
-            //lb_Address.Text = details.Address;
-            //lb_City.Text = details.Region;
-            //lb_MID.Text = details.MID;
-            //lb_TID.Text = details.TID;
-            //lb_Person.Text = details.ContactPerson;
-            //lb_Contact.Text = details.ContactNo;
-            //lb_Email.Text = details.Email;
             lb_Terminal.Text = details.TerminalSN;
             lb_Model.Text = details.ModelName;
             lb_AppVersion.Text = details.AppVersion;
@@ -66,25 +58,42 @@ namespace MIS_Admin.Forms
             lb_Message.Text = msg;
             lb_Message.Visible = true;
         }
-
         private async Task SaveChanges()
         {
-            var resp = MessageBox.Show("Are you sure you want to save changes?",
-                   "Confirm Save",
-                   MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Question);
+            var resp = MessageBox.Show(
+                "Are you sure you want to save changes?",
+                "Confirm Save",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (resp != DialogResult.Yes)
                 return;
 
-            var result = ReplaceDevice(_IrID, tx_Terminal.Text, tx_Sim.Text);
+            try
+            {
+                var result = await _Ops.SetReplaceDeviceAsync(_IrID, tx_Terminal.Text, tx_Sim.Text);
+                bool success = result.Result == 1;
 
-            bool success = result.Result == 1;
+                // Show feedback using the message from the result
+                BindMessageToLabel(
+                    result.Message ?? (success ? "Device replaced successfully" : "Operation failed"),
+                    success);
 
-            BindMessageToLabel(result.Message, success);
+                // Refresh data only on success
+                if (success)
+                {
+                    var updatedRecord = await _Ops.GetInstallationRecordAsync(_IrID);
 
-            if (success)
-                BindMerchantDataToLabel(await getInstallationDetails(_IrID));
+                    if (updatedRecord != null)
+                    {
+                        BindMerchantDataToLabel(updatedRecord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                BindMessageToLabel($"Error: {ex.Message}", false);
+            }
         }
 
         private void DeviceReplacementForm_KeyDown(object sender, KeyEventArgs e)

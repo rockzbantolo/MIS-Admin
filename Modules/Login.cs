@@ -1,7 +1,7 @@
-﻿using MIS_Admin.Utilities.Handler;
+﻿using MIS_Admin.Services;
+using MIS_Admin.Utilities.Handler;
 using Next.Controls;
 using Next.Controls.Extention;
-using static MIS_Admin.Controller.AuthCtrl;
 using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Modules
@@ -9,12 +9,14 @@ namespace MIS_Admin.Modules
     public partial class Login : UserControl, IKeyHandler
     {
         private readonly Main _main;
+        private readonly AuthService _user;
         private RadiusProvider RadiusProvider;
 
         public Login(Main main)
         {
             InitializeComponent();
             _main = main;
+            _user = new AuthService();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -36,12 +38,12 @@ namespace MIS_Admin.Modules
                 return;
             }
 
-            UserSession session = await AuthenticateAsync(tx_Username.Text.Trim(), tx_Pass.Text.Trim());
+            UserSession session = await _user.GetUserAccountAsync(tx_Username.Text.Trim(), tx_Pass.Text.Trim());
 
             if (session != null)
             {
                 await Task.Delay(1000);
-                new Home(session, _main).LoadUserControl(_main.BodyPanel);
+                new Home(session, _main).Show(_main.BodyPanel);
             }
             else
             {

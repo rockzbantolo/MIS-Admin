@@ -1,7 +1,6 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using MIS_Admin.Controller;
+﻿using MIS_Admin.Services;
 using MIS_Admin.Utilities.UI;
-using static MIS_Admin.Controller.AuthCtrl;
+using Next.Controls.Extention;
 using static MIS_Admin.Model.Authenticate;
 
 namespace MIS_Admin.Modules
@@ -10,20 +9,22 @@ namespace MIS_Admin.Modules
     {
         private readonly UserSession _session;
         private readonly Main _main;
+        private readonly AuthService _user;
 
         public Home(UserSession session, Main main)
         {
             InitializeComponent();
             InitializeHelpers();
-            _session = session;
-            _main = main;
+            _session     = session;
+            _main        = main;
             _main.UserId = session.UserID;
+            _user        = new AuthService();
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            new Overview().ShowUserControl(pn_Body);
+            new Overview().Show(pn_Body);
         }
 
         private void InitializeHelpers()
@@ -65,7 +66,7 @@ namespace MIS_Admin.Modules
         {
             if (MessageBox.Show("Are you sure to Sign out?", "Service Management", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                bool isLoggedOut = await SignOutUserAsync(_session.UserID).ConfigureAwait(true);
+                bool isLoggedOut = await _user.SignOutStatusAsync(_session.UserID).ConfigureAwait(true);
 
                 if (isLoggedOut)
                 {
@@ -79,17 +80,17 @@ namespace MIS_Admin.Modules
         {
             lb_User.Text = _session.FullName;
             lb_Role.Text = _session.Role;
-            await SignInUserAsync(_session.UserID).ConfigureAwait(true);
+            await _user.SignInStatusAsync(_session.UserID).ConfigureAwait(true);
         }
 
 
-        private void btn_Home_Click(object sender, EventArgs e) => WaitCursor(() => new Overview().ShowUserControl(pn_Body));
+        private void btn_Home_Click(object sender, EventArgs e) => WaitCursor(() => new Overview().Show(pn_Body));
 
-        private void btn_Services_Click(object sender, EventArgs e) => WaitCursor(() => new Servicing().ShowUserControl(pn_Body));
+        private void btn_Services_Click(object sender, EventArgs e) => WaitCursor(() => new Servicing().Show(pn_Body));
 
-        private void btn_Stores_Click(object sender, EventArgs e) => WaitCursor(() => new Merchants(_session).ShowUserControl(pn_Body));
+        private void btn_Stores_Click(object sender, EventArgs e) => WaitCursor(() => new Merchants(_session).Show(pn_Body));
 
-        private void btn_Reports_Click(object sender, EventArgs e) => WaitCursor(() => new Reports().ShowUserControl(pn_Body));
+        private void btn_Reports_Click(object sender, EventArgs e) => WaitCursor(() => new Reports().Show(pn_Body));
 
         private void btn_Logout_Click(object sender, EventArgs e)
         {

@@ -1,18 +1,21 @@
 ﻿using MIS_Admin.Modules;
+using MIS_Admin.Services;
 using MIS_Admin.Utilities.Handler;
-using MIS_Admin.Utilities.UI;
-using static MIS_Admin.Controller.AuthCtrl;
+using Next.Controls.Extention;
 
 namespace MIS_Admin
 {
     public partial class Main : Form
     {
         public Panel BodyPanel => pn_Body;
+        private readonly AuthService _user;
+
         public int UserId { get; set; }
 
         public Main()
         {
             InitializeComponent();
+            _user = new AuthService();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -44,7 +47,7 @@ namespace MIS_Admin
                 return;
             }
 
-            bool isLoggedOut = await SignOutUserAsync(UserId).ConfigureAwait(true);
+            bool isLoggedOut = await _user.SignOutStatusAsync(UserId).ConfigureAwait(true);
 
             if (!isLoggedOut)
             {
@@ -91,8 +94,8 @@ namespace MIS_Admin
 
         private void InitializedDisplay()
         {
-            //EnableDoubleBuffering(pn_Body);
-            new Login(this).ShowUserControl(pn_Body);
+            //pn_Body.EnabledBuffer();
+            new Login(this).Show(pn_Body);
         }
 
         private async void Main_Load(object sender, EventArgs e)
