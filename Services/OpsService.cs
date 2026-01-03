@@ -1,31 +1,27 @@
-﻿using MIS_Admin.Model;
-using MIS_Admin.Model.Dto;
+﻿using MIS_Admin.Models;
 using MIS_Admin.Repository;
-using Next.Controls.Extention;
+using MIS_Admin.UI.Dto;
+using Next.Extention;
 using System.Data;
 
 namespace MIS_Admin.Services
 {
     public sealed class OpsService
     {
-        private readonly Ops _Ops;
+        private readonly OpsRepo _Ops;
 
-        public OpsService() => _Ops = new Ops();
+        public OpsService() => _Ops = new OpsRepo();
 
         public async Task<DataTable> GetServicesAsync(string search = null, int? userId = null)
         {
-            var results = await _Ops.FindServicesAsync(
-                string.IsNullOrWhiteSpace(search) ? null : search?.Trim(),
-                userId);
+            var results = await _Ops.FindServicesAsync(search, userId);
 
             return results.ToDataTable("Services");
         }
 
         public async Task<DataTable> GetHelpdeskRequestAsync(string search = null, int? id = null)
         {
-            var data = await _Ops.FindHelpdeskRequestAsync(
-                string.IsNullOrWhiteSpace(search) ? null : search?.Trim(),
-                id);
+            var data = await _Ops.FindHelpdeskRequestAsync(search, id);
 
             return data.ToDataTable("HelpdeskRequests");
         }
@@ -39,16 +35,6 @@ namespace MIS_Admin.Services
                 .DefaultView
                 .ToTable(false, "Order No", "Merchant", "Status");
         }
-
-
-        /*
-        public async Task<DataTable> getRecentServices()
-        {
-            var details = await _Ops.FindServicesAsync(string.Empty, 10);
-
-            return details.DefaultView.ToTable(false, "Order No", "Merchant", "Status");
-        }
-        */
 
         public async Task<DataTable> GetServiceSummaryAsync(DateTime? targetDate = null, int? id = null)
         {
@@ -105,32 +91,32 @@ namespace MIS_Admin.Services
             return results.ToDataTable("Stores");
         }
 
-        public async Task<DataTable> GetMerchantAsync(string? search = null, string? mode = null)
+        public async Task<DataTable> GetMerchantAsync(string search = null, string mode = null)
         {
-            string? effectiveSearch = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
-            string? effectiveMode = string.IsNullOrWhiteSpace(mode) ? null : mode?.Trim();
+            string effectiveSearch = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
+            string effectiveMode = string.IsNullOrWhiteSpace(mode) ? null : mode?.Trim();
 
             var results = await _Ops.FindMerchantAsync(effectiveSearch, effectiveMode);
             return results.ToDataTable("Merchants");
         }
 
-        public async Task<DataTable> GetListOfTerminalsAsync(string? search = null)
+        public async Task<DataTable> GetListOfTerminalsAsync(string search = null)
         {
-            string? filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
+            string filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
             var results = await _Ops.FindTerminalsAsync(filter);
             return results.ToDataTable("Terminals");
         }
 
-        public async Task<DataTable> GetListOfSimCardsAsync(string? search = null)
+        public async Task<DataTable> GetListOfSimCardsAsync(string search = null)
         {
-            string? filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
+            string filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
             var results = await _Ops.FindSimCardsAsync(filter);
             return results.ToDataTable("SimCards");
         }
 
-        public async Task<DataTable> GetAvailableTerminalsAsync(string? search = null)
+        public async Task<DataTable> GetAvailableTerminalsAsync(string search = null)
         {
-            string? filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
+            string filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
 
             // 1. Get raw dynamic results from Dapper
             var rawResults = await _Ops.FindTerminalsAsync(filter, limit: 10);
@@ -155,9 +141,9 @@ namespace MIS_Admin.Services
             return resultTable.DefaultView.ToTable(false, "ID", "Serial");
         }
 
-        public async Task<DataTable> GetAvailableSimsAsync(string? search = null)
+        public async Task<DataTable> GetAvailableSimsAsync(string search = null)
         {
-            string? filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
+            string filter = string.IsNullOrWhiteSpace(search) ? null : search?.Trim();
 
             var rawResults = await _Ops.FindSimCardsAsync(filter, limit: 10);
             var dt = rawResults.ToDataTable("TempSims");
@@ -174,12 +160,12 @@ namespace MIS_Admin.Services
             return resultTable.DefaultView.ToTable(false, "ID", "Serial");
         }
 
-        public async Task<ProcedureResult> SetReplaceDeviceAsync(int id, string terminalSn = null, string simSn = null)
+        public async Task<ProcedureDto> SetReplaceDeviceAsync(int id, string terminalSn, string simSn)
         {
             return await _Ops.CallReplaceDeviceAsync(id, terminalSn, simSn);
         }
 
-        public async Task<InstallationDetails?> GetInstallationRecordAsync(int? id = null)
+        public async Task<InstallationModel> GetInstallationRecordAsync(int? id = null)
         {
             if (!id.HasValue)
                 return null;
@@ -193,7 +179,7 @@ namespace MIS_Admin.Services
 
             var row = dt.Rows[0];
 
-            return new InstallationDetails
+            return new InstallationModel
             {
                 RequestNo = row["Request_No"]?.ToString(),
                 Merchant = row["Merchant"]?.ToString(),
@@ -216,11 +202,11 @@ namespace MIS_Admin.Services
             };
         }
 
-        public async Task<ExeResult> SetPullOutMerchantAsync(int IrID)
+        public async Task<ResultDto> SetPullOutMerchantAsync(int IrID)
         {
             if (IrID <= 0)
             {
-                return ExeResult.Fail("Invalid merchant/request ID");
+                return ResultDto.Fail("Invalid merchant/request ID");
             }
 
             return await _Ops.PullOutMerchantAsync(IrID);

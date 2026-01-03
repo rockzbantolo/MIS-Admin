@@ -1,18 +1,18 @@
-﻿using MIS_Admin.Model;
+﻿using MIS_Admin.Models;
 using MIS_Admin.Repository;
-using static MIS_Admin.Model.Authenticate;
+using static MIS_Admin.Models.AuthModel;
 
 namespace MIS_Admin.Services
 {
     public sealed class AuthService
     {
-        private readonly User _user;
-        private readonly Authenticate _auth;
+        private readonly UserRepo _user;
+        private readonly AuthModel _auth;
 
         public AuthService()
         {
-            _user = new User();
-            _auth = new Authenticate();
+            _user = new UserRepo();
+            _auth = new AuthModel();
         }
 
         public async Task<UserSession> GetUserAccountAsync(string username, string password)

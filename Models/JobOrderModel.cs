@@ -1,0 +1,15 @@
+﻿
+namespace MIS_Admin.Models
+{
+    internal class JobOrderModel
+    {
+        public int ServiceNo { get; set; }
+        public int JobType { get; set; }
+        public int TerminalID { get; set; }
+        public int SimID { get; set; }
+        public int? RepTerminalID { get; set; } = null;
+        public int? RepSIMID { get; set; } = null;
+        public string ActionMade { get; set; }
+
+    }
+}

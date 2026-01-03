@@ -1,4 +1,6 @@
-﻿using Next.Clients.Providers;
+﻿using MySql.Data.MySqlClient;
+using Next.Clients.Providers;
+using Next.Common;
 using System.Configuration;
 using System.Diagnostics;
 
@@ -12,17 +14,41 @@ namespace MIS_Admin.Core
 
         private static MySqlDb Create()
         {
-            var cs = ConfigurationManager.ConnectionStrings["MySqlDB"];
+            bool isDev = bool.Parse(ConfigurationManager.AppSettings["DevMode"] ?? "false");
 
-            if (cs == null)
-                throw new InvalidOperationException("Connection string not found.");
+            // Developmnent Mode
+            if (isDev)
+            {
+                var settings = ConfigurationManager.AppSettings;
+                return MySqlDbBuilder
+                    .For(settings["DevHost"], settings["DevName"])
+                    .Port(uint.Parse(settings["DevPort"]))
+                    .WithCredentials(settings["DevUser"], settings["DevPass"])
+                    .ConnectTimeout(uint.Parse(settings["DevConnectTimeout"]))
+                    .SslMode(Enum.Parse<MySqlSslMode>(settings["DevSslMode"]))
+                    .Logger(msg => Logger.Info(msg))
+                    .Build();
+            }
 
-            return new MySqlDb(cs.ConnectionString, Log);
+            // Production Mode
+            var cs = ConfigurationManager.ConnectionStrings["MySqlDB"]?.ConnectionString;
+            if (string.IsNullOrEmpty(cs)) throw new InvalidOperationException("Missing connection string 'MySqlDB'");
+
+            var csb = new MySqlConnectionStringBuilder(cs);
+            return MySqlDbBuilder
+                .For(csb.Server, csb.Database)
+                .Port(csb.Port)
+                .WithCredentials(csb.UserID, csb.Password)
+                .ConnectTimeout(csb.ConnectionTimeout)
+                .SslMode(csb.SslMode)
+                .Logger(Log)
+                .Build();
         }
 
         private static void Log(string message)
         {
             Debug.WriteLine(message);
         }
+    
     }
 }

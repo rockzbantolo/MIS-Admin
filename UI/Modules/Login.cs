@@ -1,0 +1,77 @@
+﻿using MIS_Admin.Services;
+using MIS_Admin.Utilities.Handler;
+using Next.Controls;
+using Next.Controls.Extention;
+using static MIS_Admin.Models.AuthModel;
+
+namespace MIS_Admin.Modules
+{
+    public partial class Login : UserControl, IKeyHandler
+    {
+        private readonly Main _main;
+        private readonly AuthService _user;
+        private RadiusProvider RadiusProvider;
+
+        public Login(Main main)
+        {
+            InitializeComponent();
+            _main = main;
+            _user = new AuthService();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            tx_Pass.ShowPasswordEye();
+        }
+
+        private async void SignInAccount()
+        {
+            btn_Login.SetLoading(true);
+
+            if (string.IsNullOrEmpty(tx_Username.Text.Trim()) || string.IsNullOrEmpty(tx_Pass.Text.Trim()))
+            {
+                lb_Message.ForeColor = Color.Red;
+                lb_Message.Text = "Please enter username and password.";
+                lb_Message.Visible = true;
+                btn_Login.SetLoading(false);
+                return;
+            }
+
+            UserSession session = await _user.GetUserAccountAsync(tx_Username.Text.Trim(), tx_Pass.Text.Trim());
+
+            if (session != null)
+            {
+                await Task.Delay(1000);
+                new Home(session, _main).Show(_main.BodyPanel);
+            }
+            else
+            {
+                lb_Message.Text = "Invalid account.";
+                lb_Message.Visible = true;
+                btn_Login.SetLoading(false);
+            }
+        }
+        
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            SignInAccount();
+        }
+
+        public void OnEnterPressed()
+        {
+            SignInAccount();
+        }
+
+        public void OnEscapePressed()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnF1Pressed()
+        {
+            //throw new NotImplementedException();
+        }
+   
+    }
+}
