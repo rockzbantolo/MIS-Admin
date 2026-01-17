@@ -42,6 +42,7 @@
             button2 = new Button();
             pictureBox1 = new PictureBox();
             pn_Header = new Panel();
+            Lb_Header = new Label();
             lb_Role = new Label();
             pictureBox2 = new PictureBox();
             lb_User = new Label();
@@ -284,21 +285,34 @@
             // 
             // pn_Header
             // 
-            pn_Header.BackColor = Color.White;
+            pn_Header.BackColor = Color.FromArgb(47, 54, 64);
+            pn_Header.Controls.Add(Lb_Header);
             pn_Header.Controls.Add(lb_Role);
             pn_Header.Controls.Add(pictureBox2);
             pn_Header.Controls.Add(lb_User);
             pn_Header.Dock = DockStyle.Top;
             pn_Header.Location = new Point(264, 0);
             pn_Header.Name = "pn_Header";
-            pn_Header.Size = new Size(847, 60);
+            pn_Header.Size = new Size(847, 69);
             pn_Header.TabIndex = 1;
+            // 
+            // Lb_Header
+            // 
+            Lb_Header.AutoSize = true;
+            Lb_Header.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            Lb_Header.ForeColor = Color.White;
+            Lb_Header.Location = new Point(24, 27);
+            Lb_Header.Name = "Lb_Header";
+            Lb_Header.Size = new Size(114, 28);
+            Lb_Header.TabIndex = 24;
+            Lb_Header.Text = "Dashboard";
             // 
             // lb_Role
             // 
             lb_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lb_Role.Font = new Font("Segoe UI", 5F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_Role.Location = new Point(629, 33);
+            lb_Role.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_Role.ForeColor = Color.White;
+            lb_Role.Location = new Point(607, 46);
             lb_Role.Name = "lb_Role";
             lb_Role.Size = new Size(170, 10);
             lb_Role.TabIndex = 10;
@@ -310,7 +324,7 @@
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(808, 18);
+            pictureBox2.Location = new Point(786, 29);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(27, 27);
             pictureBox2.TabIndex = 9;
@@ -319,8 +333,9 @@
             // lb_User
             // 
             lb_User.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lb_User.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lb_User.Location = new Point(629, 19);
+            lb_User.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lb_User.ForeColor = Color.White;
+            lb_User.Location = new Point(607, 27);
             lb_User.Name = "lb_User";
             lb_User.Size = new Size(170, 13);
             lb_User.TabIndex = 0;
@@ -329,11 +344,11 @@
             // 
             // pn_Body
             // 
-            pn_Body.BackColor = Color.FromArgb(206, 214, 224);
+            pn_Body.BackColor = Color.FromArgb(47, 54, 64);
             pn_Body.Dock = DockStyle.Fill;
-            pn_Body.Location = new Point(264, 60);
+            pn_Body.Location = new Point(264, 69);
             pn_Body.Name = "pn_Body";
-            pn_Body.Size = new Size(847, 786);
+            pn_Body.Size = new Size(847, 777);
             pn_Body.TabIndex = 2;
             // 
             // Home
@@ -352,6 +367,7 @@
             flp_Nav.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pn_Header.ResumeLayout(false);
+            pn_Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
@@ -374,5 +390,6 @@
         private Button btn_Logout;
         private Label lb_Role;
         private Button button2;
+        private Label Lb_Header;
     }
 }

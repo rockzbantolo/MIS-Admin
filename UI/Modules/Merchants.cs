@@ -1,10 +1,10 @@
 ﻿using MIS_Admin.Forms;
 using MIS_Admin.Services;
 using MIS_Admin.Utilities.Handler;
-using MIS_Admin.Utilities.UI;
 using Next.Controls;
 using Next.Controls.Extention;
 using static MIS_Admin.Models.AuthModel;
+using static MIS_Admin.Utilities.Functions.Theme;
 using static Next.Controls.Extention.Labels;
 using static Next.Controls.Extention.Radius;
 
@@ -13,15 +13,19 @@ namespace MIS_Admin.Modules
 {
     public partial class Merchants : UserControl, IKeyHandler
     {
-        private readonly UserSession _session;
-        private readonly OpsService _Ops;
-        private string currentMode = null;
+        private readonly Session _session;
+        private readonly OpsOverview _ops;
+        private readonly MerchantService _merch;
+        private string currentFilter = null;
 
-        public Merchants(UserSession session)
+
+        public Merchants(Session session)
         {
             InitializeComponent();
+            _ops = new OpsOverview();
+            _merch = new MerchantService();
             _session = session;
-            _Ops = new OpsService();
+
         }
 
         protected async override void OnLoad(EventArgs e)
@@ -31,18 +35,38 @@ namespace MIS_Admin.Modules
             await InitializedData();
         }
 
+        public async void OnEnterPressed()
+        {
+            await getMerchantDetails(txt_Search.Text);
+        }
+
+        public void OnEscapePressed()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnF1Pressed()
+        {
+            //throw new NotImplementedException();
+        }
+
         private void InitializeHelpers()
         {
+            this.BackColor = BackColor;
+
             dgv_Services.EnabledBuffer();
 
             new RadiusBatch()
             .Default(radius: 8, borderColor: Color.FromArgb(232, 65, 24), width: 1)
             .Add(pn_MM, pn_Prov, pn_Total, pn_Duplicate, pn_Total)
-            .Add(pn_Body, borderColor: Color.White)
-            .Add(pn_Nav, borderColor: Color.FromArgb(223, 228, 234))
-            .Add(dgv_Services, borderColor: Color.FromArgb(224, 224, 224))
+            .Add(pn_Body,       radius: 12, borderColor: BackColor)
+            .Add(pn_Nav,        radius: 12, borderColor: BackColor)
+            .Add(pn_GridBody,  radius: 12, borderColor: BackColor)
             .Apply();
         }
+
+
+
 
         private async Task InitializedData()
         {
@@ -50,7 +74,7 @@ namespace MIS_Admin.Modules
             await DisplayData();
         }
 
-        private void RoleChecked(UserSession session)
+        private void RoleChecked(Session session)
         {
             if (!session.Role.Equals("ADMIN", StringComparison.OrdinalIgnoreCase))
             {
@@ -75,53 +99,50 @@ namespace MIS_Admin.Modules
             };
 
             await LoadLabelsAsync(
-                dataTask: _Ops.GetInstalledTerminalCountAsync(),
+                dataTask: _ops.GetInstalledTerminalCountAsync(),
                 keyColumn: "Description",
                 rowMap: Summary
             );
         }
 
-        private async Task getMerchantDetails(string filter = null, string mode = null)
+        private async Task getMerchantDetails(string search = null, string filter = null)
         {
-           await dgv_Services.BindDataWithLoaderAsync(_Ops.GetMerchantAsync(filter, mode), "Loading Merchants ...");
-        }
+            IEnumerable<string> filters = string.IsNullOrWhiteSpace(filter)
+                ? null
+                : filter.Split(',').Select(f => f.Trim());
 
-        public async void OnEnterPressed()
-        {
-            await getMerchantDetails(txt_Search.Text);
-        }
-
-        public void OnEscapePressed()
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void OnF1Pressed()
-        {
-            //throw new NotImplementedException();
+            await dgv_Services.BindDataWithLoaderAsync(
+                _merch.GetMerchants(
+                    search: string.IsNullOrWhiteSpace(search) ? null : search.Trim(),
+                    filter: filters
+                ),
+                "Loading Merchants ..."
+            );
         }
 
         private async Task DisplayData()
         {
             await Task.WhenAll(
-                getMerchantDetails(currentMode),
+                getMerchantDetails(currentFilter),
                 InstalledTerminalCount()
             );
         }
 
         private void ReplaceDevice(DataGridViewCellEventArgs e)
         {
-            var id = Convert.ToInt32(dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value);
+            var id = dgv_Services.GetValue<int>(e.RowIndex, "ColID", 0);
 
             using (var frm = new DeviceReplaceForm(id))
-                frm.ShadowBackground(new Main());
+                frm.DimmedBackground(new Main());
+            
         }
 
         private async void PullOutMerchantRecord(DataGridViewCellEventArgs e)
         {
             // Safely get the ID
-            var cellValue = dgv_Services.Rows[e.RowIndex].Cells["ColID"].Value;
-            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int id))
+            int id = dgv_Services.GetValue<int>(e.RowIndex, "ColID", 0);
+
+            if (id <= 0)
             {
                 MessageBox.Show("Invalid ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -140,7 +161,7 @@ namespace MIS_Admin.Modules
             try
             {
                 // Await the async operation
-                var result = await _Ops.SetPullOutMerchantAsync(id);
+                var result = await _merch.SetPullOutMerchantAsync(id);
 
                 // Show result message
                 MessageBox.Show(
@@ -162,25 +183,22 @@ namespace MIS_Admin.Modules
             await DisplayData();
         }
 
-        private void dgv_Services_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
 
-        }
 
         private void dgv_Services_Leave(object sender, EventArgs e)
         {
-
+            dgv_Services.ClearSelection();
         }
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var serviceStatusRules = new Dictionary<string, (Color back, Color fore)>
             {
-                { "AVAILABLE", (Color.White, Color.DarkGreen) },
-                { "ACTIVE", (Color.White, Color.Green) },
-                { "INACTIVE", (Color.White, Color.DarkGray) },
-                { "ASSIGNED", (Color.White, Color.SteelBlue) },
-                { "DISPATCH", (Color.White, Color.Orange) }
+                { "AVAILABLE", (BodyColor, StatusColor.Success) },
+                { "ACTIVE",    (BodyColor, StatusColor.Success) },
+                { "INACTIVE",  (BodyColor, StatusColor.Inactive) },
+                { "ASSIGNED",  (BodyColor, StatusColor.Assigned) }, 
+                { "DISPATCH",  (BodyColor, StatusColor.Warning) }
             };
 
             // Apply predefined status colors
@@ -189,7 +207,7 @@ namespace MIS_Admin.Modules
             // Special N/A styling
             if (e.Value != null && e.Value.ToString().Trim().Equals("N/A", StringComparison.OrdinalIgnoreCase))
             {
-                e.CellStyle.ForeColor = Color.Gray;
+                e.CellStyle.ForeColor = TextColor.Disabled;
                 e.CellStyle.Font = new Font(dgv_Services.Font, FontStyle.Italic);
             }
         }
@@ -225,26 +243,26 @@ namespace MIS_Admin.Modules
 
         private async void lb_Manila_Click(object sender, EventArgs e)
         {
-            currentMode = "MANILA";
-            await getMerchantDetails(null, currentMode);
+            currentFilter = "MANILA";
+            await getMerchantDetails(filter: currentFilter);
         }
 
         private async void lb_Province_Click(object sender, EventArgs e)
         {
-            currentMode = "PROVINCE";
-            await getMerchantDetails(null, currentMode);
+            currentFilter = "PROVINCE";
+            await getMerchantDetails(filter: currentFilter);
         }
        
         private async void lb_Duplicate_Click(object sender, EventArgs e)
         {
-            currentMode = "DUPLICATE";
-            await getMerchantDetails(null, currentMode);
+            currentFilter = "DUPLICATE";
+            await getMerchantDetails(filter: currentFilter);
         }
 
         private async void pb_Icon_Click(object sender, EventArgs e)
         {
-            currentMode = null;
-            await getMerchantDetails(null, currentMode);
+            currentFilter = null;
+            await getMerchantDetails(filter: currentFilter);
         }
 
     }

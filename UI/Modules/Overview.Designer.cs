@@ -46,7 +46,6 @@
             Column2 = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            label3 = new Label();
             panel6 = new Panel();
             pictureBox2 = new PictureBox();
             lb_RequestCount = new Label();
@@ -155,7 +154,6 @@
             pn_Ins = new Panel();
             lb_Ins_Total = new Label();
             label5 = new Label();
-            label42 = new Label();
             panel10 = new Panel();
             pictureBox4 = new PictureBox();
             lb_HelpdeskCount = new Label();
@@ -201,11 +199,11 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.White;
+            panel1.BackColor = Color.FromArgb(30, 39, 46);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(dgv_Services);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(25, 531);
+            panel1.Location = new Point(25, 476);
             panel1.Name = "panel1";
             panel1.Size = new Size(482, 467);
             panel1.TabIndex = 1;
@@ -227,13 +225,13 @@
             dgv_Services.AllowUserToResizeRows = false;
             dgv_Services.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Services.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_Services.BackgroundColor = Color.White;
+            dgv_Services.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_Services.BorderStyle = BorderStyle.None;
-            dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -243,16 +241,16 @@
             dgv_Services.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_Services.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Status });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.Padding = new Padding(12, 0, 0, 0);
             dataGridViewCellStyle2.SelectionBackColor = Color.White;
             dataGridViewCellStyle2.SelectionForeColor = Color.Green;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgv_Services.DefaultCellStyle = dataGridViewCellStyle2;
             dgv_Services.EnableHeadersVisualStyles = false;
-            dgv_Services.GridColor = Color.White;
+            dgv_Services.GridColor = Color.FromArgb(30, 39, 46);
             dgv_Services.Location = new Point(20, 65);
             dgv_Services.Name = "dgv_Services";
             dgv_Services.ReadOnly = true;
@@ -297,35 +295,24 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(64, 64, 64);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(48, 18);
             label1.Name = "label1";
             label1.Size = new Size(129, 21);
             label1.TabIndex = 15;
             label1.Text = "Recent Services";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(64, 64, 64);
-            label3.Location = new Point(19, 15);
-            label3.Name = "label3";
-            label3.Size = new Size(114, 28);
-            label3.TabIndex = 14;
-            label3.Text = "Dashboard";
-            // 
             // panel6
             // 
             panel6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel6.BackColor = Color.White;
+            panel6.BackColor = Color.FromArgb(30, 39, 46);
             panel6.Controls.Add(pictureBox2);
             panel6.Controls.Add(lb_RequestCount);
             panel6.Controls.Add(dgv_Request);
             panel6.Controls.Add(label2);
-            panel6.Location = new Point(777, 79);
+            panel6.Location = new Point(777, 24);
             panel6.Name = "panel6";
-            panel6.Size = new Size(468, 434);
+            panel6.Size = new Size(293, 434);
             panel6.TabIndex = 15;
             // 
             // pictureBox2
@@ -344,10 +331,10 @@
             lb_RequestCount.BackColor = Color.Gray;
             lb_RequestCount.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             lb_RequestCount.ForeColor = Color.White;
-            lb_RequestCount.Location = new Point(218, 20);
+            lb_RequestCount.Location = new Point(224, 18);
             lb_RequestCount.Name = "lb_RequestCount";
-            lb_RequestCount.Padding = new Padding(3);
-            lb_RequestCount.Size = new Size(28, 21);
+            lb_RequestCount.Padding = new Padding(4);
+            lb_RequestCount.Size = new Size(30, 23);
             lb_RequestCount.TabIndex = 18;
             lb_RequestCount.Text = "---";
             // 
@@ -359,13 +346,13 @@
             dgv_Request.AllowUserToResizeRows = false;
             dgv_Request.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Request.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_Request.BackgroundColor = Color.White;
+            dgv_Request.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_Request.BorderStyle = BorderStyle.None;
             dgv_Request.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
@@ -374,9 +361,9 @@
             dgv_Request.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_Request.Columns.AddRange(new DataGridViewColumn[] { Column4, Column5, Column6, Column7 });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.ForeColor = Color.White;
             dataGridViewCellStyle4.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle4.SelectionBackColor = Color.White;
             dataGridViewCellStyle4.SelectionForeColor = Color.Green;
@@ -392,7 +379,7 @@
             dgv_Request.RowTemplate.Height = 40;
             dgv_Request.RowTemplate.ReadOnly = true;
             dgv_Request.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Request.Size = new Size(432, 354);
+            dgv_Request.Size = new Size(257, 354);
             dgv_Request.TabIndex = 17;
             dgv_Request.Leave += dgv_Request_Leave;
             // 
@@ -434,7 +421,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(64, 64, 64);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(48, 18);
             label2.Name = "label2";
             label2.Size = new Size(169, 21);
@@ -444,15 +431,15 @@
             // panel7
             // 
             panel7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel7.BackColor = Color.White;
+            panel7.BackColor = Color.FromArgb(30, 39, 46);
             panel7.Controls.Add(pictureBox3);
             panel7.Controls.Add(PnUnlclosedTickBody);
             panel7.Controls.Add(PnServiceSumBody);
             panel7.Controls.Add(pnSlaBody);
             panel7.Controls.Add(label4);
-            panel7.Location = new Point(25, 1019);
+            panel7.Location = new Point(25, 964);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1220, 682);
+            panel7.Size = new Size(1045, 682);
             panel7.TabIndex = 16;
             // 
             // pictureBox3
@@ -468,24 +455,24 @@
             // PnUnlclosedTickBody
             // 
             PnUnlclosedTickBody.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PnUnlclosedTickBody.BackColor = Color.White;
+            PnUnlclosedTickBody.BackColor = Color.FromArgb(30, 39, 46);
             PnUnlclosedTickBody.Controls.Add(panel21);
             PnUnlclosedTickBody.Controls.Add(dgv_CloseTickets);
             PnUnlclosedTickBody.Location = new Point(305, 65);
             PnUnlclosedTickBody.Name = "PnUnlclosedTickBody";
-            PnUnlclosedTickBody.Size = new Size(878, 594);
+            PnUnlclosedTickBody.Size = new Size(703, 594);
             PnUnlclosedTickBody.TabIndex = 32;
             // 
             // panel21
             // 
-            panel21.BackColor = Color.FromArgb(223, 230, 233);
+            panel21.BackColor = Color.FromArgb(47, 54, 64);
             panel21.Controls.Add(dtp_Month);
             panel21.Controls.Add(lb_TicketCount);
             panel21.Controls.Add(label35);
             panel21.Dock = DockStyle.Top;
             panel21.Location = new Point(0, 0);
             panel21.Name = "panel21";
-            panel21.Size = new Size(878, 43);
+            panel21.Size = new Size(703, 43);
             panel21.TabIndex = 32;
             // 
             // dtp_Month
@@ -494,7 +481,7 @@
             dtp_Month.CalendarFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtp_Month.CustomFormat = "MMMM";
             dtp_Month.Format = DateTimePickerFormat.Custom;
-            dtp_Month.Location = new Point(780, 9);
+            dtp_Month.Location = new Point(605, 9);
             dtp_Month.Name = "dtp_Month";
             dtp_Month.ShowUpDown = true;
             dtp_Month.Size = new Size(87, 23);
@@ -507,10 +494,10 @@
             lb_TicketCount.BackColor = Color.Gray;
             lb_TicketCount.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             lb_TicketCount.ForeColor = Color.White;
-            lb_TicketCount.Location = new Point(137, 10);
+            lb_TicketCount.Location = new Point(142, 9);
             lb_TicketCount.Name = "lb_TicketCount";
-            lb_TicketCount.Padding = new Padding(3);
-            lb_TicketCount.Size = new Size(28, 21);
+            lb_TicketCount.Padding = new Padding(4);
+            lb_TicketCount.Size = new Size(30, 23);
             lb_TicketCount.TabIndex = 32;
             lb_TicketCount.Text = "---";
             lb_TicketCount.TextAlign = ContentAlignment.MiddleCenter;
@@ -519,8 +506,8 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label35.ForeColor = Color.FromArgb(64, 64, 64);
-            label35.Location = new Point(11, 9);
+            label35.ForeColor = Color.White;
+            label35.Location = new Point(11, 11);
             label35.Name = "label35";
             label35.Size = new Size(120, 19);
             label35.TabIndex = 31;
@@ -534,13 +521,13 @@
             dgv_CloseTickets.AllowUserToResizeRows = false;
             dgv_CloseTickets.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_CloseTickets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_CloseTickets.BackgroundColor = Color.White;
+            dgv_CloseTickets.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_CloseTickets.BorderStyle = BorderStyle.None;
-            dgv_CloseTickets.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgv_CloseTickets.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.ForeColor = Color.White;
             dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
@@ -549,16 +536,16 @@
             dgv_CloseTickets.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_CloseTickets.Columns.AddRange(new DataGridViewColumn[] { Column8, Column9, Column10, Column13, Column11 });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.ForeColor = Color.White;
             dataGridViewCellStyle6.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle6.SelectionBackColor = Color.White;
             dataGridViewCellStyle6.SelectionForeColor = Color.Green;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgv_CloseTickets.DefaultCellStyle = dataGridViewCellStyle6;
             dgv_CloseTickets.EnableHeadersVisualStyles = false;
-            dgv_CloseTickets.GridColor = Color.White;
+            dgv_CloseTickets.GridColor = Color.FromArgb(30, 39, 46);
             dgv_CloseTickets.Location = new Point(11, 54);
             dgv_CloseTickets.Name = "dgv_CloseTickets";
             dgv_CloseTickets.ReadOnly = true;
@@ -567,7 +554,7 @@
             dgv_CloseTickets.RowTemplate.Height = 40;
             dgv_CloseTickets.RowTemplate.ReadOnly = true;
             dgv_CloseTickets.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_CloseTickets.Size = new Size(856, 530);
+            dgv_CloseTickets.Size = new Size(681, 530);
             dgv_CloseTickets.TabIndex = 30;
             dgv_CloseTickets.CellFormatting += dgv_CloseTickets_CellFormatting;
             dgv_CloseTickets.Leave += dgv_CloseTickets_Leave;
@@ -613,7 +600,7 @@
             // 
             // PnServiceSumBody
             // 
-            PnServiceSumBody.BackColor = Color.White;
+            PnServiceSumBody.BackColor = Color.FromArgb(30, 39, 46);
             PnServiceSumBody.Controls.Add(dgv_TotalServices);
             PnServiceSumBody.Controls.Add(panel19);
             PnServiceSumBody.Location = new Point(35, 229);
@@ -629,13 +616,13 @@
             dgv_TotalServices.AllowUserToResizeRows = false;
             dgv_TotalServices.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_TotalServices.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_TotalServices.BackgroundColor = Color.White;
+            dgv_TotalServices.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_TotalServices.BorderStyle = BorderStyle.None;
-            dgv_TotalServices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgv_TotalServices.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.ForeColor = Color.White;
             dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
@@ -645,16 +632,16 @@
             dgv_TotalServices.ColumnHeadersVisible = false;
             dgv_TotalServices.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2 });
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.ForeColor = Color.White;
             dataGridViewCellStyle8.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle8.SelectionBackColor = Color.White;
             dataGridViewCellStyle8.SelectionForeColor = Color.Green;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
             dgv_TotalServices.DefaultCellStyle = dataGridViewCellStyle8;
             dgv_TotalServices.EnableHeadersVisualStyles = false;
-            dgv_TotalServices.GridColor = Color.White;
+            dgv_TotalServices.GridColor = Color.FromArgb(30, 39, 46);
             dgv_TotalServices.Location = new Point(13, 51);
             dgv_TotalServices.Name = "dgv_TotalServices";
             dgv_TotalServices.ReadOnly = true;
@@ -684,7 +671,7 @@
             // 
             // panel19
             // 
-            panel19.BackColor = Color.FromArgb(223, 230, 233);
+            panel19.BackColor = Color.FromArgb(47, 54, 64);
             panel19.Controls.Add(label23);
             panel19.Dock = DockStyle.Top;
             panel19.Location = new Point(0, 0);
@@ -696,8 +683,8 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label23.ForeColor = Color.FromArgb(64, 64, 64);
-            label23.Location = new Point(10, 13);
+            label23.ForeColor = Color.White;
+            label23.Location = new Point(10, 12);
             label23.Name = "label23";
             label23.Size = new Size(134, 19);
             label23.TabIndex = 18;
@@ -705,7 +692,7 @@
             // 
             // pnSlaBody
             // 
-            pnSlaBody.BackColor = Color.White;
+            pnSlaBody.BackColor = Color.FromArgb(30, 39, 46);
             pnSlaBody.Controls.Add(lb_Within);
             pnSlaBody.Controls.Add(lb_Beyond);
             pnSlaBody.Controls.Add(panel16);
@@ -720,7 +707,7 @@
             // 
             lb_Within.AutoSize = true;
             lb_Within.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Within.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Within.ForeColor = Color.White;
             lb_Within.Location = new Point(118, 95);
             lb_Within.Name = "lb_Within";
             lb_Within.Size = new Size(12, 15);
@@ -731,7 +718,7 @@
             // 
             lb_Beyond.AutoSize = true;
             lb_Beyond.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Beyond.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Beyond.ForeColor = Color.White;
             lb_Beyond.Location = new Point(118, 60);
             lb_Beyond.Name = "lb_Beyond";
             lb_Beyond.Size = new Size(12, 15);
@@ -740,7 +727,7 @@
             // 
             // panel16
             // 
-            panel16.BackColor = Color.FromArgb(223, 230, 233);
+            panel16.BackColor = Color.FromArgb(47, 54, 64);
             panel16.Controls.Add(label18);
             panel16.Dock = DockStyle.Top;
             panel16.Location = new Point(0, 0);
@@ -752,8 +739,8 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label18.ForeColor = Color.FromArgb(64, 64, 64);
-            label18.Location = new Point(10, 13);
+            label18.ForeColor = Color.White;
+            label18.Location = new Point(10, 12);
             label18.Name = "label18";
             label18.Size = new Size(120, 19);
             label18.TabIndex = 18;
@@ -763,7 +750,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label16.ForeColor = Color.FromArgb(64, 64, 64);
+            label16.ForeColor = Color.White;
             label16.Location = new Point(25, 95);
             label16.Name = "label16";
             label16.Size = new Size(67, 15);
@@ -774,7 +761,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label14.ForeColor = Color.FromArgb(64, 64, 64);
+            label14.ForeColor = Color.White;
             label14.Location = new Point(25, 60);
             label14.Name = "label14";
             label14.Size = new Size(72, 15);
@@ -785,7 +772,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(64, 64, 64);
+            label4.ForeColor = Color.White;
             label4.Location = new Point(48, 18);
             label4.Name = "label4";
             label4.Size = new Size(97, 21);
@@ -794,7 +781,7 @@
             // 
             // panel9
             // 
-            panel9.BackColor = Color.White;
+            panel9.BackColor = Color.FromArgb(30, 39, 46);
             panel9.Controls.Add(lb_Total_Dispatch);
             panel9.Controls.Add(label31);
             panel9.Controls.Add(lb_Total_Negative);
@@ -805,7 +792,7 @@
             panel9.Controls.Add(label46);
             panel9.Controls.Add(pn_Total);
             panel9.Controls.Add(label10);
-            panel9.Location = new Point(523, 303);
+            panel9.Location = new Point(523, 248);
             panel9.Margin = new Padding(6, 6, 8, 8);
             panel9.Name = "panel9";
             panel9.Size = new Size(235, 210);
@@ -814,7 +801,7 @@
             // lb_Total_Dispatch
             // 
             lb_Total_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Total_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Total_Dispatch.ForeColor = Color.White;
             lb_Total_Dispatch.Location = new Point(124, 180);
             lb_Total_Dispatch.Name = "lb_Total_Dispatch";
             lb_Total_Dispatch.Size = new Size(83, 15);
@@ -824,7 +811,7 @@
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label31.ForeColor = Color.FromArgb(64, 64, 64);
+            label31.ForeColor = Color.White;
             label31.Location = new Point(33, 180);
             label31.Name = "label31";
             label31.Size = new Size(58, 15);
@@ -834,7 +821,7 @@
             // lb_Total_Negative
             // 
             lb_Total_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Total_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Total_Negative.ForeColor = Color.White;
             lb_Total_Negative.Location = new Point(124, 156);
             lb_Total_Negative.Name = "lb_Total_Negative";
             lb_Total_Negative.Size = new Size(83, 15);
@@ -843,7 +830,7 @@
             // lb_Total_Pending
             // 
             lb_Total_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Total_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Total_Pending.ForeColor = Color.White;
             lb_Total_Pending.Location = new Point(124, 131);
             lb_Total_Pending.Name = "lb_Total_Pending";
             lb_Total_Pending.Size = new Size(83, 15);
@@ -852,7 +839,7 @@
             // lb_Total_Completed
             // 
             lb_Total_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Total_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Total_Completed.ForeColor = Color.White;
             lb_Total_Completed.Location = new Point(124, 106);
             lb_Total_Completed.Name = "lb_Total_Completed";
             lb_Total_Completed.Size = new Size(83, 15);
@@ -862,7 +849,7 @@
             // 
             label44.AutoSize = true;
             label44.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label44.ForeColor = Color.FromArgb(64, 64, 64);
+            label44.ForeColor = Color.White;
             label44.Location = new Point(33, 156);
             label44.Name = "label44";
             label44.Size = new Size(61, 15);
@@ -873,7 +860,7 @@
             // 
             label45.AutoSize = true;
             label45.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label45.ForeColor = Color.FromArgb(64, 64, 64);
+            label45.ForeColor = Color.White;
             label45.Location = new Point(33, 131);
             label45.Name = "label45";
             label45.Size = new Size(55, 15);
@@ -884,7 +871,7 @@
             // 
             label46.AutoSize = true;
             label46.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label46.ForeColor = Color.FromArgb(64, 64, 64);
+            label46.ForeColor = Color.White;
             label46.Location = new Point(33, 106);
             label46.Name = "label46";
             label46.Size = new Size(71, 15);
@@ -914,7 +901,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label10.ForeColor = Color.FromArgb(64, 64, 64);
+            label10.ForeColor = Color.White;
             label10.Location = new Point(20, 13);
             label10.Name = "label10";
             label10.Size = new Size(48, 21);
@@ -923,7 +910,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor = Color.White;
+            panel8.BackColor = Color.FromArgb(30, 39, 46);
             panel8.Controls.Add(lb_Rep_Dispatch);
             panel8.Controls.Add(label19);
             panel8.Controls.Add(lb_Rep_Negative);
@@ -934,7 +921,7 @@
             panel8.Controls.Add(label28);
             panel8.Controls.Add(pn_Replace);
             panel8.Controls.Add(label9);
-            panel8.Location = new Point(523, 79);
+            panel8.Location = new Point(523, 24);
             panel8.Margin = new Padding(6, 6, 8, 8);
             panel8.Name = "panel8";
             panel8.Size = new Size(235, 210);
@@ -943,7 +930,7 @@
             // lb_Rep_Dispatch
             // 
             lb_Rep_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Rep_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Rep_Dispatch.ForeColor = Color.White;
             lb_Rep_Dispatch.Location = new Point(124, 180);
             lb_Rep_Dispatch.Name = "lb_Rep_Dispatch";
             lb_Rep_Dispatch.Size = new Size(83, 15);
@@ -953,7 +940,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label19.ForeColor = Color.FromArgb(64, 64, 64);
+            label19.ForeColor = Color.White;
             label19.Location = new Point(33, 180);
             label19.Name = "label19";
             label19.Size = new Size(58, 15);
@@ -963,7 +950,7 @@
             // lb_Rep_Negative
             // 
             lb_Rep_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Rep_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Rep_Negative.ForeColor = Color.White;
             lb_Rep_Negative.Location = new Point(124, 156);
             lb_Rep_Negative.Name = "lb_Rep_Negative";
             lb_Rep_Negative.Size = new Size(83, 15);
@@ -972,7 +959,7 @@
             // lb_Rep_Pending
             // 
             lb_Rep_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Rep_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Rep_Pending.ForeColor = Color.White;
             lb_Rep_Pending.Location = new Point(124, 131);
             lb_Rep_Pending.Name = "lb_Rep_Pending";
             lb_Rep_Pending.Size = new Size(83, 15);
@@ -981,7 +968,7 @@
             // lb_Rep_Completed
             // 
             lb_Rep_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Rep_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Rep_Completed.ForeColor = Color.White;
             lb_Rep_Completed.Location = new Point(124, 106);
             lb_Rep_Completed.Name = "lb_Rep_Completed";
             lb_Rep_Completed.Size = new Size(83, 15);
@@ -991,7 +978,7 @@
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label26.ForeColor = Color.FromArgb(64, 64, 64);
+            label26.ForeColor = Color.White;
             label26.Location = new Point(33, 156);
             label26.Name = "label26";
             label26.Size = new Size(61, 15);
@@ -1002,7 +989,7 @@
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label27.ForeColor = Color.FromArgb(64, 64, 64);
+            label27.ForeColor = Color.White;
             label27.Location = new Point(33, 131);
             label27.Name = "label27";
             label27.Size = new Size(55, 15);
@@ -1013,7 +1000,7 @@
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label28.ForeColor = Color.FromArgb(64, 64, 64);
+            label28.ForeColor = Color.White;
             label28.Location = new Point(33, 106);
             label28.Name = "label28";
             label28.Size = new Size(71, 15);
@@ -1043,7 +1030,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label9.ForeColor = Color.FromArgb(64, 64, 64);
+            label9.ForeColor = Color.White;
             label9.Location = new Point(20, 13);
             label9.Name = "label9";
             label9.Size = new Size(110, 21);
@@ -1052,7 +1039,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.White;
+            panel5.BackColor = Color.FromArgb(30, 39, 46);
             panel5.Controls.Add(lb_Pull_Dispatch);
             panel5.Controls.Add(label29);
             panel5.Controls.Add(lb_Pull_Negative);
@@ -1063,7 +1050,7 @@
             panel5.Controls.Add(label40);
             panel5.Controls.Add(pn_Pull);
             panel5.Controls.Add(label8);
-            panel5.Location = new Point(274, 303);
+            panel5.Location = new Point(274, 248);
             panel5.Margin = new Padding(6, 6, 8, 8);
             panel5.Name = "panel5";
             panel5.Size = new Size(233, 210);
@@ -1072,7 +1059,7 @@
             // lb_Pull_Dispatch
             // 
             lb_Pull_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Pull_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Pull_Dispatch.ForeColor = Color.White;
             lb_Pull_Dispatch.Location = new Point(124, 180);
             lb_Pull_Dispatch.Name = "lb_Pull_Dispatch";
             lb_Pull_Dispatch.Size = new Size(83, 15);
@@ -1082,7 +1069,7 @@
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label29.ForeColor = Color.FromArgb(64, 64, 64);
+            label29.ForeColor = Color.White;
             label29.Location = new Point(33, 180);
             label29.Name = "label29";
             label29.Size = new Size(58, 15);
@@ -1092,7 +1079,7 @@
             // lb_Pull_Negative
             // 
             lb_Pull_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Pull_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Pull_Negative.ForeColor = Color.White;
             lb_Pull_Negative.Location = new Point(124, 156);
             lb_Pull_Negative.Name = "lb_Pull_Negative";
             lb_Pull_Negative.Size = new Size(83, 15);
@@ -1101,7 +1088,7 @@
             // lb_Pull_Pending
             // 
             lb_Pull_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Pull_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Pull_Pending.ForeColor = Color.White;
             lb_Pull_Pending.Location = new Point(124, 131);
             lb_Pull_Pending.Name = "lb_Pull_Pending";
             lb_Pull_Pending.Size = new Size(83, 15);
@@ -1110,7 +1097,7 @@
             // lb_Pull_Completed
             // 
             lb_Pull_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Pull_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Pull_Completed.ForeColor = Color.White;
             lb_Pull_Completed.Location = new Point(124, 106);
             lb_Pull_Completed.Name = "lb_Pull_Completed";
             lb_Pull_Completed.Size = new Size(83, 15);
@@ -1120,7 +1107,7 @@
             // 
             label38.AutoSize = true;
             label38.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label38.ForeColor = Color.FromArgb(64, 64, 64);
+            label38.ForeColor = Color.White;
             label38.Location = new Point(33, 156);
             label38.Name = "label38";
             label38.Size = new Size(61, 15);
@@ -1131,7 +1118,7 @@
             // 
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label39.ForeColor = Color.FromArgb(64, 64, 64);
+            label39.ForeColor = Color.White;
             label39.Location = new Point(33, 131);
             label39.Name = "label39";
             label39.Size = new Size(55, 15);
@@ -1142,7 +1129,7 @@
             // 
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label40.ForeColor = Color.FromArgb(64, 64, 64);
+            label40.ForeColor = Color.White;
             label40.Location = new Point(33, 106);
             label40.Name = "label40";
             label40.Size = new Size(71, 15);
@@ -1172,7 +1159,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label8.ForeColor = Color.FromArgb(64, 64, 64);
+            label8.ForeColor = Color.White;
             label8.Location = new Point(20, 13);
             label8.Name = "label8";
             label8.Size = new Size(66, 21);
@@ -1181,7 +1168,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.White;
+            panel4.BackColor = Color.FromArgb(30, 39, 46);
             panel4.Controls.Add(lb_Serv_Dispatch);
             panel4.Controls.Add(label24);
             panel4.Controls.Add(lb_Serv_Negative);
@@ -1192,7 +1179,7 @@
             panel4.Controls.Add(label34);
             panel4.Controls.Add(pn_Serv);
             panel4.Controls.Add(label7);
-            panel4.Location = new Point(25, 303);
+            panel4.Location = new Point(25, 248);
             panel4.Margin = new Padding(6, 6, 8, 8);
             panel4.Name = "panel4";
             panel4.Size = new Size(233, 210);
@@ -1201,7 +1188,7 @@
             // lb_Serv_Dispatch
             // 
             lb_Serv_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Serv_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Serv_Dispatch.ForeColor = Color.White;
             lb_Serv_Dispatch.Location = new Point(124, 180);
             lb_Serv_Dispatch.Name = "lb_Serv_Dispatch";
             lb_Serv_Dispatch.Size = new Size(83, 15);
@@ -1211,7 +1198,7 @@
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label24.ForeColor = Color.FromArgb(64, 64, 64);
+            label24.ForeColor = Color.White;
             label24.Location = new Point(33, 180);
             label24.Name = "label24";
             label24.Size = new Size(58, 15);
@@ -1221,7 +1208,7 @@
             // lb_Serv_Negative
             // 
             lb_Serv_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Serv_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Serv_Negative.ForeColor = Color.White;
             lb_Serv_Negative.Location = new Point(124, 156);
             lb_Serv_Negative.Name = "lb_Serv_Negative";
             lb_Serv_Negative.Size = new Size(83, 15);
@@ -1230,7 +1217,7 @@
             // lb_Serv_Pending
             // 
             lb_Serv_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Serv_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Serv_Pending.ForeColor = Color.White;
             lb_Serv_Pending.Location = new Point(124, 131);
             lb_Serv_Pending.Name = "lb_Serv_Pending";
             lb_Serv_Pending.Size = new Size(83, 15);
@@ -1239,7 +1226,7 @@
             // lb_Serv_Completed
             // 
             lb_Serv_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Serv_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Serv_Completed.ForeColor = Color.White;
             lb_Serv_Completed.Location = new Point(124, 106);
             lb_Serv_Completed.Name = "lb_Serv_Completed";
             lb_Serv_Completed.Size = new Size(83, 15);
@@ -1249,7 +1236,7 @@
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label32.ForeColor = Color.FromArgb(64, 64, 64);
+            label32.ForeColor = Color.White;
             label32.Location = new Point(33, 156);
             label32.Name = "label32";
             label32.Size = new Size(61, 15);
@@ -1260,7 +1247,7 @@
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label33.ForeColor = Color.FromArgb(64, 64, 64);
+            label33.ForeColor = Color.White;
             label33.Location = new Point(33, 131);
             label33.Name = "label33";
             label33.Size = new Size(55, 15);
@@ -1271,7 +1258,7 @@
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label34.ForeColor = Color.FromArgb(64, 64, 64);
+            label34.ForeColor = Color.White;
             label34.Location = new Point(33, 106);
             label34.Name = "label34";
             label34.Size = new Size(71, 15);
@@ -1301,7 +1288,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label7.ForeColor = Color.FromArgb(64, 64, 64);
+            label7.ForeColor = Color.White;
             label7.Location = new Point(20, 13);
             label7.Name = "label7";
             label7.Size = new Size(82, 21);
@@ -1310,7 +1297,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.White;
+            panel3.BackColor = Color.FromArgb(30, 39, 46);
             panel3.Controls.Add(lb_Repr_Dispatch);
             panel3.Controls.Add(label17);
             panel3.Controls.Add(lb_Repr_Negative);
@@ -1321,7 +1308,7 @@
             panel3.Controls.Add(label22);
             panel3.Controls.Add(pn_Reprog);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(274, 79);
+            panel3.Location = new Point(274, 24);
             panel3.Margin = new Padding(6, 6, 8, 8);
             panel3.Name = "panel3";
             panel3.Size = new Size(233, 210);
@@ -1330,7 +1317,7 @@
             // lb_Repr_Dispatch
             // 
             lb_Repr_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Repr_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Repr_Dispatch.ForeColor = Color.White;
             lb_Repr_Dispatch.Location = new Point(124, 180);
             lb_Repr_Dispatch.Name = "lb_Repr_Dispatch";
             lb_Repr_Dispatch.Size = new Size(83, 15);
@@ -1340,7 +1327,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label17.ForeColor = Color.FromArgb(64, 64, 64);
+            label17.ForeColor = Color.White;
             label17.Location = new Point(33, 180);
             label17.Name = "label17";
             label17.Size = new Size(58, 15);
@@ -1350,7 +1337,7 @@
             // lb_Repr_Negative
             // 
             lb_Repr_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Repr_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Repr_Negative.ForeColor = Color.White;
             lb_Repr_Negative.Location = new Point(124, 156);
             lb_Repr_Negative.Name = "lb_Repr_Negative";
             lb_Repr_Negative.Size = new Size(83, 15);
@@ -1359,7 +1346,7 @@
             // lb_Repr_Pending
             // 
             lb_Repr_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Repr_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Repr_Pending.ForeColor = Color.White;
             lb_Repr_Pending.Location = new Point(124, 131);
             lb_Repr_Pending.Name = "lb_Repr_Pending";
             lb_Repr_Pending.Size = new Size(83, 15);
@@ -1368,7 +1355,7 @@
             // lb_Repr_Completed
             // 
             lb_Repr_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Repr_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Repr_Completed.ForeColor = Color.White;
             lb_Repr_Completed.Location = new Point(124, 106);
             lb_Repr_Completed.Name = "lb_Repr_Completed";
             lb_Repr_Completed.Size = new Size(83, 15);
@@ -1378,7 +1365,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label20.ForeColor = Color.FromArgb(64, 64, 64);
+            label20.ForeColor = Color.White;
             label20.Location = new Point(33, 156);
             label20.Name = "label20";
             label20.Size = new Size(61, 15);
@@ -1389,7 +1376,7 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label21.ForeColor = Color.FromArgb(64, 64, 64);
+            label21.ForeColor = Color.White;
             label21.Location = new Point(33, 131);
             label21.Name = "label21";
             label21.Size = new Size(55, 15);
@@ -1400,7 +1387,7 @@
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label22.ForeColor = Color.FromArgb(64, 64, 64);
+            label22.ForeColor = Color.White;
             label22.Location = new Point(33, 106);
             label22.Name = "label22";
             label22.Size = new Size(71, 15);
@@ -1430,7 +1417,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(64, 64, 64);
+            label6.ForeColor = Color.White;
             label6.Location = new Point(20, 13);
             label6.Name = "label6";
             label6.Size = new Size(135, 21);
@@ -1439,7 +1426,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.White;
+            panel2.BackColor = Color.FromArgb(30, 39, 46);
             panel2.Controls.Add(lb_Ins_Dispatch);
             panel2.Controls.Add(label15);
             panel2.Controls.Add(lb_Ins_Negative);
@@ -1450,7 +1437,7 @@
             panel2.Controls.Add(label11);
             panel2.Controls.Add(pn_Ins);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(25, 79);
+            panel2.Location = new Point(25, 24);
             panel2.Margin = new Padding(6, 6, 8, 8);
             panel2.Name = "panel2";
             panel2.Size = new Size(233, 210);
@@ -1459,7 +1446,7 @@
             // lb_Ins_Dispatch
             // 
             lb_Ins_Dispatch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Ins_Dispatch.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Ins_Dispatch.ForeColor = Color.White;
             lb_Ins_Dispatch.Location = new Point(124, 180);
             lb_Ins_Dispatch.Name = "lb_Ins_Dispatch";
             lb_Ins_Dispatch.Size = new Size(83, 15);
@@ -1469,7 +1456,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label15.ForeColor = Color.FromArgb(64, 64, 64);
+            label15.ForeColor = Color.White;
             label15.Location = new Point(33, 180);
             label15.Name = "label15";
             label15.Size = new Size(58, 15);
@@ -1479,7 +1466,7 @@
             // lb_Ins_Negative
             // 
             lb_Ins_Negative.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Ins_Negative.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Ins_Negative.ForeColor = Color.White;
             lb_Ins_Negative.Location = new Point(124, 156);
             lb_Ins_Negative.Name = "lb_Ins_Negative";
             lb_Ins_Negative.Size = new Size(83, 15);
@@ -1488,7 +1475,7 @@
             // lb_Ins_Pending
             // 
             lb_Ins_Pending.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Ins_Pending.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Ins_Pending.ForeColor = Color.White;
             lb_Ins_Pending.Location = new Point(124, 131);
             lb_Ins_Pending.Name = "lb_Ins_Pending";
             lb_Ins_Pending.Size = new Size(83, 15);
@@ -1497,7 +1484,7 @@
             // lb_Ins_Completed
             // 
             lb_Ins_Completed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lb_Ins_Completed.ForeColor = Color.FromArgb(64, 64, 64);
+            lb_Ins_Completed.ForeColor = Color.White;
             lb_Ins_Completed.Location = new Point(124, 106);
             lb_Ins_Completed.Name = "lb_Ins_Completed";
             lb_Ins_Completed.Size = new Size(83, 15);
@@ -1507,7 +1494,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label13.ForeColor = Color.FromArgb(64, 64, 64);
+            label13.ForeColor = Color.White;
             label13.Location = new Point(33, 156);
             label13.Name = "label13";
             label13.Size = new Size(61, 15);
@@ -1518,7 +1505,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label12.ForeColor = Color.FromArgb(64, 64, 64);
+            label12.ForeColor = Color.White;
             label12.Location = new Point(33, 131);
             label12.Name = "label12";
             label12.Size = new Size(55, 15);
@@ -1529,7 +1516,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label11.ForeColor = Color.FromArgb(64, 64, 64);
+            label11.ForeColor = Color.White;
             label11.Location = new Point(33, 106);
             label11.Name = "label11";
             label11.Size = new Size(71, 15);
@@ -1559,35 +1546,24 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(64, 64, 64);
+            label5.ForeColor = Color.White;
             label5.Location = new Point(20, 13);
             label5.Name = "label5";
             label5.Size = new Size(97, 21);
             label5.TabIndex = 15;
             label5.Text = "Installation";
             // 
-            // label42
-            // 
-            label42.AutoSize = true;
-            label42.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
-            label42.ForeColor = Color.FromArgb(64, 64, 64);
-            label42.Location = new Point(42, 53);
-            label42.Name = "label42";
-            label42.Size = new Size(68, 13);
-            label42.TabIndex = 23;
-            label42.Text = "As of Today";
-            // 
             // panel10
             // 
             panel10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel10.BackColor = Color.White;
+            panel10.BackColor = Color.FromArgb(30, 39, 46);
             panel10.Controls.Add(pictureBox4);
             panel10.Controls.Add(lb_HelpdeskCount);
             panel10.Controls.Add(dgv_HelpdeskRequest);
             panel10.Controls.Add(label30);
-            panel10.Location = new Point(523, 534);
+            panel10.Location = new Point(523, 477);
             panel10.Name = "panel10";
-            panel10.Size = new Size(722, 465);
+            panel10.Size = new Size(547, 465);
             panel10.TabIndex = 24;
             // 
             // pictureBox4
@@ -1606,10 +1582,10 @@
             lb_HelpdeskCount.BackColor = Color.Gray;
             lb_HelpdeskCount.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold);
             lb_HelpdeskCount.ForeColor = Color.White;
-            lb_HelpdeskCount.Location = new Point(207, 19);
+            lb_HelpdeskCount.Location = new Point(211, 18);
             lb_HelpdeskCount.Name = "lb_HelpdeskCount";
-            lb_HelpdeskCount.Padding = new Padding(3);
-            lb_HelpdeskCount.Size = new Size(28, 21);
+            lb_HelpdeskCount.Padding = new Padding(4);
+            lb_HelpdeskCount.Size = new Size(30, 23);
             lb_HelpdeskCount.TabIndex = 18;
             lb_HelpdeskCount.Text = "---";
             // 
@@ -1621,13 +1597,13 @@
             dgv_HelpdeskRequest.AllowUserToResizeRows = false;
             dgv_HelpdeskRequest.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_HelpdeskRequest.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_HelpdeskRequest.BackgroundColor = Color.White;
+            dgv_HelpdeskRequest.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_HelpdeskRequest.BorderStyle = BorderStyle.None;
             dgv_HelpdeskRequest.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.ForeColor = Color.White;
             dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
@@ -1636,16 +1612,16 @@
             dgv_HelpdeskRequest.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_HelpdeskRequest.Columns.AddRange(new DataGridViewColumn[] { Column12, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
             dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(30, 39, 46);
             dataGridViewCellStyle10.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.ForeColor = Color.White;
             dataGridViewCellStyle10.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle10.SelectionBackColor = Color.White;
             dataGridViewCellStyle10.SelectionForeColor = Color.Green;
             dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
             dgv_HelpdeskRequest.DefaultCellStyle = dataGridViewCellStyle10;
             dgv_HelpdeskRequest.EnableHeadersVisualStyles = false;
-            dgv_HelpdeskRequest.GridColor = Color.White;
+            dgv_HelpdeskRequest.GridColor = Color.FromArgb(30, 39, 46);
             dgv_HelpdeskRequest.Location = new Point(18, 64);
             dgv_HelpdeskRequest.Name = "dgv_HelpdeskRequest";
             dgv_HelpdeskRequest.ReadOnly = true;
@@ -1654,7 +1630,7 @@
             dgv_HelpdeskRequest.RowTemplate.Height = 40;
             dgv_HelpdeskRequest.RowTemplate.ReadOnly = true;
             dgv_HelpdeskRequest.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_HelpdeskRequest.Size = new Size(688, 384);
+            dgv_HelpdeskRequest.Size = new Size(513, 384);
             dgv_HelpdeskRequest.TabIndex = 17;
             dgv_HelpdeskRequest.CellFormatting += dgv_HelpdeskRequest_CellFormatting;
             // 
@@ -1704,7 +1680,7 @@
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label30.ForeColor = Color.FromArgb(64, 64, 64);
+            label30.ForeColor = Color.White;
             label30.Location = new Point(48, 18);
             label30.Name = "label30";
             label30.Size = new Size(153, 21);
@@ -1717,10 +1693,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoScrollMargin = new Size(0, 20);
-            AutoScrollMinSize = new Size(0, 1700);
-            BackColor = Color.FromArgb(223, 228, 234);
+            AutoScrollMinSize = new Size(0, 1600);
+            BackColor = Color.FromArgb(47, 54, 64);
             Controls.Add(panel10);
-            Controls.Add(label42);
             Controls.Add(panel9);
             Controls.Add(panel8);
             Controls.Add(panel5);
@@ -1729,11 +1704,11 @@
             Controls.Add(panel2);
             Controls.Add(panel7);
             Controls.Add(panel6);
-            Controls.Add(label3);
             Controls.Add(panel1);
             DoubleBuffered = true;
+            ForeColor = Color.White;
             Name = "Overview";
-            Size = new Size(1265, 909);
+            Size = new Size(1090, 909);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -1780,12 +1755,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HelpdeskRequest).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private Panel panel1;
-        private Label label3;
         private Panel panel6;
         private Panel panel7;
         private Label label1;
@@ -1882,7 +1855,6 @@
         private Panel panel21;
         private Label lb_TicketCount;
         private PictureBox pictureBox3;
-        private Label label42;
         private DataGridView dgv_TotalServices;
         private Label lb_Within;
         private Label lb_Beyond;

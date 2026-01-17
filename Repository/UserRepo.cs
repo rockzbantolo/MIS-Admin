@@ -1,4 +1,5 @@
 ﻿using MIS_Admin.Core;
+using MIS_Admin.UI.Dto;
 using Next.Clients.Providers;
 
 namespace MIS_Admin.Repository
@@ -8,7 +9,71 @@ namespace MIS_Admin.Repository
         private readonly MySqlDb Db;
 
         public UserRepo() => Db = Database.Instance;
-        
+
+        public async Task<PaginationDto<UserInfoDto>> GetAllUsersAsync(
+            int? id = null,
+            string search = null,
+            IEnumerable<string> filter = null,
+            DateTime? startDate = null,
+            DateTime? endDate = null,
+            int page = 1,
+            int pageSize = 100)
+        {
+            if (page <= 0) page = 1;
+            if (pageSize <= 0) pageSize = 100;
+
+            // Count total rows
+            string countSql = @"
+            SELECT COUNT(*) 
+            FROM tblparticular
+            WHERE (@Id IS NULL OR ParticularID = @Id)
+              AND (@Search IS NULL OR NAME LIKE CONCAT('%', @Search, '%'))
+              AND (@Filters IS NULL OR ParticularDescription IN @Filters);";
+
+            var totalCount = await Db.ExecuteScalarAsync<int>(countSql, new
+            {
+                Id = id,
+                Filters = filter,
+                StartDate = startDate,
+                EndDate = endDate,
+                Search = search
+            });
+
+            // Fetch paged data
+            string sql = @"
+                SELECT
+                    ParticularID AS Id,
+                    NAME AS Personel,
+                    CONCAT_WS(' / ', NULLIF(TelNo, ''), NULLIF(Mobile, '')) AS ContactNo,
+                    NULLIF(Email, '') AS Email,
+                    ParticularDescription as Role
+                FROM tblparticular
+                WHERE (@Id IS NULL OR ParticularID = @Id)
+                  AND (@Search IS NULL OR NAME LIKE CONCAT('%', @Search, '%'))
+                  AND (@Filters IS NULL OR ParticularDescription IN @Filters)
+                ORDER BY NAME
+                LIMIT @PageSize OFFSET @Offset;";
+
+            var data = await Db.QueryAsync<UserInfoDto>(sql, new
+            {
+                Id = id,
+                Filters = filter,
+                StartDate = startDate,
+                EndDate = endDate,
+                Search = search,
+                PageSize = pageSize,
+                Offset = (page - 1) * pageSize
+            });
+
+            return new PaginationDto<UserInfoDto>
+            {
+                Data = data,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
+
         public async Task<IEnumerable<dynamic>> FindAccountAsync(object username)
         {
             string stmt = @"
@@ -56,5 +121,6 @@ namespace MIS_Admin.Repository
 
             return rows > 0;
         }
+
     }
 }

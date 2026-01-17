@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Merchants));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             pn_Body = new Panel();
             pn_Duplicate = new Panel();
             pictureBox4 = new PictureBox();
@@ -71,6 +71,7 @@
             ColBtnUpdate = new DataGridViewImageColumn();
             ColBtnReplace = new DataGridViewImageColumn();
             ColBtnDelete = new DataGridViewImageColumn();
+            pn_GridBody = new Panel();
             pn_Body.SuspendLayout();
             pn_Duplicate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -83,6 +84,7 @@
             pn_Nav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).BeginInit();
+            pn_GridBody.SuspendLayout();
             SuspendLayout();
             // 
             // pn_Body
@@ -94,10 +96,10 @@
             pn_Body.Controls.Add(pn_MM);
             pn_Body.Controls.Add(label3);
             pn_Body.Dock = DockStyle.Top;
-            pn_Body.Location = new Point(10, 10);
+            pn_Body.Location = new Point(25, 25);
             pn_Body.Name = "pn_Body";
             pn_Body.Padding = new Padding(20);
-            pn_Body.Size = new Size(810, 225);
+            pn_Body.Size = new Size(1029, 191);
             pn_Body.TabIndex = 9;
             // 
             // pn_Duplicate
@@ -106,9 +108,9 @@
             pn_Duplicate.Controls.Add(pictureBox4);
             pn_Duplicate.Controls.Add(lb_Duplicate);
             pn_Duplicate.Controls.Add(label6);
-            pn_Duplicate.Location = new Point(551, 82);
+            pn_Duplicate.Location = new Point(586, 47);
             pn_Duplicate.Name = "pn_Duplicate";
-            pn_Duplicate.Size = new Size(150, 105);
+            pn_Duplicate.Size = new Size(172, 105);
             pn_Duplicate.TabIndex = 19;
             // 
             // pictureBox4
@@ -127,7 +129,7 @@
             lb_Duplicate.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Duplicate.Location = new Point(17, 35);
             lb_Duplicate.Name = "lb_Duplicate";
-            lb_Duplicate.Size = new Size(117, 29);
+            lb_Duplicate.Size = new Size(141, 29);
             lb_Duplicate.TabIndex = 3;
             lb_Duplicate.TextAlign = ContentAlignment.MiddleCenter;
             lb_Duplicate.Click += lb_Duplicate_Click;
@@ -137,7 +139,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(64, 64, 64);
-            label6.Location = new Point(50, 72);
+            label6.Location = new Point(64, 72);
             label6.Name = "label6";
             label6.Size = new Size(56, 13);
             label6.TabIndex = 2;
@@ -149,9 +151,9 @@
             pn_Total.Controls.Add(pictureBox3);
             pn_Total.Controls.Add(lb_Total);
             pn_Total.Controls.Add(label4);
-            pn_Total.Location = new Point(384, 82);
+            pn_Total.Location = new Point(404, 47);
             pn_Total.Name = "pn_Total";
-            pn_Total.Size = new Size(150, 105);
+            pn_Total.Size = new Size(172, 105);
             pn_Total.TabIndex = 18;
             // 
             // pictureBox3
@@ -169,7 +171,7 @@
             lb_Total.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Total.Location = new Point(17, 35);
             lb_Total.Name = "lb_Total";
-            lb_Total.Size = new Size(117, 29);
+            lb_Total.Size = new Size(141, 29);
             lb_Total.TabIndex = 3;
             lb_Total.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -178,7 +180,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(64, 64, 64);
-            label4.Location = new Point(60, 72);
+            label4.Location = new Point(74, 72);
             label4.Name = "label4";
             label4.Size = new Size(32, 13);
             label4.TabIndex = 2;
@@ -190,9 +192,9 @@
             pn_Prov.Controls.Add(pictureBox2);
             pn_Prov.Controls.Add(lb_Province);
             pn_Prov.Controls.Add(label5);
-            pn_Prov.Location = new Point(217, 82);
+            pn_Prov.Location = new Point(221, 47);
             pn_Prov.Name = "pn_Prov";
-            pn_Prov.Size = new Size(150, 105);
+            pn_Prov.Size = new Size(172, 105);
             pn_Prov.TabIndex = 17;
             // 
             // pictureBox2
@@ -211,7 +213,7 @@
             lb_Province.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Province.Location = new Point(17, 35);
             lb_Province.Name = "lb_Province";
-            lb_Province.Size = new Size(117, 29);
+            lb_Province.Size = new Size(141, 29);
             lb_Province.TabIndex = 3;
             lb_Province.TextAlign = ContentAlignment.MiddleCenter;
             lb_Province.Click += lb_Province_Click;
@@ -221,7 +223,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(64, 64, 64);
-            label5.Location = new Point(50, 72);
+            label5.Location = new Point(64, 72);
             label5.Name = "label5";
             label5.Size = new Size(52, 13);
             label5.TabIndex = 2;
@@ -233,9 +235,9 @@
             pn_MM.Controls.Add(pictureBox1);
             pn_MM.Controls.Add(lb_Manila);
             pn_MM.Controls.Add(label1);
-            pn_MM.Location = new Point(46, 82);
+            pn_MM.Location = new Point(37, 47);
             pn_MM.Name = "pn_MM";
-            pn_MM.Size = new Size(150, 105);
+            pn_MM.Size = new Size(172, 105);
             pn_MM.TabIndex = 16;
             // 
             // pictureBox1
@@ -254,7 +256,7 @@
             lb_Manila.ForeColor = Color.FromArgb(64, 64, 64);
             lb_Manila.Location = new Point(17, 35);
             lb_Manila.Name = "lb_Manila";
-            lb_Manila.Size = new Size(117, 29);
+            lb_Manila.Size = new Size(141, 29);
             lb_Manila.TabIndex = 1;
             lb_Manila.TextAlign = ContentAlignment.MiddleCenter;
             lb_Manila.Click += lb_Manila_Click;
@@ -264,7 +266,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(64, 64, 64);
-            label1.Location = new Point(37, 72);
+            label1.Location = new Point(51, 72);
             label1.Name = "label1";
             label1.Size = new Size(78, 13);
             label1.TabIndex = 0;
@@ -275,21 +277,22 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(23, 20);
+            label3.Location = new Point(23, 9);
             label3.Name = "label3";
             label3.Size = new Size(197, 21);
             label3.TabIndex = 10;
             label3.Text = "Merchant's Informations";
+            label3.Visible = false;
             // 
             // pn_Nav
             // 
             pn_Nav.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pn_Nav.BackColor = Color.White;
+            pn_Nav.BackColor = Color.FromArgb(30, 39, 46);
             pn_Nav.Controls.Add(pb_Icon);
             pn_Nav.Controls.Add(txt_Search);
-            pn_Nav.Location = new Point(10, 245);
+            pn_Nav.Location = new Point(25, 232);
             pn_Nav.Name = "pn_Nav";
-            pn_Nav.Size = new Size(810, 47);
+            pn_Nav.Size = new Size(1029, 55);
             pn_Nav.TabIndex = 11;
             // 
             // pb_Icon
@@ -297,7 +300,7 @@
             pb_Icon.BackgroundImage = (Image)resources.GetObject("pb_Icon.BackgroundImage");
             pb_Icon.BackgroundImageLayout = ImageLayout.Center;
             pb_Icon.Cursor = Cursors.Hand;
-            pb_Icon.Location = new Point(12, 10);
+            pb_Icon.Location = new Point(13, 14);
             pb_Icon.Name = "pb_Icon";
             pb_Icon.Size = new Size(28, 29);
             pb_Icon.TabIndex = 10;
@@ -307,11 +310,14 @@
             // txt_Search
             // 
             txt_Search.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txt_Search.BackColor = Color.FromArgb(30, 39, 46);
             txt_Search.BorderStyle = BorderStyle.None;
-            txt_Search.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Search.Location = new Point(46, 14);
+            txt_Search.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txt_Search.ForeColor = Color.White;
+            txt_Search.Location = new Point(54, 14);
             txt_Search.Name = "txt_Search";
-            txt_Search.Size = new Size(748, 22);
+            txt_Search.PlaceholderText = "Search";
+            txt_Search.Size = new Size(959, 25);
             txt_Search.TabIndex = 0;
             // 
             // dgv_Services
@@ -321,33 +327,32 @@
             dgv_Services.AllowUserToResizeRows = false;
             dgv_Services.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_Services.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgv_Services.BackgroundColor = Color.White;
+            dgv_Services.BackgroundColor = Color.FromArgb(30, 39, 46);
             dgv_Services.BorderStyle = BorderStyle.None;
             dgv_Services.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(10, 0, 0, 0);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgv_Services.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(30, 39, 46);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.Padding = new Padding(10, 0, 0, 0);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 54, 64);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgv_Services.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgv_Services.ColumnHeadersHeight = 45;
             dgv_Services.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_Services.Columns.AddRange(new DataGridViewColumn[] { ColID, ColMerchantID, Status, ColMerchantName, ColTID, ColMID, ColTerminal, ColSim, ColRegion, ColContactPerson, ColContactNo, ColEmail, ColBtnUpdate, ColBtnReplace, ColBtnDelete });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle5.Padding = new Padding(12, 0, 0, 0);
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgv_Services.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(30, 39, 46);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.White;
+            dataGridViewCellStyle10.Padding = new Padding(12, 0, 0, 0);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(47, 54, 64);
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgv_Services.DefaultCellStyle = dataGridViewCellStyle10;
             dgv_Services.EnableHeadersVisualStyles = false;
-            dgv_Services.GridColor = Color.White;
-            dgv_Services.Location = new Point(13, 308);
+            dgv_Services.GridColor = Color.FromArgb(30, 39, 46);
+            dgv_Services.Location = new Point(13, 15);
             dgv_Services.Name = "dgv_Services";
             dgv_Services.ReadOnly = true;
             dgv_Services.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -355,12 +360,10 @@
             dgv_Services.RowTemplate.Height = 40;
             dgv_Services.RowTemplate.ReadOnly = true;
             dgv_Services.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgv_Services.Size = new Size(804, 373);
+            dgv_Services.Size = new Size(1001, 441);
             dgv_Services.TabIndex = 0;
             dgv_Services.CellContentClick += dgv_Services_CellContentClick;
             dgv_Services.CellFormatting += dgv_Services_CellFormatting;
-            dgv_Services.DataBindingComplete += dgv_Services_DataBindingComplete;
-            dgv_Services.Paint += dgv_Services_Paint;
             dgv_Services.Leave += dgv_Services_Leave;
             // 
             // ColID
@@ -461,14 +464,11 @@
             // ColBtnUpdate
             // 
             ColBtnUpdate.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.RoyalBlue;
-            dataGridViewCellStyle2.NullValue = resources.GetObject("dataGridViewCellStyle2.NullValue");
-            dataGridViewCellStyle2.Padding = new Padding(1, 0, 0, 0);
-            dataGridViewCellStyle2.SelectionBackColor = Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = Color.RoyalBlue;
-            ColBtnUpdate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
+            dataGridViewCellStyle7.NullValue = resources.GetObject("dataGridViewCellStyle7.NullValue");
+            dataGridViewCellStyle7.Padding = new Padding(1, 0, 0, 0);
+            ColBtnUpdate.DefaultCellStyle = dataGridViewCellStyle7;
             ColBtnUpdate.Description = "Update Merchant";
             ColBtnUpdate.HeaderText = "";
             ColBtnUpdate.Image = (Image)resources.GetObject("ColBtnUpdate.Image");
@@ -479,14 +479,11 @@
             // ColBtnReplace
             // 
             ColBtnReplace.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.RoyalBlue;
-            dataGridViewCellStyle3.NullValue = resources.GetObject("dataGridViewCellStyle3.NullValue");
-            dataGridViewCellStyle3.Padding = new Padding(1, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = Color.RoyalBlue;
-            ColBtnReplace.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.NullValue = resources.GetObject("dataGridViewCellStyle8.NullValue");
+            dataGridViewCellStyle8.Padding = new Padding(1, 0, 0, 0);
+            ColBtnReplace.DefaultCellStyle = dataGridViewCellStyle8;
             ColBtnReplace.Description = "Replace Device";
             ColBtnReplace.HeaderText = "";
             ColBtnReplace.Image = (Image)resources.GetObject("ColBtnReplace.Image");
@@ -499,14 +496,11 @@
             // ColBtnDelete
             // 
             ColBtnDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(192, 0, 0);
-            dataGridViewCellStyle4.NullValue = resources.GetObject("dataGridViewCellStyle4.NullValue");
-            dataGridViewCellStyle4.Padding = new Padding(0, 0, 8, 0);
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(192, 0, 0);
-            ColBtnDelete.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.NullValue = resources.GetObject("dataGridViewCellStyle9.NullValue");
+            dataGridViewCellStyle9.Padding = new Padding(0, 0, 8, 0);
+            ColBtnDelete.DefaultCellStyle = dataGridViewCellStyle9;
             ColBtnDelete.HeaderText = "";
             ColBtnDelete.Image = (Image)resources.GetObject("ColBtnDelete.Image");
             ColBtnDelete.Name = "ColBtnDelete";
@@ -515,18 +509,28 @@
             ColBtnDelete.ToolTipText = "Uninstall Device";
             ColBtnDelete.Width = 50;
             // 
+            // pn_GridBody
+            // 
+            pn_GridBody.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pn_GridBody.BackColor = Color.FromArgb(30, 39, 46);
+            pn_GridBody.Controls.Add(dgv_Services);
+            pn_GridBody.Location = new Point(25, 306);
+            pn_GridBody.Name = "pn_GridBody";
+            pn_GridBody.Size = new Size(1029, 471);
+            pn_GridBody.TabIndex = 12;
+            // 
             // Merchants
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = Color.FromArgb(223, 228, 234);
-            Controls.Add(dgv_Services);
+            BackColor = Color.FromArgb(47, 54, 64);
+            Controls.Add(pn_GridBody);
             Controls.Add(pn_Body);
             Controls.Add(pn_Nav);
             DoubleBuffered = true;
             Name = "Merchants";
-            Padding = new Padding(10);
-            Size = new Size(830, 694);
+            Padding = new Padding(25);
+            Size = new Size(1079, 805);
             pn_Body.ResumeLayout(false);
             pn_Body.PerformLayout();
             pn_Duplicate.ResumeLayout(false);
@@ -545,6 +549,7 @@
             pn_Nav.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pb_Icon).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Services).EndInit();
+            pn_GridBody.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -587,5 +592,6 @@
         private DataGridViewImageColumn ColBtnUpdate;
         private DataGridViewImageColumn ColBtnReplace;
         private DataGridViewImageColumn ColBtnDelete;
+        private Panel pn_GridBody;
     }
 }

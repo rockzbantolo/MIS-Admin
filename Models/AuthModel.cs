@@ -33,7 +33,7 @@ namespace MIS_Admin.Models
             }
         }
 
-        public class UserSession
+        public class Session
         {
             public int UserID { get; set; }
             public string UserName { get; set; }

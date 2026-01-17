@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\ui\\modules\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\modules\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\ui\\forms\\joborders\\joborderdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\forms\\joborders\\joborderdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\ui\\modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\modules\\servicing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\ui\\modules\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\modules\\reports.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\ui\\modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\modules\\merchants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\core\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:core\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\services\\opsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:services\\opsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|c:\\users\\rocky\\documents\\github\\mis-admin\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\ui\\forms\\joborders\\joborderdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0E80FF0-5A38-4482-89F8-AF5AB5190618}|MIS-Admin.csproj|solutionrelative:ui\\forms\\joborders\\joborderdetailsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,93 +22,27 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Reports.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Reports.cs",
-              "RelativeDocumentMoniker": "UI\\Modules\\Reports.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Reports.cs",
-              "RelativeToolTip": "UI\\Modules\\Reports.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBgAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "JobOrderDetailsForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "RelativeDocumentMoniker": "UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs [Design]",
+              "RelativeToolTip": "UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T08:00:59.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T05:13:53.925Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Home.cs",
-              "RelativeDocumentMoniker": "UI\\Modules\\Home.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Home.cs",
-              "RelativeToolTip": "UI\\Modules\\Home.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAmwBsAAAAJAAAAAAAAAA==",
+              "Title": "JobOrderDetailsForm.cs",
+              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "RelativeDocumentMoniker": "UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "RelativeToolTip": "UI\\Forms\\JobOrders\\JobOrderDetailsForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:59:46.884Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Servicing.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Servicing.cs",
-              "RelativeDocumentMoniker": "UI\\Modules\\Servicing.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Servicing.cs",
-              "RelativeToolTip": "UI\\Modules\\Servicing.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:03:03.117Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Merchants.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Merchants.cs",
-              "RelativeDocumentMoniker": "UI\\Modules\\Merchants.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\UI\\Modules\\Merchants.cs",
-              "RelativeToolTip": "UI\\Modules\\Merchants.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T07:01:52.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Database.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Core\\Database.cs",
-              "RelativeDocumentMoniker": "Core\\Database.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Core\\Database.cs",
-              "RelativeToolTip": "Core\\Database.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T04:58:26.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OpsService.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\OpsService.cs",
-              "RelativeDocumentMoniker": "Services\\OpsService.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\OpsService.cs",
-              "RelativeToolTip": "Services\\OpsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T04:20:03.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\rocky\\Documents\\GitHub\\MIS-Admin\\Services\\AuthService.cs",
-              "RelativeToolTip": "Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-30T19:30:54.166Z",
+              "WhenOpened": "2026-01-12T11:53:58.395Z",
               "EditorCaption": ""
             }
           ]

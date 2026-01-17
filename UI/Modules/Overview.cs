@@ -1,23 +1,23 @@
 ﻿using MIS_Admin.Services;
 using Next.Controls.Extention;
 using System.Data;
-using static MIS_Admin.Utilities.Functions;
+using static MIS_Admin.Utilities.Functions.Theme;
 using static Next.Controls.Extention.Gridviews;
 using static Next.Controls.Extention.Labels;
 using static Next.Controls.Extention.Radius;
-
 
 namespace MIS_Admin.Modules
 {
     public partial class Overview : UserControl
     {
-        private readonly OpsService _Ops;
+        private readonly OpsOverview _Ops;
+
         private Dictionary<string, List<LabelBinding>> CountMap;
 
         public Overview()
         {
-            _Ops = new OpsService();
             InitializeComponent();
+            _Ops = new OpsOverview();
         }
 
         // Base Load
@@ -29,13 +29,14 @@ namespace MIS_Admin.Modules
         }
 
         private void InitializeHelpers()
-        {   
+        {
+            this.BackColor = BackColor;
+
             // Apply Radius to Controls
             new RadiusBatch()
-                .Default(radius: 6, borderColor: Color.White, width: 1)
-                .Add(lb_RequestCount, lb_HelpdeskCount)
-                .Add(lb_TicketCount, borderColor: Color.FromArgb(224, 224, 224))
-                .AddToAllChildren(this, c => c is Panel, radius: 8, borderColor: Color.FromArgb(223, 228, 234))
+                .Default(radius: 8, borderColor: BodyColor, width: 1)
+                .Add(lb_RequestCount, lb_HelpdeskCount, lb_TicketCount)
+                .AddToAllChildren(this, c => c is Panel, radius: 12, borderColor: BackColor)
                 .Apply();
         }
 
@@ -90,14 +91,14 @@ namespace MIS_Admin.Modules
             // Get All Data
             await Task.WhenAll(
                 SLASummary(),
-                LoadLabelsAsync(_Ops.GetServiceSummaryAsync(), "Description", CountMap),
+                LoadLabelsAsync(_Ops.GetJobOrderSummaryAsync(), "Description", CountMap),
 
                 // Grid Data
                 new GridLoaderBatch()
-                .Add(dgv_Services,          _Ops.GetRecentServicesAsync(), "Loading Services...", "No Services Found.")
-                .Add(dgv_Request,           _Ops.GetServiceRequestAsync(), "Loading Requests...", "No Requests Found.")
+                .Add(dgv_Services,          _Ops.GetRecentJobOrdersAsync(), "Loading Services...", "No Services Found.")
+                .Add(dgv_Request,           _Ops.GetJobOrderRequestAsync(), "Loading Requests...", "No Requests Found.")
                 .Add(dgv_CloseTickets,      _Ops.GetUnclosedTicketsAsync(), "Loading Tickets...", "No Tickets Found.")
-                .Add(dgv_TotalServices,     _Ops.GetMonthlyServiceCountAsync(), "Loading Details...", "No Summary Found.")
+                .Add(dgv_TotalServices,     _Ops.GetMonthlyJobOrderCountAsync(), "Loading Details...", "No Summary Found.")
                 .Add(dgv_HelpdeskRequest,   _Ops.GetHelpdeskRequestAsync(), "Loading Helpdesk Requests...", "No Requests Found.")
                 .RunAsync()
             );
@@ -105,42 +106,42 @@ namespace MIS_Admin.Modules
 
         private async Task SLASummary()
         {
-            DataTable dt = await _Ops.GetMonthlySLAAsync();
+            DataTable dt = await _Ops.GetMonthlySlaAsync();
 
-            if (dt != null && dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 var row = dt.Rows[0];
-
-                lb_Beyond.Text = row["Beyond"].ToString();
-                lb_Within.Text = row["Within"].ToString();
+                lb_Beyond.Text = row["Beyond"]?.ToString() ?? "0";
+                lb_Within.Text = row["Within"]?.ToString() ?? "0";
             }
         }
 
         private void dgv_Services_Leave(object sender, EventArgs e)
         {
-            
+            dgv_Services.ClearSelection();
         }
 
         private void dgv_Request_Leave(object sender, EventArgs e)
         {
-            
+            dgv_Request.ClearSelection();
         }
 
         private void dgv_CloseTickets_Leave(object sender, EventArgs e)
         {
-            
+            dgv_CloseTickets.ClearSelection();
         }
 
         private void dgv_Services_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var ServiceStatus = new Dictionary<string, (Color back, Color fore)>
             {
-                { "DISPATCHED",   (Color.White, Color.Orange)     },
-                { "INSTALLED",    (Color.White, Color.DarkGreen)  },
-                { "COMPLETED",    (Color.White, Color.DarkGreen)  },
-                { "ASSIGNED",     (Color.White, Color.SteelBlue)  },
-                { "PROCESSING",   (Color.White, Color.Teal)       },
-                { "NO RESPONSE",  (Color.White, Color.DarkGray)   },
+                { "DISPATCHED",  (BodyColor, StatusColor.Warning) },
+                { "INSTALLED",   (BodyColor, StatusColor.Success) },
+                { "COMPLETED",   (BodyColor, StatusColor.Success) },
+                { "ASSIGNED",    (BodyColor, StatusColor.Assigned) },
+                { "PROCESSING",  (BodyColor, StatusColor.Processing) },
+                { "NO RESPONSE", (BodyColor, StatusColor.Inactive) },
+                { "FAILED",      (BodyColor, StatusColor.Inactive) }
             };
 
             dgv_CloseTickets.ApplyStatusStyle(e, "Status", ServiceStatus);
@@ -150,8 +151,8 @@ namespace MIS_Admin.Modules
         {
             var TicketsStatus = new Dictionary<string, (Color back, Color fore)>
             {
-                { "NEGATIVE", (Color.White, Color.Red) },
-                { "COMPLETED", (Color.White, Color.Green) }
+                { "NEGATIVE",  (BodyColor, StatusColor.Critical) },
+                { "COMPLETED", (BodyColor, StatusColor.Success) }
             };
 
             dgv_CloseTickets.ApplyStatusStyle(e, "Status", TicketsStatus);
@@ -161,10 +162,10 @@ namespace MIS_Admin.Modules
         {
             var HdStatus = new Dictionary<string, (Color back, Color fore)>
             {
-                { "DISPATCHED", (Color.White, Color.Orange) },
-                { "ASSIGNED", (Color.White, Color.SteelBlue) },
-                { "PROCESSING", (Color.White, Color.Teal) },
-                { "PENDING", (Color.White, Color.YellowGreen) }
+                { "DISPATCHED", (BodyColor, StatusColor.Warning) },
+                { "ASSIGNED",   (BodyColor, StatusColor.Assigned) },
+                { "PROCESSING", (BodyColor, StatusColor.Processing) },
+                { "PENDING",    (BodyColor, StatusColor.Info) }
             };
 
             dgv_HelpdeskRequest.ApplyStatusStyle(e, "Status", HdStatus);

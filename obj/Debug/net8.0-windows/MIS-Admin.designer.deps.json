@@ -22,11 +22,11 @@
           }
         }
       },
-      "Google.Protobuf/3.32.0": {
+      "Google.Protobuf/3.33.3": {
         "runtime": {
           "lib/net5.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.32.0.0",
-            "fileVersion": "3.32.0.0"
+            "assemblyVersion": "3.33.3.0",
+            "fileVersion": "3.33.3.0"
           }
         }
       },
@@ -42,7 +42,7 @@
         "dependencies": {
           "K4os.Compression.LZ4": "1.3.8",
           "K4os.Hash.xxHash": "1.0.8",
-          "System.IO.Pipelines": "6.0.3"
+          "System.IO.Pipelines": "10.0.1"
         },
         "runtime": {
           "lib/net6.0/K4os.Compression.LZ4.Streams.dll": {
@@ -70,11 +70,11 @@
       "MySql.Data/9.5.0": {
         "dependencies": {
           "BouncyCastle.Cryptography": "2.6.2",
-          "Google.Protobuf": "3.32.0",
+          "Google.Protobuf": "3.33.3",
           "K4os.Compression.LZ4.Streams": "1.3.8",
           "System.Configuration.ConfigurationManager": "10.0.1",
-          "System.Security.Permissions": "8.0.0",
-          "ZstdSharp.Port": "0.8.6"
+          "System.Security.Permissions": "10.0.1",
+          "ZstdSharp.Port": "0.8.7"
         },
         "runtime": {
           "lib/net8.0/MySql.Data.dll": {
@@ -129,7 +129,7 @@
           }
         }
       },
-      "runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "dependencies": {
           "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
           "runtime.win-x64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
@@ -185,7 +185,7 @@
       },
       "System.Data.SqlClient/4.9.0": {
         "dependencies": {
-          "runtime.native.System.Data.SqlClient.sni": "4.4.0"
+          "runtime.native.System.Data.SqlClient.sni": "4.7.0"
         },
         "runtime": {
           "lib/net8.0/System.Data.SqlClient.dll": {
@@ -246,11 +246,11 @@
           }
         }
       },
-      "System.IO.Pipelines/6.0.3": {
+      "System.IO.Pipelines/10.0.1": {
         "runtime": {
-          "lib/net6.0/System.IO.Pipelines.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.522.21309"
+          "lib/net8.0/System.IO.Pipelines.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.125.57005"
           }
         }
       },
@@ -281,30 +281,30 @@
           }
         }
       },
-      "System.Security.Permissions/8.0.0": {
+      "System.Security.Permissions/10.0.1": {
         "dependencies": {
-          "System.Windows.Extensions": "8.0.0"
+          "System.Windows.Extensions": "10.0.1"
         },
         "runtime": {
           "lib/net8.0/System.Security.Permissions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53103"
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.125.57005"
           }
         }
       },
-      "System.Windows.Extensions/8.0.0": {
+      "System.Windows.Extensions/10.0.1": {
         "runtime": {
           "lib/net8.0/System.Windows.Extensions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53103"
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.125.57005"
           }
         },
         "runtimeTargets": {
           "runtimes/win/lib/net8.0/System.Windows.Extensions.dll": {
             "rid": "win",
             "assetType": "runtime",
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.23.53103"
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.125.57005"
           }
         }
       },
@@ -320,11 +320,11 @@
           }
         }
       },
-      "ZstdSharp.Port/0.8.6": {
+      "ZstdSharp.Port/0.8.7": {
         "runtime": {
           "lib/net8.0/ZstdSharp.dll": {
-            "assemblyVersion": "0.8.6.0",
-            "fileVersion": "0.8.6.0"
+            "assemblyVersion": "0.8.7.0",
+            "fileVersion": "0.8.7.0"
           }
         }
       }
@@ -345,12 +345,12 @@
       "path": "dapper/2.1.66",
       "hashPath": "dapper.2.1.66.nupkg.sha512"
     },
-    "Google.Protobuf/3.32.0": {
+    "Google.Protobuf/3.33.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fsKxV5bhcvXmZi+cUo5+IxzRMBHwHeFO8G5utNa9f+Mu37kmfy8JcUVvWPt4cX7EuQWAjjHUjZqVl7nGSTRHRg==",
-      "path": "google.protobuf/3.32.0",
-      "hashPath": "google.protobuf.3.32.0.nupkg.sha512"
+      "sha512": "sha512-ZkghmDjhnSS26gL1GbaMpl/8Uj/azE24xZunN36pGplYIj2xI6OBZUCe5LVoj18D2mcMJBBjUSjJMceyAPybNQ==",
+      "path": "google.protobuf/3.33.3",
+      "hashPath": "google.protobuf.3.33.3.nupkg.sha512"
     },
     "K4os.Compression.LZ4/1.3.8": {
       "type": "package",
@@ -401,12 +401,12 @@
       "path": "polly.core/8.6.5",
       "hashPath": "polly.core.8.6.5.nupkg.sha512"
     },
-    "runtime.native.System.Data.SqlClient.sni/4.4.0": {
+    "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A8v6PGmk+UGbfWo5Ixup0lPM4swuSwOiayJExZwKIOjTlFFQIsu3QnDXECosBEyrWSPryxBVrdqtJyhK3BaupQ==",
-      "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
-      "hashPath": "runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+      "sha512": "sha512-9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
+      "path": "runtime.native.system.data.sqlclient.sni/4.7.0",
+      "hashPath": "runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512"
     },
     "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",
@@ -471,12 +471,12 @@
       "path": "system.formats.asn1/10.0.1",
       "hashPath": "system.formats.asn1.10.0.1.nupkg.sha512"
     },
-    "System.IO.Pipelines/6.0.3": {
+    "System.IO.Pipelines/10.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
-      "path": "system.io.pipelines/6.0.3",
-      "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
+      "sha512": "sha512-26LbFXHKd7PmRnWlkjnYgmjd5B6HYVG+1MpTO25BdxTJnx6D0O16JPAC/S4YBqjtt4YpfGj1QO/Ss6SPMGEGQw==",
+      "path": "system.io.pipelines/10.0.1",
+      "hashPath": "system.io.pipelines.10.0.1.nupkg.sha512"
     },
     "System.Runtime.Caching/10.0.1": {
       "type": "package",
@@ -492,19 +492,19 @@
       "path": "system.security.cryptography.protecteddata/10.0.1",
       "hashPath": "system.security.cryptography.protecteddata.10.0.1.nupkg.sha512"
     },
-    "System.Security.Permissions/8.0.0": {
+    "System.Security.Permissions/10.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-v/BBylw7XevuAsHXoX9dDUUfmBIcUf7Lkz8K3ZXIKz3YRKpw8YftpSir4n4e/jDTKFoaK37AsC3xnk+GNFI1Ow==",
-      "path": "system.security.permissions/8.0.0",
-      "hashPath": "system.security.permissions.8.0.0.nupkg.sha512"
+      "sha512": "sha512-A6a/n+CGdHO3YVCbHwePGxCBi38H+RPAwbvgekPmmoQfui9FaHeXLpWOGRN5qiWjVxyFcWIshwqKFjrRiPrXaw==",
+      "path": "system.security.permissions/10.0.1",
+      "hashPath": "system.security.permissions.10.0.1.nupkg.sha512"
     },
-    "System.Windows.Extensions/8.0.0": {
+    "System.Windows.Extensions/10.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Obg3a90MkOw9mYKxrardLpY2u0axDMrSmy4JCdq2cYbelM2cUwmUir5Bomvd1yxmPL9h5LVHU1tuKBZpUjfASg==",
-      "path": "system.windows.extensions/8.0.0",
-      "hashPath": "system.windows.extensions.8.0.0.nupkg.sha512"
+      "sha512": "sha512-NkxuY2TrVVZJYbdNzoYyTXjkp6T6ZZ/HrObEBTRzJxwTKTvVJEgbF4vSthBNZR3UKaKx79c7+1k83KhjxxVeWg==",
+      "path": "system.windows.extensions/10.0.1",
+      "hashPath": "system.windows.extensions.10.0.1.nupkg.sha512"
     },
     "WinForms.DataVisualization/1.10.0": {
       "type": "package",
@@ -513,12 +513,12 @@
       "path": "winforms.datavisualization/1.10.0",
       "hashPath": "winforms.datavisualization.1.10.0.nupkg.sha512"
     },
-    "ZstdSharp.Port/0.8.6": {
+    "ZstdSharp.Port/0.8.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iP4jVLQoQmUjMU88g1WObiNr6YKZGvh4aOXn3yOJsHqZsflwRsxZPcIBvNXgjXO3vQKSLctXGLTpcBPLnWPS8A==",
-      "path": "zstdsharp.port/0.8.6",
-      "hashPath": "zstdsharp.port.0.8.6.nupkg.sha512"
+      "sha512": "sha512-+4VpxvzEKaHpfTjsLRMhQHx6brqGBkIA+fjUM3wUW8ZoWpPFAeKrO2Nf4uZDeBjjzNDNxSRvLQH4b3S9Ku4JJQ==",
+      "path": "zstdsharp.port/0.8.7",
+      "hashPath": "zstdsharp.port.0.8.7.nupkg.sha512"
     }
   }
 }

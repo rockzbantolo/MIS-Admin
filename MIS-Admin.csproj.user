@@ -4,22 +4,31 @@
     <_LastSelectedProfileId>C:\Users\rocky\Documents\GitHub\MIS-Admin\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="UI\Forms\DeviceReplaceForm.cs">
+    <Compile Update="UI\Forms\Lookups\DeviceLookupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\Forms\MerchantDetailsForm.cs">
+    <Compile Update="UI\Forms\Merchants\DeviceReplaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\Forms\ServiceDetailsForm.cs">
+    <Compile Update="UI\Forms\Merchants\MerchantDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Forms\JobOrders\JobOrderDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UI\Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UI\Forms\Lookups\PersonnelLookupForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UI\Modules\Admin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UI\Modules\Finance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Modules\Helpdesk.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UI\Modules\Home.cs">

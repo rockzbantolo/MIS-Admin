@@ -14,6 +14,7 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Too
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\MySql.Data.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Polly.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Polly.Core.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Configuration.ConfigurationManager.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
@@ -22,6 +23,8 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Format
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Security.Permissions.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\System.Windows.Extensions.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\ZstdSharp.dll
@@ -38,6 +41,7 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Next.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\FluentFTP.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\QRCoder.dll
@@ -50,6 +54,8 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Ext
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Npgsql.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Console.dll
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Debug.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\EPPlus.Interfaces.dll
@@ -58,6 +64,7 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Ext
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Next.dll.config
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\FluentFTP.xml
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\QRCoder.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\MimeKit.pdb
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\MimeKit.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\MailKit.pdb
@@ -70,6 +77,8 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Ext
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Npgsql.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Newtonsoft.Json.xml
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Console.xml
+C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Debug.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.xml
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.xml
@@ -90,10 +99,12 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\zh-Hans\Micro
 C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.csproj.AssemblyReference.cache
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Properties.Resources.resources
-C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.DeviceReplaceForm.resources
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.JobOrderDetailsForm.resources
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.UI.Forms.DeviceLookupForm.resources
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.UI.Forms.PersonnelLookupForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Main.resources
+C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.DeviceReplaceForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.MerchantDetailsForm.resources
-C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Forms.ServiceDetailsForm.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Admin.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Finance.resources
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS_Admin.Modules.Home.resources
@@ -114,9 +125,3 @@ C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\refint\MIS-Ad
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.pdb
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\MIS-Admin.genruntimeconfig.cache
 C:\Users\rocky\Documents\GitHub\MIS-Admin\obj\Debug\net8.0-windows\ref\MIS-Admin.dll
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.dll
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Console.dll
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Debug.dll
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Console.xml
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\Serilog.Sinks.Debug.xml
-C:\Users\rocky\Documents\GitHub\MIS-Admin\bin\Debug\net8.0-windows\QRCoder.xml

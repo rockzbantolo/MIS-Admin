@@ -1,18 +1,14 @@
 ﻿using MIS_Admin.Services;
 using MIS_Admin.Utilities.Handler;
-using MIS_Admin.Utilities.UI;
-using static MIS_Admin.Utilities.Functions;
 
 namespace MIS_Admin.Modules
 {
     public partial class Reports : UserControl, IKeyHandler
     {
-        private readonly OpsService _Ops;
 
         public Reports()
         {
             InitializeComponent();
-            _Ops = new OpsService();
             InitializeHelpers();
         }
 
@@ -48,11 +44,11 @@ namespace MIS_Admin.Modules
                 switch (cmb_Reports.SelectedIndex)
                 {
                     case 0: // Terminals
-                        dgv_Reports.DataSource = await _Ops.GetListOfTerminalsAsync(search);
+                        //dgv_Reports.DataSource = await _Ops.GetListOfTerminalsAsync(search);
                         break;
 
                     case 1: // SIMs
-                        dgv_Reports.DataSource = _Ops.GetListOfSimCardsAsync(search);
+                        //dgv_Reports.DataSource = _Ops.GetListOfSimCardsAsync(search);
                         break;
 
                     case 2: // Stores
