@@ -22,31 +22,34 @@
     <Compile Update="UI\Forms\Lookups\PersonnelLookupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Admin.cs">
+    <Compile Update="UI\Modules\AdminModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Finance.cs">
+    <Compile Update="UI\Modules\FinanceModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Helpdesk.cs">
+    <Compile Update="UI\Modules\HelpdeskModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Home.cs">
+    <Compile Update="UI\Modules\HomeModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Login.cs">
+    <Compile Update="UI\Modules\InventoryModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Overview.cs">
+    <Compile Update="UI\Modules\LoginModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Reports.cs">
+    <Compile Update="UI\Modules\OverviewModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Servicing.cs">
+    <Compile Update="UI\Modules\ReportsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UI\Modules\Merchants.cs">
+    <Compile Update="UI\Modules\ServicingModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\Modules\MerchantsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

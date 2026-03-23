@@ -8,14 +8,14 @@ namespace MIS_Admin
     public partial class Main : Form
     {
         public Panel BodyPanel => pn_Body;
-        private readonly AuthService _user;
+        private readonly AuthServices _user;
 
         public int UserId { get; set; }
 
         public Main()
         {
             InitializeComponent();
-            _user = new AuthService();
+            _user = new AuthServices();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -95,7 +95,7 @@ namespace MIS_Admin
         private void InitializedDisplay()
         {
             //pn_Body.EnabledBuffer();
-            new Login(this).Show(pn_Body);
+            new LoginModule(this).Show(pn_Body);
         }
 
         private async void Main_Load(object sender, EventArgs e)

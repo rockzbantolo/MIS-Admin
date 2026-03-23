@@ -9,7 +9,7 @@ namespace MIS_Admin.Forms
 {
     public partial class DeviceReplaceForm : Form
     {
-        private readonly MerchantService _Merch;
+        private readonly MerchantServices _Merch;
 
         private readonly int _IrID;
 
@@ -17,7 +17,7 @@ namespace MIS_Admin.Forms
         {
             InitializeComponent();
             _IrID = IrID;
-            _Merch = new MerchantService();
+            _Merch = new MerchantServices();
         }
 
         protected async override void OnLoad(EventArgs e)

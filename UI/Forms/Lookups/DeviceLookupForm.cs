@@ -8,8 +8,8 @@ namespace MIS_Admin.UI.Forms
 {
     public partial class DeviceLookupForm : Form
     {
-        private readonly TerminalService _terminal;
-        private readonly SimService _sim;
+        private readonly TerminalServices _terminal;
+        private readonly SimServices _sim;
 
         public DeviceLookupDto SelectedTerminal { get; private set; }
         public DeviceLookupDto SelectedSim { get; private set; }
@@ -21,8 +21,8 @@ namespace MIS_Admin.UI.Forms
         {
             InitializeComponent();
             _type = type;
-            _sim = new SimService();
-            _terminal = new TerminalService();
+            _sim = new SimServices();
+            _terminal = new TerminalServices();
         }
 
         protected async override void OnLoad(EventArgs e)

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Made By Rocky Bantolo")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8223a5b837d5d958954180d4c2117705ea2f9eeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1a306edd8b8cc281dfa5995b99de6dd9dc92919")]
 [assembly: System.Reflection.AssemblyProductAttribute("MIS-Admin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MIS-Admin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

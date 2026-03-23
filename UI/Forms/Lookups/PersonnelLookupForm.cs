@@ -12,7 +12,7 @@ namespace MIS_Admin.UI.Forms
         public PersonLookupDto SelectedFieldEngineer { get; private set; }
         public PersonLookupDto SelectedDispatcher { get; private set; }
 
-        private readonly UserService _service;
+        private readonly UserServices _service;
 
         private int _type { get; set; }
 
@@ -20,7 +20,7 @@ namespace MIS_Admin.UI.Forms
         {
             InitializeComponent();
             _type = type;
-            _service = new UserService();
+            _service = new UserServices();
         }
 
         protected async override void OnLoad(EventArgs e)

@@ -10,8 +10,8 @@ namespace MIS_Admin.Forms
 {
     public partial class JobOrderDetailsForm : Form
     {
-        private readonly JobOrderService _jobService;
-        private readonly MerchantService _merchantService;
+        private readonly JobOrderServices _jobService;
+        private readonly MerchantServices _merchantService;
 
         private JobOrderModel jobModel { get; set; }
         public DeviceLookupDto SelectedTerminal { get; private set; }
@@ -25,8 +25,8 @@ namespace MIS_Admin.Forms
         {
             InitializeComponent();
             jobId = Id;
-            _jobService = new JobOrderService();
-            _merchantService = new MerchantService();
+            _jobService = new JobOrderServices();
+            _merchantService = new MerchantServices();
         }
 
         protected async override void OnLoad(EventArgs e)
